@@ -26070,6 +26070,14 @@ readers do not read off random characters that represent icons */
   border-radius: 2px;
   margin-right: 10px;
 }
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
 .grid-footer {
   display: flex;
   justify-content: flex-start;
@@ -26087,6 +26095,10 @@ readers do not read off random characters that represent icons */
   font-weight: 500;
   color: var(--color-primary-bg);
   font-family: var(--bs-font-sans-serif);
+}
+.grid-footer .grid-view-more-button i {
+  animation: slideRight 2s ease-in-out infinite;
+  margin-left: 8px;
 }
 
 .grid-heading {

@@ -18,9 +18,19 @@ projects:
   sub_heading: "" # "A collection of our recent work"
   limit: 4 
   sort: 'weight' # date | weight
-  view_more_button_text: "" # "More Projects"
-  view_more_button_link: "" # "/projects"
+  view_more_button_text: "More Projects"
+  view_more_button_link: "/projects"
   columns: 2 # 1 | 2 | 3 | 4
+
+actions:
+  heading: "Let's Connect"
+  sub_heading: "Ready to work together or learn more about what I do?"
+  resume_text: "Download Resume"
+  resume_link: "/assets/files/brady-lin-resume.pdf"
+  contact_text: "Get In Touch"
+  contact_link: "/contact"
+  about_text: "About Me"
+  about_link: "/about"
 
 
 # Block comment for posts section, uncomment home.html too if you want to use it

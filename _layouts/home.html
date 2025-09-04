@@ -148,6 +148,111 @@ body_classes: page-home
 </div>
 {% endif %}
 
+<!-- Actions Section START -->
+{% if page.actions %}
+<div class="section section-base-bg-2">
+  <div class="container">
+    <div class="row">
+      
+      {% include framework/latest-works.html 
+        heading=page.actions.heading 
+        sub_heading=page.actions.sub_heading 
+        align="center"
+      %}
+      
+      <div class="col-12 col-md-4 mb-3 mb-md-0">
+        <div class="action-card">
+          <a href="{{ page.actions.resume_link | relative_url }}" class="action-link" target="_blank">
+            <i class="fa-solid fa-download action-icon"></i>
+            <span class="action-text">{{ page.actions.resume_text }}</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-4 mb-3 mb-md-0">
+        <div class="action-card">
+          <a href="{{ page.actions.contact_link | relative_url }}" class="action-link">
+            <i class="fa-solid fa-envelope action-icon"></i>
+            <span class="action-text">{{ page.actions.contact_text }}</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-4 mb-3 mb-md-0">
+        <div class="action-card">
+          <a href="{{ page.actions.about_link | relative_url }}" class="action-link">
+            <i class="fa-solid fa-user action-icon"></i>
+            <span class="action-text">{{ page.actions.about_text }}</span>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<style>
+.action-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.action-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-base-text);
+  transition: color 0.3s ease;
+}
+
+.action-link:hover {
+  color: var(--color-primary-bg);
+  text-decoration: none;
+}
+
+.action-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary-bg);
+  transition: transform 0.3s ease;
+}
+
+.action-link:hover .action-icon {
+  transform: scale(1.1);
+}
+
+.action-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: var(--font-family-base);
+}
+
+@media (max-width: 768px) {
+  .action-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .action-icon {
+    font-size: 2rem;
+  }
+  
+  .action-text {
+    font-size: 1rem;
+  }
+}
+</style>
+{% endif %}
+<!-- Actions Section END -->
+
 {% comment %} 
 {% assign cards = site.posts | sort: 'date' | reverse %}
 {% assign limit = page.posts.limit | default: 3 %}

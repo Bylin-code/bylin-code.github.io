@@ -1,4 +1,10 @@
-.grid {
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
 }
 .grid-footer {
   display: flex;
@@ -16,6 +22,11 @@
     font-weight: 500;
     color: var(--color-primary-bg);
     font-family: $font-family-base;
+    
+    i {
+      animation: slideRight 2s ease-in-out infinite;
+      margin-left: 8px;
+    }
   }
 }
 .grid-heading {
