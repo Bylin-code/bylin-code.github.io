@@ -1,450 +1,64 @@
 ---
 layout: default
+body_classes: page-post
 ---
-<div class="project-container">
-  <!-- Project header with title and date only -->
-  <header class="project-header">
-    <!-- Project title and date -->
-    <div class="project-title-container">
-      <h1 class="project-title">{{ page.title }}</h1>
-      <div class="project-date">{{ page.date | date: "%b %d, %Y" }}</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        {% include framework/heading.html
+          title=page.title
+          description=page.description
+          image=page.image
+        %}
+      </div>
     </div>
-  </header>
-  
-  <!-- Project showcase container with vertical text, image, description -->
-  <div class="project-showcase">
-    <!-- Left vertical project code -->
-    <div class="vertical-text left-featured">
-      {% assign code_chars = page.project_code | split: '' %}
-      {% for char in code_chars %}
-        <span>{{ char }}</span>
-      {% endfor %}
-    </div>
-    
-    <!-- Project thumbnail image -->
-    <div class="project-thumbnail">
-      <img src="{{ page.thumbnail }}" alt="{{ page.title }}" />
-    </div>
-    
-    <!-- Project introduction from front matter -->
-    <div class="project-description">
-      {{ page.intro }}
-    </div>
-    
-    <!-- Right vertical project code -->
-    <div class="vertical-text right-featured">
-      {% assign code_chars = page.project_code | split: '' %}
-      {% for char in code_chars %}
-        <span>{{ char }}</span>
-      {% endfor %}
-    </div>
-  </div>
-  
-  <!-- Project content section - displays the actual markdown content -->
-  <div class="project-content">
-    {{ content }}
-  </div>
-  
-  <!-- Back button -->
-  <div class="project-navigation">
-    <a href="/projects/" class="btn-back">← All Projects</a>
   </div>
 </div>
 
-<style>
-  /* Force override any lines, borders or horizontal separators */
-  .project-container *,
-  .project-header *,
-  .project-title-container * {
-    border: none !important;
-    box-shadow: none !important;
-  }
+<div class="section pt-0">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        
+        {% if page.authors %}
+          <div class="mb-2">
+          {% for author in page.authors %}
+            {% include framework/author.html 
+            author=author
+            style='row'
+            show_author_name=true
+          %}
+          {% endfor %}
+          </div>
+        {% endif %}
+        
+        <div class="content">{{ content }}</div>
 
-  .project-header::after,
-  .project-header::before,
-  .project-title-container::after,
-  .project-title-container::before,
-  .project-title::after,
-  .project-title::before,
-  .project-date::after,
-  .project-date::before {
-    display: none !important;
-    content: none !important;
-    border: none !important;
-    background: transparent !important;
-  }
-  
-  /* Project showcase layout */
-  .project-showcase {
-    display: flex;
-    align-items: flex-start; /* Changed from stretch to align items at the top */
-    justify-content: space-between;
-    margin: var(--spacing-xlarge, 32px) 0;
-    position: relative;
-    background-color: transparent;
-    min-height: 400px;
-    position: relative;
-  }
-  
-  /* Project thumbnail styling */
-  .project-thumbnail {
-    position: sticky;
-    top: 100px; /* Adjust this value as needed for desired stickiness point */
-    align-self: flex-start;
-    flex: 0 0 30%;
-    margin: 0 0 0 calc(15% + 30px);
-    padding: 0;
-  }
-  
-  .project-thumbnail img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 3px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  /* Project description styling */
-  .project-description {
-    flex: 0 0 30%;
-    margin: 0 calc(15% + 30px) 0 30px;
-    padding: 0;
-    font-weight: 300;
-    font-size: clamp(1rem, 2vw, 1.125rem);
-    line-height: 1.8;
-    color: var(--color-text, #333);
-    width: 30%;
-    /* Ensure consistent text width and hyphenation for even text appearance */
-    text-align: justify;
-    hyphens: auto;
-    word-wrap: break-word;
-  }
-  
-  /* Responsive adjustments for showcase */
-  @media (max-width: 767px) {
-    .project-showcase {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .project-thumbnail {
-      /* Remove sticky positioning on mobile */
-      position: static;
-      width: 90%;
-      max-width: 500px;
-      flex: none;
-      margin: var(--spacing-medium, 16px) auto;
-    }
-    
-    .project-showcase .vertical-text {
-      flex-direction: row;
-      width: 100%;
-      justify-content: center;
-      padding: var(--spacing-medium, 16px) 0;
-    }
-    
-    .project-showcase .vertical-text span {
-      margin: 0 3px;
-    }
-    
-    .project-showcase .left-featured {
-      order: 1;
-    }
-    
-    .project-thumbnail {
-      order: 2;
-      width: 100%;
-      flex: none;
-      margin: var(--spacing-medium, 16px) 0;
-    }
-    
-    .project-description {
-      order: 3;
-      width: 90%;
-      max-width: 500px;
-      flex: none;
-      margin: var(--spacing-medium, 16px) auto;
-      /* Maintain text consistency on mobile */
-      text-align: justify;
-      hyphens: auto;
-      word-wrap: break-word;
-    }
-    
-    .project-showcase .right-featured {
-      display: none;
-    }
-  }
-  
-  /* Base project container */
-  .project-container {
-    max-width: var(--site-content-width, 1000px);
-    margin: 0 auto;
-    padding: var(--spacing-large, 24px) var(--spacing-medium, 16px);
-    background-color: transparent;
-    color: var(--color-text, #333);
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 120px; /* Increased space to clear the header */
-    position: relative;
-    z-index: 1; /* Lower z-index than the nav */
-  }
-  
-  /* Project header styling */
-  .project-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: var(--spacing-xlarge, 32px);
-    border-bottom: none;
-    padding-bottom: var(--spacing-large, 24px);
-    position: relative;
-    background-color: transparent;
-  }
-  
-  /* Project title container */
-  .project-title-container {
-    flex: 1;
-    text-align: center;
-    padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    background-color: transparent;
-  }
-  
-  /* Project title */
-  .project-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 500;
-    margin: 0 0 var(--spacing-small, 8px);
-    color: var(--color-dark, #333);
-    letter-spacing: var(--letter-spacing, 0.03em);
-  }
-  
-  /* Project date */
-  .project-date {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    font-weight: 300;
-    color: var(--color-medium, #999);
-    margin-top: var(--spacing-small, 8px);
-    border-bottom: none;
-  }
-  
-  /* Vertical text styling - exactly matching homepage FEATURED text */
-  .project-showcase .vertical-text {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 200%; /* Use the same height as carousel project images */
-    color: #333;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 200;
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    text-transform: uppercase;
-    padding: 0rem 0;
-    z-index: 10;
-    width: 10%;
-    pointer-events: none;
-  }
-  
-  .project-showcase .vertical-text span {
-    display: block;
-    line-height: 1;
-    letter-spacing: 0;
-    text-align: center;
-    color: var(--color-dark, #333);
-    margin-bottom: 3.1rem; /* Increase space between letters */
-  }
-  
-  /* Left and right featured text positioning - aligned with thumbnail top */
-  .project-showcase .left-featured {
-    left: 0;
-    text-align: center;
-    top: 0;
-    height: calc(100% - 60px); /* Adjust height to maintain proportions */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .project-showcase .right-featured {
-    right: 0;
-    text-align: center;
-    top: 0;
-    height: calc(100% - 60px); /* Adjust height to maintain proportions */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  /* Project content styling */
-  .project-content {
-    margin: 0 auto;
-    max-width: 800px;
-    line-height: 1.6;
-    background-color: transparent;
-  }
-  
-  /* Project content section styling */
-  .project-content {
-    width: calc(60% + 60px); /* 30% thumbnail + 30% text + side margins */
-    max-width: none;
-    margin: var(--spacing-xlarge, 32px) auto var(--spacing-large, 24px);
-    padding: 0 var(--spacing-medium, 16px);
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    /* Global content formatting for consistent line width */
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-  }
-  
-  /* Style for headings in content */
-  .project-content h2 {
-    font-size: 1.75rem;
-    margin-top: var(--spacing-xlarge, 32px);
-    margin-bottom: var(--spacing-medium, 16px);
-    font-weight: 500;
-  }
-  
-  .project-content h3 {
-    font-size: 1.4rem;
-    margin-top: var(--spacing-large, 24px);
-    margin-bottom: var(--spacing-medium, 16px);
-    font-weight: 500;
-  }
-  
-  /* Style for paragraphs */
-  .project-content p {
-    margin-bottom: var(--spacing-large, 24px);
-    font-weight: 300;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.8;
-  }
-  
-  /* Style for lists */
-  .project-content ul,
-  .project-content ol {
-    margin-bottom: var(--spacing-large, 24px);
-    padding-left: 1.5rem;
-    text-align: justify;
-  }
-  
-  .project-content li {
-    margin-bottom: 0.5rem;
-    line-height: 1.8;
-  }
-  
-  /* Style for blockquotes */
-  .project-content blockquote {
-    margin: var(--spacing-large, 24px) 0;
-    padding: 0.5rem 1.5rem;
-    border-left: 3px solid var(--color-medium, #999);
-    font-style: italic;
-    text-align: justify;
-  }
-  
-  /* Style for code blocks */
-  .project-content pre,
-  .project-content code {
-    font-family: 'Courier New', monospace;
-    background-color: rgba(0,0,0,0.05);
-    border-radius: 3px;
-    padding: 0.2rem 0.4rem;
-    font-size: 0.9em;
-  }
-  
-  .project-content pre {
-    padding: 1rem;
-    overflow-x: auto;
-    margin: var(--spacing-large, 24px) 0;
-  }
-  
-  .project-content pre code {
-    padding: 0;
-    background-color: transparent;
-  }
-  
-  /* Style for images */
-  .project-content img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: var(--spacing-large, 24px) auto;
-    border-radius: 3px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  /* Navigation buttons */
-  .project-navigation {
-    margin-top: var(--spacing-xlarge, 32px);
-    padding-top: var(--spacing-large, 24px);
-    border-top: none;
-    text-align: center;
-    background-color: transparent;
-  }
-  
-  .btn-back {
-    display: inline-block;
-    padding: var(--spacing-small, 8px) var(--spacing-medium, 16px);
-    border: 1px solid var(--color-dark, #333);
-    color: var(--color-dark, #333);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-back:hover {
-    background-color: transparent;
-    color: var(--color-medium, #999);
-    border-color: var(--color-medium, #999);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    /* Update project content width for mobile */
-    .project-content {
-      width: 90%;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0;
-    }
+        {% if page.categories %}
+        <div class="categories">
+        {% include framework/categories-badges.html 
+            categories=page.categories
+        %}
+        {% endif %}
+        </div>
 
-    .project-header {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .vertical-text {
-      flex-direction: row;
-      width: 100%;
-      justify-content: center;
-      padding: var(--spacing-medium, 16px) 0;
-    }
-    
-    .vertical-text span {
-      margin: 0 3px;
-    }
-    
-    .left-featured {
-      order: 1;
-      margin-right: 0;
-      margin-bottom: var(--spacing-small, 8px);
-    }
-    
-    .project-title-container {
-      order: 2;
-      padding: var(--spacing-small, 8px) 0;
-    }
-    
-    .right-featured {
-      display: none;
-    }
-  }
-</style>
+        {% include framework/comments.html %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if site.newsletter.mailchimp.form_action_url and site.newsletter.mailchimp.form_action_url != '' %}
+  <div class="section section-base-bg-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-12"></div>
+        {% include framework/subscribe.html %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
