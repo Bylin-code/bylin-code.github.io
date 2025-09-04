@@ -1,0 +1,60 @@
+{% assign heading = include.heading %}
+{% assign sub_heading = include.sub_heading %}
+{% assign align = include.align | default: "center" %}
+
+<div class="col-12">
+  <div class="latest-works-header latest-works-align-{{ align }}">
+    {% if heading and heading != "" %}
+      <h2 class="latest-works-title">{{ heading }}</h2>
+    {% endif %}
+    {% if sub_heading and sub_heading != "" %}
+      <p class="latest-works-subtitle">{{ sub_heading }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.latest-works-header {
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+.latest-works-align-center {
+  text-align: center;
+}
+
+.latest-works-align-left {
+  text-align: left;
+}
+
+.latest-works-align-right {
+  text-align: right;
+}
+
+.latest-works-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-base-text);
+  margin-bottom: 15px;
+  font-family: var(--font-family-heading);
+}
+
+.latest-works-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-base-text-2);
+  line-height: 1.5;
+  margin-bottom: 0;
+  font-family: var(--font-family-base);
+}
+
+@media (max-width: 768px) {
+  .latest-works-title {
+    font-size: 2rem;
+  }
+  
+  .latest-works-subtitle {
+    font-size: 1rem;
+  }
+}
+</style>
