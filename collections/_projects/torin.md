@@ -1,8 +1,8 @@
 ---
 layout: project-4p
-title: "BUCK"
+title: "TORIN"
 description: "A bucket solenoid robot drummer my team and I built in highschool. The precurser to PULSE."
-date: 2021-09-20
+date: 2022-02-10
 weight: 5
 featured: false
 display: true

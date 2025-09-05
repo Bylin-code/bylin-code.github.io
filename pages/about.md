@@ -1,5 +1,5 @@
 ---
-layout: project-1p
+layout: project-2p
 title: "About Me"
 weight: 1
 featured: true

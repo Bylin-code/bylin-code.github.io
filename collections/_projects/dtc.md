@@ -1,8 +1,8 @@
 ---
 layout: project-4p
-title: "BUCK"
+title: "DTC"
 description: "A bucket solenoid robot drummer my team and I built in highschool. The precurser to PULSE."
-date: 2021-09-20
+date: 2023-12-29
 weight: 5
 featured: false
 display: true
