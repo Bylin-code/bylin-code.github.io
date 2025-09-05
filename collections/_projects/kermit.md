@@ -1,20 +1,26 @@
 ---
-layout: project-top
-title: "Subway"
-description: "An open source machine learning library written in Python"
-date: 2018-12-20
-weight: 4
+layout: project-5p
+title: "KERMIT"
+description: "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place."
+date: 2025-06-08
+weight: 3
 featured: true
-permalink: /projects/project-4
+display: true
 thumbnail: "/assets/images/gen/projects/project-4-6-thumbnail.webp"
 image: "/assets/images/gen/projects/project-4-1.webp"
-client: "RGA Agency"
-categories: ["Development"]
-role: "Building Designer"
+role: "Engineer & Designer"
 gallery:
   - image: "/assets/images/gen/projects/project-4-1.webp"
+    caption: "<strong>Fig 1:</strong> KERMIT line-following robot navigating the course"
   - image: "/assets/images/gen/projects/project-4-4.webp"
-  - image: "/assets/images/gen/projects/project-4-7.webp"
+    caption: "<strong>Fig 2:</strong> Computer vision system and sensor array close-up"
+gallery_bottom:
+  - image: "/assets/images/gen/projects/project-4-1.webp"
+    caption: "<strong>Fig 3:</strong> Additional view of KERMIT navigating the course"
+  - image: "/assets/images/gen/projects/project-4-4.webp"
+    caption: "<strong>Fig 4:</strong> Detailed sensor array and control system"
+  - image: "/assets/images/gen/projects/project-4-4.webp"
+    caption: "<strong>Fig 4:</strong> Detailed sensor array and control system"
 ---
 
 Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.

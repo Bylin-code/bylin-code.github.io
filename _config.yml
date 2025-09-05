@@ -122,7 +122,7 @@ logo:
   show_logo_text_on_desktop: false
 
 header: 
-  fixed: false
+  fixed: true
 
 open_graph:
   meta_opengraph_type: "website"
@@ -137,8 +137,8 @@ darkmode:
   show_dark_mode_toggle_in_mobile_menu: true
 
 cookie_banner:
-  enabled: true
-  show_manage_cookies_at_bottom: true
+  enabled: false
+  show_manage_cookies_at_bottom: false
 
 analytics:
   google_analytics_id: "" # G-XXXXXXXXXX
@@ -170,19 +170,19 @@ menu:
 
 footer:
   enable_footer: true # show/hide the entire footer
-  footer_title: "Jekyll Curate"
-  footer_description: "Curate is a creative portfolio for Jekyll by Zerostatic Themes."
+  footer_title: "Brady Y. Lin"
+  footer_description: "Thank you for visiting my portfolio. Whether you're a recruiter, friend, or wandering stranger, I hope you enjoy your stay :)"
   enable_social_media_icons: true
   enable_contact_details: false
-  enable_menu_footer_primary: true
+  enable_menu_footer_primary: false
   enable_menu_footer_secondary: true
   enable_menu_footer_tertiary: false
-  footer_primary_menu_title: "Our Projects"
-  footer_secondary_menu_title: "Company"
+  footer_primary_menu_title: "Projects"
+  footer_secondary_menu_title: "Pages"
   footer_tertiary_menu_title: "Other"
 
 bottom:
-  enable_bottom: false # show/hide the entire bottom (below the footer)
+  enable_bottom: true # show/hide the entire bottom (below the footer)
   enable_bottom_menu: false # if enabled, the bottom menu can be edited in `_data/menu.yml`
-  copyright_text: "© 2021 Zerostatic Themes"
-  show_rss_icon: true
+  copyright_text: "© 2024 Brady Y. Lin"
+  show_rss_icon: false

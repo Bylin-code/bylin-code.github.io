@@ -1,42 +1,22 @@
 [
   {
-    "title": "Twitter",
-    "fa_icon": "fab fa-twitter",
-    "url": "https://www.zerostatic.io"
+    "title": "Linkedin",
+    "fa_icon": "fab fa-linkedin",
+    "url": "https://www.linkedin.com/in/yourprofile"
   },
   {
     "title": "Github",
     "fa_icon": "fab fa-github",
-    "url": "https://www.zerostatic.io"
+    "url": "https://github.com/yourusername"
   },
   {
-    "title": "Discord",
-    "fa_icon": "fab fa-discord",
-    "url": "https://www.zerostatic.io"
+    "title": "YouTube",
+    "fa_icon": "fab fa-youtube",
+    "url": "https://www.youtube.com/yourchannel"
   },
   {
-    "title": "Tiktok",
-    "fa_icon": "fab fa-tiktok",
-    "url": "https://www.zerostatic.io"
-  },
-  {
-    "title": "Facebook",
-    "fa_icon": "fab fa-facebook-square",
-    "url": "https://www.zerostatic.io"
-  },
-  {
-    "title": "Instagram",
-    "fa_icon": "fab fa-instagram-square",
-    "url": "https://www.zerostatic.io"
-  },
-  {
-    "title": "Linkedin",
-    "fa_icon": "fab fa-linkedin",
-    "url": "https://www.zerostatic.io"
-  },
-  {
-    "title": "Mailchimp",
-    "fa_icon": "fab fa-mailchimp",
-    "url": "https://www.zerostatic.io"
+    "title": "Email",
+    "fa_icon": "fas fa-envelope",
+    "url": "mailto:your.email@example.com"
   }
 ]

@@ -22,13 +22,20 @@
 
   <div class="card-content">
     <div class="card-title">
-      <h2>
-        <a href="{{ url | relative_url }}">{{ title }}</a>
-      </h2>
+      <div class="card-title-wrapper">
+        <h2>
+          <a href="{{ url | relative_url }}">{{ title }}</a>
+        </h2>
+        {% if date %}
+          <div class="card-date">
+            {{ date | date: "%b %Y" }}
+          </div>
+        {% endif %}
+      </div>
     </div>
-    {% if client %}
-      <div class="card-client">
-        {{ client }}
+    {% if description %}
+      <div class="card-description">
+        {{ description }}
       </div>
     {% endif %}
   </div>

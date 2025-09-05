@@ -1,19 +1,21 @@
 ---
-layout: project-left
-title: "Cubist Urban Home"
-description: "A spectacular building, designed by the Valencian architect Santiago Calatrava."
-date: 2018-12-20
-weight: 2
+layout: project-3p
+title: "HARPA"
+description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings actuated by servo array attched to silicone fingers."
+date: 2022-09-29
+weight: 4
 featured: true
-thumbnail: "/assets/images/gen/projects/project-3-1-thumbnail.webp"
-image: "/assets/images/gen/projects/project-3-1.webp"
-client: "Region of Valencia"
-categories: ["Development"]
+display: true
+thumbnail: "/assets/images/gen/projects/project-1-1-thumbnail.webp"
+image: "/assets/images/gen/projects/project-1-2.webp"
 role: "Building Designer"
 gallery:
-  - image: "/assets/images/gen/projects/project-3-1.webp"
-  - image: "/assets/images/gen/projects/project-3-4.webp"
-  - image: "/assets/images/gen/projects/project-3-7.webp"
+  - image: "/assets/images/gen/projects/project-1-1.webp"
+    caption: "<strong>Fig 1:</strong> North easterly aspect showing curved design"
+  - image: "/assets/images/gen/projects/project-1-2.webp"
+    caption: "<strong>Fig 2:</strong> Rear offices square design in contrast"
+  - image: "/assets/images/gen/projects/project-1-2.webp"
+    caption: "<strong>Fig 2:</strong> Rear offices square design in contrast"
 ---
 
 Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.

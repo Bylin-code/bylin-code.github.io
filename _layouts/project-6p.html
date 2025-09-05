@@ -17,14 +17,13 @@ body_classes: page-project
           </div>
         {% endif %}
 
-        {% if page.categories %}
-          <div class="project-categories">
-          {% include framework/categories-badges.html 
-              categories=page.categories
-          %}
+        {% if page.description %}
+          <div class="project-description">
+            {{ page.description }}
           </div>
         {% endif %}
 
+        <div class="mt-4">
         {% if page.date %}
           <div class="project-date">
             <strong>Date </strong><span>{{ page.date | date_to_long_string }}</span>
@@ -42,6 +41,7 @@ body_classes: page-project
             <strong>Role </strong><span>{{ page.role }}</span>
           </div>
         {% endif %}
+        </div>
 
       </div>
 

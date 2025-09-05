@@ -3,10 +3,10 @@ layout: home
 body_classes: page-home
 permalink: "/"
 title: "I'm Brady, I will help build your full-stack mechatronics project from the ground up."
-description: "I love a good challenge; it feeds my addiction to seeing a novel idea blossom into something that physically exists. I specialize in building and overseeing electromechanical systems that involve everything from CAD and manufacturing, to circuit analysis and PCB design, to RTOs and embedded firmware."
+description: "Turning ideas into working systems is my obsession. I build and oversee full-stack electromechanical systems, spanning CAD and manufacturing, circuit analysis and PCB design, RTOS development, and embedded firmware."
 cta_text: "Check out what I've been working on"
-meta_description: "Jekyll Curate is a premium Jekyll blog theme"
-meta_title: Jekyll Curate - Premium Portfolio Theme
+meta_description: "Brady Lin - Full-Stack Mechatronics Engineer"
+meta_title: Brady Lin - Full-Stack Mechatronics Engineer
 subscribe: false
 
 latest_works:
@@ -17,7 +17,7 @@ projects:
   heading: "" # "Projects"
   sub_heading: "" # "A collection of our recent work"
   limit: 4 
-  sort: 'weight' # date | weight
+  sort: 'date' # date | weight
   view_more_button_text: "More Projects"
   view_more_button_link: "/projects"
   columns: 2 # 1 | 2 | 3 | 4

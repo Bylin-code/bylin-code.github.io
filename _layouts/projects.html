@@ -17,16 +17,16 @@ body_classes: page-projects
 </div>
 
 
-{% assign cards = site.projects | sort: 'date' | reverse %}
 {% assign limit = page.projects.limit | default: 999 %}
 {% assign sort_by = page.projects.sort | default: 'date' %}
 {% assign columns =  page.projects.columns | default: 3 %}
 {% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
-{% if sort_by == 'weight' %}
-  {% assign cards = cards | sort: 'weight' %}
-{% endif %}
 
-{% assign cards = site.projects %}
+{% if sort_by == 'weight' %}
+  {% assign cards = site.projects | sort: 'weight' %}
+{% else %}
+  {% assign cards = site.projects | sort: 'date' | reverse %}
+{% endif %}
 {% if cards.size > 0 %}
 <div class="section pt-0">
   <div class="container">
@@ -38,6 +38,7 @@ body_classes: page-projects
       %}
      
       {% for card in cards limit: limit %}
+      {% if card.display == true %}
       <div
         class="col-12 col-md-6 {{ columns }} mb-gutter mt-gutter {% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mt-md-0">
         {% include theme/cards/card-project.html
@@ -50,6 +51,7 @@ body_classes: page-projects
           client=card.client
         %}
       </div>
+      {% endif %}
       {% endfor %}
 
       {% include framework/grid-footer.html 
