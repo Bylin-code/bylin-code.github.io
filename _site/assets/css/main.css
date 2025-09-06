@@ -25793,22 +25793,27 @@ readers do not read off random characters that represent icons */
 }
 .page-project .project-date,
 .page-project .project-role,
-.page-project .project-client {
+.page-project .project-client,
+.page-project .project-skills {
   margin-bottom: 10px;
   font-size: 16px;
+  display: flex;
+  align-items: flex-start;
 }
 .page-project .project-date strong,
 .page-project .project-role strong,
-.page-project .project-client strong {
-  display: inline-block;
+.page-project .project-client strong,
+.page-project .project-skills strong {
   font-weight: 600;
   width: 70px;
+  flex-shrink: 0;
 }
 .page-project .project-date span,
 .page-project .project-role span,
-.page-project .project-client span {
-  display: inline-block;
+.page-project .project-client span,
+.page-project .project-skills span {
   font-weight: 400;
+  flex: 1;
 }
 
 .card-post {
@@ -26071,9 +26076,11 @@ readers do not read off random characters that represent icons */
   display: block;
 }
 .card-project .card-thumbnail img {
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .card-project .card-thumbnail img:hover {
   opacity: 0.8;

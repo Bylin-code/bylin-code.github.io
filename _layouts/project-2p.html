@@ -23,7 +23,7 @@ body_classes: page-project
           </div>
         {% endif %}
 
-        {% if page.date or page.client or page.role %}
+        {% if page.date or page.client or page.role or page.skills %}
           <div class="project-stats mt-3">
           {% if page.date %}
             <div class="project-date">
@@ -40,6 +40,12 @@ body_classes: page-project
           {% if page.role %}
             <div class="project-role">
               <strong>Role </strong><span>{{ page.role }}</span>
+            </div>
+          {% endif %}
+
+          {% if page.skills %}
+            <div class="project-skills">
+              <strong>Skills </strong><span>{{ page.skills }}</span>
             </div>
           {% endif %}
           </div>

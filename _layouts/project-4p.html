@@ -37,6 +37,8 @@ body_classes: page-project
         <div class="project-date"><strong>Date </strong><span>{{ page.date | date_to_long_string }}</span></div>
         {% endif %} {% if page.role %}
         <div class="project-role"><strong>Role </strong><span>{{ page.role }}</span></div>
+        {% endif %} {% if page.skills %}
+        <div class="project-skills"><strong>Skills </strong><span>{{ page.skills }}</span></div>
         {% endif %}
         </div>
       </div>

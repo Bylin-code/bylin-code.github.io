@@ -1,19 +1,17 @@
 ---
-layout: project-3p
+layout: project-2p
 title: "GUI-NW"
 description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings actuated by servo array attched to silicone fingers."
 date: 2022-09-29
 weight: 4
-featured: true
-display: true
+featured: false
+display: false
 thumbnail: "/assets/images/gen/projects/project-1-1-thumbnail.webp"
 image: "/assets/images/gen/projects/project-1-2.webp"
 role: "Building Designer"
 gallery:
   - image: "/assets/images/gen/projects/project-1-1.webp"
     caption: "<strong>Fig 1:</strong> North easterly aspect showing curved design"
-  - image: "/assets/images/gen/projects/project-1-2.webp"
-    caption: "<strong>Fig 2:</strong> Rear offices square design in contrast"
   - image: "/assets/images/gen/projects/project-1-2.webp"
     caption: "<strong>Fig 2:</strong> Rear offices square design in contrast"
 ---

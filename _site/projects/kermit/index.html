@@ -270,13 +270,18 @@
           <div class="gallery-sizer"></div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/gen/projects/project-4-1.webp" /></div>
-            <div class="gallery-caption"><strong>Fig 1:</strong> KERMIT line-following robot navigating the course</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/kermit/kermit1.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 1:</strong> KERMIT looking at you with his froggy eyes</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/gen/projects/project-4-4.webp" /></div>
-            <div class="gallery-caption"><strong>Fig 2:</strong> Computer vision system and sensor array close-up</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/kermit/kermit6.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 2:</strong> KERMIT's actual eyes, an OV7670 camera module</div>
+          </div>
+          
+          <div class="gallery-item">
+            <div class="gallery-image"><img src="/assets/images/my-projects/kermit/kermit2.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 3:</strong> KERMIT's electronics on a breadboard.</div>
           </div>
           
         </div>
@@ -294,19 +299,37 @@
         
         <div class="mt-4">
         
-        <div class="project-date"><strong>Date </strong><span>08 June 2025</span></div>
+        <div class="project-date"><strong>Date </strong><span>08 May 2025</span></div>
          
         <div class="project-role"><strong>Role </strong><span>Engineer & Designer</span></div>
+         
+        <div class="project-skills"><strong>Skills </strong><span>Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing</span></div>
         
         </div>
 
-        <div class="content mt-4"><p>Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.</p>
+        <div class="content mt-4"><p><strong>KERMIT</strong> is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.</p>
 
-<p>The practice, which began in the prehistoric era, has been used as a way of expressing culture for civilizations on all seven continents.</p>
+<p>KERMIT is powered by dual belt-driven DC motors, controlled by a Raspberry Pi Pico running firmware written in the C SDK. A simple PID controller is used to maintain a constant distance from the line, while a camera mounted on the front of the robot captures the horizontal position of the line and sends it to the Pico over I2C.</p>
 
-<p>Architecture began as rural, oral vernacular architecture that developed from trial and error to successful replication. Ancient urban architecture was preoccupied with building religious structures and buildings symbolizing the political power of rulers until Greek and Roman architecture shifted focus to civic virtues.</p>
+<p>The firmware averages the captured image into a line of pixels, it then calculates the center of mass of the line’s brightness and uses that to calculate the error for the PID controller.</p>
+
 </div>
 
+        
+        <div class="gallery gallery-L-right mt-4">
+          <div class="gallery-sizer"></div>
+          
+          <div class="gallery-item">
+            <div class="gallery-image"><img src="/assets/images/my-projects/kermit/kermit9.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 4:</strong> Schematics in KiCAD</div>
+          </div>
+          
+          <div class="gallery-item">
+            <div class="gallery-image"><img src="/assets/images/my-projects/kermit/kermit11.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 5:</strong> CAD assembly</div>
+          </div>
+          
+        </div>
         
       </div>
     </div>

@@ -1,26 +1,27 @@
 ---
 layout: project-4p
 title: "TORIN"
-description: "A bucket solenoid robot drummer my team and I built in highschool. The precurser to PULSE."
+description: "A biomimetic inflatable soft robot that can squeeze through holes smallter than itsef."
 date: 2022-02-10
 weight: 5
-featured: false
+featured: true
 display: true
-thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
+thumbnail: "assets/images/my-projects/torin/torin11.jpg"
 image: "/assets/images/gen/projects/project-1-3.webp"
-role: "Lead Engineer & Designer"
+role: "Engineer & Designer"
+skills: "Arduino, C++, Biomimicry, Radio controlled systems, hardware debugging Mechatronics, CAD, 3D Printing"
 gallery:
-  - image: "/assets/images/gen/projects/project-1-3.webp"
-    caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"
-  - image: "/assets/images/gen/projects/project-2-2.webp"
-    caption: "<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"
-  - image: "/assets/images/gen/projects/project-3-4.webp"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
-  - image: "/assets/images/gen/projects/project-3-4.webp"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+  - image: "assets/images/my-projects/torin/torin12.jpg"
+    caption: "<strong>Fig 1:</strong> TORIN squeezing through a hole half it's cross-sectional area"
+  - image: "assets/images/my-projects/torin/torin9.jpg"
+    caption: "<strong>Fig 2:</strong> TORIN's chassis and electronics"
+  - image: "assets/images/my-projects/torin/torin6.jpg"
+    caption: "<strong>Fig 3:</strong> Testing RC controller integration"
+  - image: "assets/images/my-projects/torin/torin13.jpg"
+    caption: "<strong>Fig 3:</strong> Three of many prototypical designs that were tested"
 ---
-BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.
+**TORIN** was inspired by a method of locomotion used by amoebas called Whole Skin Locomotion, where they move by pulling in the skin near the front of their body and expelling it out the back. You can imagine it as a torus endlessly turning itself inside-out, a seamless loop of surface motion generating forward movement.
 
-The project integrates mechanical engineering principles with musical performance requirements, resulting in a robust and expressive robotic drummer capable of live performance scenarios.
+My robot does exactly that. Four motors are mechanically pressed agains a tubular plastic membrane, which is then flipped inside out to wrap around the whole body of the robot. When the motors are turned on, the membrane is pulled inwards by a front chassis while expelled outwards by a rear chassis, generating forward movement. Steering is done by four chords between the two chassis that are pulled in or out using 4 additional motors, allowing the robot to turn left or right.
 
-Built with durability and reliability in mind, BUCK demonstrates the intersection of engineering creativity and musical expression, pushing the boundaries of what's possible in robotic music performance.
+The robot is able to move at a spee of 10cm/s and can squeeze through holes half it's cross-sectional area. 

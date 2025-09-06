@@ -1,26 +1,26 @@
 ---
-layout: project-4p
+layout: project-5p
 title: "BUCK"
-description: "A bucket solenoid robot drummer my team and I built in highschool. The precurser to PULSE."
+description: "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE."
 date: 2021-09-20
 weight: 5
 featured: false
 display: true
-thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
-image: "/assets/images/gen/projects/project-1-3.webp"
+thumbnail: "/assets/images/my-projects/buck/buck4.jpg"
 role: "Lead Engineer & Designer"
+skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 gallery:
-  - image: "/assets/images/gen/projects/project-1-3.webp"
+  - image: "/assets/images/my-projects/buck/buck4.jpg"
     caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"
-  - image: "/assets/images/gen/projects/project-2-2.webp"
+  - image: "/assets/images/my-projects/buck/buck1.jpg"
     caption: "<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"
-  - image: "/assets/images/gen/projects/project-3-4.webp"
+  - image: "/assets/images/my-projects/buck/buck2.jpg"
     caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
-  - image: "/assets/images/gen/projects/project-3-4.webp"
+  - image: "/assets/images/my-projects/buck/buck6.jpg"
+    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+  - image: "/assets/images/my-projects/buck/buck5.jpg"
     caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
 ---
-BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.
+BUCK is a cement bucket drummer robot that my team and I built over my sophomore year of highschool. The lack of good funding meant we had to be extremely efficient with parts sourcing, and we ended up spending under 150 USD for the entire project.
 
-The project integrates mechanical engineering principles with musical performance requirements, resulting in a robust and expressive robotic drummer capable of live performance scenarios.
-
-Built with durability and reliability in mind, BUCK demonstrates the intersection of engineering creativity and musical expression, pushing the boundaries of what's possible in robotic music performance.
+It featured 8 relay-driven solenoids operated by an arduino leonardo. 8 LED strips were located inside the bucket and can be independently controled through MIDI signals. The latency is about 100ms, which was good enough for our purposes. The robot performed live 3 times at various highschool events.
