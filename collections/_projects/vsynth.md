@@ -3,13 +3,11 @@ layout: project-2p
 title: "VSYNTH"
 description: "An Arduino-based violin-inspired square-wave synthesizer. The precurser to the STRADEX line."
 date: 2020-09-04
-weight: 6
 featured: false
 display: true
-thumbnail: "/assets/images/my-projects/vsynth/vsynth3.jpg"
-image: "/assets/images/gen/projects/project-2-1.webp"
 role: "Lead Developer & Sound Engineer"
 skills: "Arduino, Audio generation, Basic circuit design"
+thumbnail: "/assets/images/my-projects/vsynth/vsynth3.jpg"
 gallery:
   - image: "/assets/images/my-projects/vsynth/vsynth1.jpg"
     caption: "<strong>Fig 1:</strong> Internal Circuits of VSYNTH"

@@ -3,13 +3,11 @@ layout: project-6p # alternative layouts: project-6p, project-3p, project-1p, pr
 title: "PULSE"
 description: "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control."
 date: 2025-06-12
-weight: 1
 featured: true
 display: true
-thumbnail: "/assets/images/my-projects/pulse/pulse8.jpg"
-image: "/assets/images/gen/projects/project-2-1.webp"
 role: "Lead Engineer"
 skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Lazer cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
+thumbnail: "/assets/images/my-projects/pulse/pulse8.jpg"
 gallery:
   - image: "/assets/images/my-projects/pulse/pulse18.jpg"
     caption: "<strong>Fig 1:</strong> Clear view of PULSE's mechanical and electrical components"

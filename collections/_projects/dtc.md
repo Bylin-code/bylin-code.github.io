@@ -3,12 +3,11 @@ layout: project-4p
 title: "DTC"
 description: "Projects I did relating to Northwestern's Design Thinking and Communications courses"
 date: 2023-12-29
-weight: 5
 featured: false
-display: true
-thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
-image: "/assets/images/gen/projects/project-1-3.webp"
+display: false
 role: "Lead Engineer & Designer"
+skills: "none"
+thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
 gallery:
   - image: "/assets/images/gen/projects/project-1-3.webp"
     caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"

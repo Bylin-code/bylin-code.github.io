@@ -3,12 +3,11 @@ layout: project-5p
 title: "MDPJ"
 description: "A mural exhibition with a music-synched and choreographed light show involving more than 200 students"
 date: 2023-08-03
-weight: 6
 featured: false
 display: true
-thumbnail: "/assets/images/my-projects/mdpj/mdpj1.jpg"
-image: "/assets/images/gen/projects/project-2-1.webp"
 role: "Project Manager"
+skills: "Leadership, Parts sourcing"
+thumbnail: "/assets/images/my-projects/mdpj/mdpj1.jpg"
 gallery:
   - image: "/assets/images/my-projects/mdpj/mdpj1.jpg"
     caption: "<strong>Fig 1:</strong> The view at night"

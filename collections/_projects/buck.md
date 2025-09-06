@@ -3,12 +3,11 @@ layout: project-5p
 title: "BUCK"
 description: "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE."
 date: 2021-09-20
-weight: 5
 featured: false
 display: true
-thumbnail: "/assets/images/my-projects/buck/buck4.jpg"
 role: "Lead Engineer & Designer"
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
+thumbnail: "/assets/images/my-projects/buck/buck4.jpg"
 gallery:
   - image: "/assets/images/my-projects/buck/buck4.jpg"
     caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"

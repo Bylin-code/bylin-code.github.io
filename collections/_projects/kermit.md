@@ -3,13 +3,11 @@ layout: project-5p
 title: "KERMIT"
 description: "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place."
 date: 2025-05-08
-weight: 3
 featured: true
 display: true
-thumbnail: "/assets/images/my-projects/kermit/kermit8.jpg"
-image: "/assets/images/gen/projects/project-4-1.webp"
 role: "Engineer & Designer"
 skills: "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing"
+thumbnail: "/assets/images/my-projects/kermit/kermit8.jpg"
 gallery:
   - image: "/assets/images/my-projects/kermit/kermit1.jpg"
     caption: "<strong>Fig 1:</strong> KERMIT looking at you with his froggy eyes"
