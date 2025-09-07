@@ -18,4 +18,3 @@ gallery:
   - image: "/assets/images/gen/projects/project-3-4.webp"
     caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
 ---
-currently waiting on parts so i can start building the next step
