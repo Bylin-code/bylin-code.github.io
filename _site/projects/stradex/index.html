@@ -5,7 +5,7 @@
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>STRADEX (in progress) - Jekyll Curate</title>
+    <title>STRADEX - Jekyll Curate</title>
 
 
   <meta name="description" content="A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics."/>
@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://localhost:4000/projects/stradex/"/>
 
 
-  <meta property="og:title" content="STRADEX (in progress)"/>
+  <meta property="og:title" content="STRADEX"/>
 
 
 
@@ -268,9 +268,9 @@
         <div class="gallery-hero">
           <div class="gallery-item">
             <div class="gallery-image gallery-hero-image">
-              <img src="/assets/images/my-projects/stradex/stradex2.jpg" />
+              <img src="/assets/images/my-projects/stradex/stradex3.jpg" />
             </div>
-            <div class="gallery-caption"><strong>Fig 1:</strong> STRADEX violin-style MIDI controller with force-sensitive keys</div>
+            <div class="gallery-caption"><strong>Fig 1:</strong> Stradex1, held in playing position</div>
           </div>
         </div>
       </div>
@@ -281,7 +281,7 @@
       <div class="col-12 col-md-6">
         
         <div class="project-heading">
-          <h1>STRADEX (in progress)</h1>
+          <h1>STRADEX</h1>
         </div>
          
         <div class="project-description">A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics.</div>
@@ -297,11 +297,15 @@
         
         </div>
 
-        <div class="content mt-4"><p>This project is still ongoing.</p>
+        <div class="content mt-4"><p>I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.</p>
 
-<p>I’m waiting on the pcb to arrive from jlc.</p>
+<p>Stradex features a SoftPot linear resistor to emulate the violin’s fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range &amp; modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player.</p>
 
-<p>Apologies for the delay :\</p>
+<p>This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the headscratching was in the embedded firmware, namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysterisis, and numerous serial optimizations to ensure the controller intellegently decided when to send MIDI signals and when to ignore them.</p>
+
+<p>This project is fully open-sourced. If you want to build one for your self, here’s the link to the repo:</p>
+
+<p><a href="https://github.com/Bylin-code/Stradex1/tree/main">Stradex1 GitHub</a></p>
 </div>
       </div>
 
@@ -310,33 +314,33 @@
         <div class="gallery gallery-two-column">
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 2:</strong> Resistive strip for pitch bends and vibrato control</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex7.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 2:</strong> Full CAD model, including the PCB inside OnShape</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex8.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 3:</strong> CAD model of the key, designed to be easily assembled with only 3D printed parts</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 1:</strong> STRADEX violin-style MIDI controller with force-sensitive keys</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex11.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 4:</strong> Some of the previous iterations of the keys, improved upon over time</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 2:</strong> Resistive strip for pitch bends and vibrato control</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex10.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 5:</strong> A breadboard prototype of the circuitry, used for pre-pcb testing</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex6.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 6:</strong> Schematic of Stradex</div>
           </div>
           
           <div class="gallery-item">
-            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex2.jpg" /></div>
-            <div class="gallery-caption"><strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry</div>
+            <div class="gallery-image"><img src="/assets/images/my-projects/stradex/stradex5.jpg" /></div>
+            <div class="gallery-caption"><strong>Fig 7:</strong> PCB design of Stradex</div>
           </div>
           
         </div>

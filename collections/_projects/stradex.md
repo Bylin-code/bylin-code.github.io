@@ -1,32 +1,36 @@
 ---
 layout: project-7p
-title: "STRADEX (in progress)"
+title: "STRADEX"
 description: "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics."
 date: 2025-09-03
 featured: false
 display: true
 role: "Building Designer"
 skills: "none"
-thumbnail: "assets/images/my-projects/stradex/stradex2.jpg"
+thumbnail: "assets/images/my-projects/stradex/stradex12.jpg"
 gallery:
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 1:</strong> STRADEX violin-style MIDI controller with force-sensitive keys"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 2:</strong> Resistive strip for pitch bends and vibrato control"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 1:</strong> STRADEX violin-style MIDI controller with force-sensitive keys"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 2:</strong> Resistive strip for pitch bends and vibrato control"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry"
-  - image: "/assets/images/my-projects/stradex/stradex2.jpg"
-    caption: "<strong>Fig 3:</strong> Internal electronics and MIDI interface circuitry"
+  - image: "/assets/images/my-projects/stradex/stradex3.jpg"
+    caption: "<strong>Fig 1:</strong> Stradex1, held in playing position"
+  - image: "/assets/images/my-projects/stradex/stradex7.jpg"
+    caption: "<strong>Fig 2:</strong> Full CAD model, including the PCB inside OnShape"
+  - image: "/assets/images/my-projects/stradex/stradex8.jpg"
+    caption: "<strong>Fig 3:</strong> CAD model of the key, designed to be easily assembled with only 3D printed parts"
+  - image: "/assets/images/my-projects/stradex/stradex11.jpg"
+    caption: "<strong>Fig 4:</strong> Some of the previous iterations of the keys, improved upon over time"
+  - image: "/assets/images/my-projects/stradex/stradex10.jpg"
+    caption: "<strong>Fig 5:</strong> A breadboard prototype of the circuitry, used for pre-pcb testing"
+  - image: "/assets/images/my-projects/stradex/stradex6.jpg"
+    caption: "<strong>Fig 6:</strong> Schematic of Stradex"
+  - image: "/assets/images/my-projects/stradex/stradex5.jpg"
+    caption: "<strong>Fig 7:</strong> PCB design of Stradex"
 ---
 
-This project is still ongoing.
+I've always wanted to put my violin skills to use in a MIDI environment, but there really isn't a controller on the market that can emulate the feel of a violin to the extent that Stradex does. 
 
-I'm waiting on the pcb to arrive from jlc.
+Stradex features a SoftPot linear resistor to emulate the violin's fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range & modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player. 
 
-Apologies for the delay :\
+This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the headscratching was in the embedded firmware, namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysterisis, and numerous serial optimizations to ensure the controller intellegently decided when to send MIDI signals and when to ignore them. 
+
+This project is fully open-sourced. If you want to build one for your self, here's the link to the repo: 
+
+[Stradex1 GitHub](https://github.com/Bylin-code/Stradex1/tree/main)
