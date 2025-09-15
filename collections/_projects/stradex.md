@@ -33,7 +33,7 @@ This project took me a good while. Sure, there was a lot of time spent fiddling 
 
 Build Video & Demo:
 <div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=0cMQYN_HLao&t=13s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/0cMQYN_HLao?start=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 This project is fully open-sourced. If you want to build one for your self, here's the link to the repo: 
