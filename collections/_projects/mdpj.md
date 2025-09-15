@@ -14,11 +14,11 @@ gallery:
   - image: "/assets/images/my-projects/mdpj/mdpj8.jpg"
     caption: "<strong>Fig 2:</strong> Taping out the letters of the mural before the students paint them"
   - image: "/assets/images/my-projects/mdpj/mdpj10.jpg"
-    caption: "<strong>Fig 2:</strong> Early conceptual sketches"
+    caption: "<strong>Fig 3:</strong> Early conceptual sketches"
   - image: "/assets/images/my-projects/mdpj/mdpj6.jpg"
-    caption: "<strong>Fig 2:</strong> Rescuing the mural from the rain"
+    caption: "<strong>Fig 4:</strong> Rescuing the mural from the rain"
   - image: "/assets/images/my-projects/mdpj/mdpj7.jpg"
-    caption: "<strong>Fig 2:</strong> Each Panel of the mural"
+    caption: "<strong>Fig 5:</strong> Each Panel of the mural"
 ---
 
 MDPJ, or Microdistance Project, is a part of a liberal arts summer program in China my friends and I ran all throughout highschool. The program brings in experts in different fields to lead discussions, each one leading a small group of highschool students to deeply explore a topic. The centerpiece of this week-long program was MDPJ. 
