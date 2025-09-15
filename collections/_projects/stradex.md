@@ -31,6 +31,11 @@ Stradex features a SoftPot linear resistor to emulate the violin's fingerboard, 
 
 This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the headscratching was in the embedded firmware, namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysterisis, and numerous serial optimizations to ensure the controller intellegently decided when to send MIDI signals and when to ignore them. 
 
+Build Video:
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/watch?v=0cMQYN_HLao&t=13s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 This project is fully open-sourced. If you want to build one for your self, here's the link to the repo: 
 
 [Stradex1 GitHub](https://github.com/Bylin-code/Stradex1/tree/main)
