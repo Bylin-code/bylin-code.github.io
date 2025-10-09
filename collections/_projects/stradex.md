@@ -36,6 +36,6 @@ Build Video & Demo:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/0cMQYN_HLao?start=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-This project is fully open-sourced. If you want to build one for your self, here's the link to the repo: 
+This project is fully open-sourced. If you want to build one for your self: [Stradex1 GitHub](https://github.com/Bylin-code/Stradex1/tree/main)
 
-[Stradex1 GitHub](https://github.com/Bylin-code/Stradex1/tree/main)
+Also featured on [Hackaday] (https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced/)
