@@ -38,4 +38,4 @@ Build Video & Demo:
 
 This project is fully open-sourced. If you want to build one for your self: [Stradex1 GitHub](https://github.com/Bylin-code/Stradex1/tree/main)
 
-Also featured on [Hackaday] (https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced/)
+Also featured on [Hackaday](https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced)
