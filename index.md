@@ -1,8 +1,8 @@
 ---
 layout: home
 body_classes: page-home
-title: "I'm Brady, I will help build your full-stack mechatronics project from the ground up."
-description: "Turning ideas into working systems is my obsession. I build and oversee full-stack electromechanical systems, spanning CAD and manufacturing, circuit analysis and PCB design, RTOS development, and embedded firmware."
+title: "I'm Brady, a Full-Stack Mechatronics Engineer Passionate About Bringing Products From the Ground Up"
+description: "Turning ideas into working systems is my obsession. I build and oversee full-stack electromechanical systems, spanning CAD and manufacturing, circuit analysis, PCB design, and embedded firmware."
 cta_text: "Check out what I've been working on"
 meta_description: "Brady Lin - Full-Stack Mechatronics Engineer"
 meta_title: Brady Lin - Full-Stack Mechatronics Engineer
