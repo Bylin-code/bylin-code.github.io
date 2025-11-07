@@ -12,6 +12,6 @@ gallery:
 gallery_limit: 2
 ---
 
-Hello there! My name is Brady, an Electrical Engineering student at Northwestern, now in my penultimate year. My childhood was interwoven with the woodlands of Western Canada, where I first fell in love with engineering, spending countless evenings taking apart old blenders and reimagining them as power tools using scraps of metal and wood.
+Hello there! My name is Brady, an Electrical Engineering student at Northwestern, now in my penultimate year. My childhood was interwoven with the woods of Western Canada, where I first fell in love with engineering, spending countless evenings taking apart old blenders and reimagining them as power tools using scraps of metal and wood.
 
 I'm always building something new. Check out my personal and research projects [here](/projects/), or dive into my [resume](/assets/files/brady-lin-resume.pdf) for more!
