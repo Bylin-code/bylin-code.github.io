@@ -17,4 +17,4 @@ Our institutions love putting boxes around people: "he's a MechE, he can't code,
 
 Mind you, I'm not condemning specialization; deep expertise is how real things get built and shipped. I do believe, though, in a world where tools of automation are abundant and problems are messy across disciplines, knowing what to build (and why) is a matter of discernment, and there’s an art to that. 
 
-I'm always building something new. Check out my projects [here](/projects/), watch my [YouTube](https://www.youtube.com/@bradylin), or dive into my [resume](/assets/files/brady_resume.docx.pdf) for more!
+I'm always building something new. Check out my projects [here](/projects/), watch my [YouTube](https://www.youtube.com/@brady-y-lin), or dive into my [resume](/assets/files/brady_resume.docx.pdf) for more!
