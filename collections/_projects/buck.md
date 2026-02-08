@@ -16,9 +16,9 @@ gallery:
   - image: "/assets/images/my-projects/buck/buck2.jpg"
     caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
   - image: "/assets/images/my-projects/buck/buck6.jpg"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+    caption: "<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"
   - image: "/assets/images/my-projects/buck/buck5.jpg"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+    caption: "<strong>Fig 5:</strong> Precision bucket positioning and mounting hardware"
 ---
 BUCK is a cement bucket drummer robot that my team and I built over my sophomore year of highschool. The lack of good funding meant we had to be extremely efficient with parts sourcing, and we ended up spending under 150 USD for the entire project.
 
