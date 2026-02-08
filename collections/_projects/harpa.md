@@ -5,7 +5,7 @@ description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings ac
 date: 2022-09-29
 featured: true
 display: true
-role: "Building Designer"
+role: "Engineer"
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/harpa/harpa1.jpg"
 gallery:
@@ -14,7 +14,7 @@ gallery:
   - image: "/assets/images/my-projects/harpa/harpa7.jpg"
     caption: "<strong>Fig 2:</strong> Close up on the electronics"
   - image: "/assets/images/my-projects/harpa/harpa1.jpg"
-    caption: "<strong>Fig 2:</strong> HARPA under the blue sky"
+    caption: "<strong>Fig 3:</strong> HARPA under the blue sky"
 ---
 **HARPA** is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should "capture some eyeballs," thus, HARPA was born. 
 

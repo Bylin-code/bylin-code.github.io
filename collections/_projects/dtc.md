@@ -16,7 +16,7 @@ gallery:
   - image: "/assets/images/gen/projects/project-3-4.webp"
     caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
   - image: "/assets/images/gen/projects/project-3-4.webp"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+    caption: "<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"
 ---
 BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.
 
