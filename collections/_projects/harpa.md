@@ -3,7 +3,7 @@ layout: project-3p
 title: "HARPA"
 description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings actuated by servo array attched to silicone fingers."
 date: 2022-09-29
-featured: true
+featured: false
 display: true
 role: "Engineer"
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
