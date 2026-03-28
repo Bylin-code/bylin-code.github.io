@@ -16,7 +16,7 @@ contact_links:
     icon: "email"
     aria_label: "Email"
   - title: "YouTube"
-    url: "https://www.youtube.com/@bylin04"
+    url: "https://www.youtube.com/@Brady-Y-Lin"
     icon: "youtube"
     aria_label: "YouTube"
 ---
