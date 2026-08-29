@@ -69,7 +69,7 @@ exclude:
 # -------------------
 # Theme Config
 # --------------------
-title: "Jekyll Curate"
+title: "Brady Y. Lin"
 category_dir: category
 
 colors:
@@ -129,8 +129,8 @@ header:
 open_graph:
   meta_opengraph_type: "website"
   meta_twitter_card: "summary"
-  meta_twitter_site: "@zerostaticio"
-  meta_twitter_creator: "@zerostaticio"
+  meta_twitter_site: ""
+  meta_twitter_creator: ""
 
 darkmode:
   enable_dark_mode: true
@@ -151,13 +151,13 @@ analytics:
 
 comments:
   commento:
-    enabled: true # you must have a commento account and be on the correct domain. does not work locally.
+    enabled: false # Enable after configuring Commento for this domain.
   disqus:
     shortname: "" # Your disqus shortcode for example "zerostatic". leave this blank ie "" to disable.
 
 newsletter:
   mailchimp:
-    form_action_url: https://zerostatic.us21.list-manage.com/subscribe/post?u=798e19886b83aaab346734382&amp;id=f1c526a772&amp;f_id=0027e3e6f0
+    form_action_url: ""
     form_title: "Let's keep in touch"
 
 contact_form: 
@@ -186,5 +186,5 @@ footer:
 bottom:
   enable_bottom: true # show/hide the entire bottom (below the footer)
   enable_bottom_menu: false # if enabled, the bottom menu can be edited in `_data/menu.yml`
-  copyright_text: "© 2024 Brady Y. Lin"
+  copyright_text: "© 2026 Brady Y. Lin"
   show_rss_icon: false

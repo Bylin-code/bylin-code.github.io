@@ -1,7 +1,7 @@
 ---
 layout: project-2p
 title: "VSYNTH"
-description: "An Arduino-based violin-inspired square-wave synthesizer. The precurser to the STRADEX line."
+description: "An Arduino-based violin-inspired square-wave synthesizer. The precursor to the STRADEX line."
 date: 2020-09-04
 featured: false
 display: true

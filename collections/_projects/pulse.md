@@ -6,7 +6,7 @@ date: 2025-06-12
 featured: true
 display: true
 role: "Lead Engineer"
-skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Lazer cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
+skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
 thumbnail: "/assets/images/my-projects/pulse/pulse8.jpg"
 gallery:
   - image: "/assets/images/my-projects/pulse/pulse18.jpg"
@@ -27,4 +27,3 @@ gallery:
 The robot has a welded stainless steel base, 7 servo-actuated arms, 2 solenoid actuated kicks, 3 stepper motors, 3 speakers, and an LCD screen face, all coordinated by a microcontroller and raspberry pi communicating through I2C.
 
 What started as an ambitious eight-month build turned into a test of resilience: parts shortages, firmware conflicts, machining errors, even shifting team dynamics. Yet when PULSE finally took the stage at our debut performance, the sense of fulfillment was indescribable.
-

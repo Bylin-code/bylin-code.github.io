@@ -2,21 +2,21 @@
   {
     "title": "Linkedin",
     "fa_icon": "fab fa-linkedin",
-    "url": "https://www.linkedin.com/in/yourprofile"
+    "url": "https://www.linkedin.com/in/brady-lin"
   },
   {
     "title": "Github",
     "fa_icon": "fab fa-github",
-    "url": "https://github.com/yourusername"
+    "url": "https://github.com/bylin-code"
   },
   {
     "title": "YouTube",
     "fa_icon": "fab fa-youtube",
-    "url": "https://www.youtube.com/yourchannel"
+    "url": "https://www.youtube.com/@Brady-Y-Lin"
   },
   {
     "title": "Email",
     "fa_icon": "fas fa-envelope",
-    "url": "mailto:your.email@example.com"
+    "url": "mailto:bradylin2008@gmail.com"
   }
 ]

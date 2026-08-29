@@ -26,7 +26,7 @@ actions:
   heading: "Let's Connect"
   sub_heading: "Ready to work together or learn more about what I do?"
   resume_text: "Download Resume"
-  resume_link: "/assets/files/brady-lin-resume.pdf"
+  resume_link: "/assets/files/brady_resume.docx.pdf"
   contact_text: "Get In Touch"
   contact_link: "/contact"
   about_text: "About Me"

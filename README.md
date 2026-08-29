@@ -1,56 +1,107 @@
-# Jekyll Curate Premium Theme
+# Brady Y. Lin — Portfolio
 
-Jekyll Curate is a premium portfolio theme for Jekyll.
+Personal portfolio built with Jekyll and deployed from this repository.
 
-## Documentation
+## Local development
 
-* Live Docs: https://www.zerostatic.io/docs/jekyll-curate
-* Demo: https://jekyll-curate.netlify.app/
+Requirements:
 
-## Screenshot
+- Ruby 3.2.2 (the version used by Netlify)
+- Bundler
 
-![Jekyll Curate Theme screenshot](https://www.zerostatic.io/theme/jekyll-curate/jekyll-curate-screenshot.png)
+Install the project dependencies once:
 
-## Install
-
-### Install Jekll
-
-Make sure you have Ruby & Jekyll installed - For a step-by-step guide, read Jekyll docs [installation](https://jekyllrb.com/docs/installation/)
-
-### Install Theme
-
-Extract the theme .zip file to your local computer. Navigate to the project root (it contains the README.md)
-
-Run `bundle install` to install gems.
-
-Then run `bundle exec jekyll serve` to start the Jekyll local development server.
-
-To build the Jekyll site run `bundle exec jekyll build`
-
-## Deploy
-
-### Deploy to Netlify
-
-This theme is pre-configured to deploy with [Netlify](https://docs.netlify.com/site-deploys/create-deploys/).
-
-> 💡 If you experience bundle install issues during the Netlify deployment, deleting the Gemfile.lock can sometimes help
-
-### Deploy to GitHub Pages
-
-This theme has been tested to work with GitHub Pages. If you are creating a GitHub Pages "Project site" then your site will be in a sub-folder ie `http://username.github.io/repository` You will need to update the `baseurl` in the `_config.yml` for the asset paths to work correctly.
-
-```yaml
-# _config.yml
-baseurl: "/my-repo-name" # replace this with the name of your repo
-url: ""
+```sh
+bundle install
 ```
 
-> 💡 Github pages can be tricky to configure correctly. While we have tested this theme with Github pages, we do not provide support for deploying on this platform. If you continue to experience problems we recommend trying Netlify.
+Start the local development server:
 
-## Credits
+```sh
+bundle exec jekyll serve --livereload
+```
 
-This theme uses open-source libraries and assets.
+Open <http://127.0.0.1:4000>. Jekyll rebuilds after saved changes, and LiveReload refreshes the browser when supported.
 
-- **Bootstrap 5.3.2** https://unsplash.com/license
-- **Font Awesome 6 Free:** https://fontawesome.com/
-- **Unsplash Images** https://unsplash.com/
+To expose the preview to other devices on the same network:
+
+```sh
+bundle exec jekyll serve --livereload --host 0.0.0.0
+```
+
+## Production build
+
+```sh
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
+The generated site is written to `_site/`.
+
+## Content locations
+
+- `index.md`: homepage content
+- `pages/`: standalone pages
+- `collections/_projects/`: portfolio projects
+- `collections/_posts/`: blog posts
+- `_data/menu.yml`: header and footer navigation
+- `_data/social.json`: footer social links
+- `_config.yml`: global site settings
+- `assets/images/my-projects/<project-name>/`: project images
+
+## Add a project
+
+1. Create an image folder, such as `assets/images/my-projects/my-project/`.
+2. Create `collections/_projects/my-project.md`.
+3. Add front matter using an existing project with the desired gallery arrangement as a reference.
+
+Minimal example:
+
+```yaml
+---
+layout: project-3p
+title: "My Project"
+description: "A short description shown on project cards and the project page."
+date: 2026-08-29
+featured: false
+display: true
+role: "Engineer"
+skills: "CAD, Embedded systems, Prototyping"
+thumbnail: "/assets/images/my-projects/my-project/thumbnail.jpg"
+gallery:
+  - image: "/assets/images/my-projects/my-project/image-1.jpg"
+    caption: "<strong>Fig 1:</strong> A useful description of the image"
+---
+
+Long-form project notes can go here in Markdown.
+```
+
+Project flags:
+
+- `display: true` shows the project in the main project listing.
+- `featured: true` also makes it eligible for the homepage's featured section.
+- `date` controls date-based ordering.
+
+The current project layouts are `project-2p` through `project-7p`. They describe gallery arrangements rather than enforcing an exact image count.
+
+## Add a standalone page
+
+Create `pages/page-name.md`:
+
+```yaml
+---
+layout: basic
+title: "Page Name"
+permalink: "/page-name/"
+---
+
+Page content goes here.
+```
+
+Add it to `_data/menu.yml` only if it should appear in navigation.
+
+## Troubleshooting
+
+- `bundler: command not found: jekyll`: run `bundle install` first.
+- Dependency errors after changing Ruby versions: run `bundle install` again with Ruby 3.2.2 active.
+- A missing image: confirm the front-matter path matches the filename exactly, including capitalization.
+- Confusing homepage edits: `index.md` is the canonical homepage; `pages/home.md` is retained legacy content and should not be edited.

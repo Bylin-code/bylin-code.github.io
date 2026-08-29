@@ -1,7 +1,7 @@
 ---
 layout: project-6p # alternative layouts: project-6p, project-3p, project-1p, project-4p
 title: "DREAM"
-description: "A family of intellegent objects that listens to you and makes your life more like a dream"
+description: "A family of intelligent objects that listens to you and makes your life more like a dream"
 date: 2026-03-08
 featured: true
 display: true
@@ -27,4 +27,3 @@ gallery:
 The system revolves around four AI powered objects: a lamp, a phone, a mirror, and a speaker. Each object has its own character and way of interpreting the world around it. Instead of acting alone, they communicate through a central console, which serves as the shared hub that allows them to talk to each other, react to what the humans in the room are doing, and build conversations together.
 
 The result is something that sits somewhere between robotics, storytelling, and performance art. It is funny, a little unsettling, and meant to make you think about the silent objects that surround us every day.
-

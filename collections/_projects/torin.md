@@ -1,12 +1,12 @@
 ---
 layout: project-4p
 title: "TORIN"
-description: "A biomimetic inflatable soft robot that can squeeze through holes smallter than itsef."
+description: "A biomimetic inflatable soft robot that can squeeze through holes smaller than itself."
 date: 2022-02-10
 featured: false
 display: true
 role: "Engineer & Designer"
-skills: "Arduino, C++, Biomimicry, Radio controlled systems, hardware debugging Mechatronics, CAD, 3D Printing"
+skills: "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing"
 thumbnail: "assets/images/my-projects/torin/torin11.jpg"
 gallery:
   - image: "assets/images/my-projects/torin/torin12.jpg"
@@ -22,4 +22,4 @@ gallery:
 
 My robot does exactly that. Four motors are mechanically pressed agains a tubular plastic membrane, which is then flipped inside out to wrap around the whole body of the robot. When the motors are turned on, the membrane is pulled inwards by a front chassis while expelled outwards by a rear chassis, generating forward movement. Steering is done by four chords between the two chassis that are pulled in or out using 4 additional motors, allowing the robot to turn left or right.
 
-The robot is able to move at a spee of 10cm/s and can squeeze through holes half it's cross-sectional area. 
+The robot is able to move at a speed of 10 cm/s and can squeeze through holes half its cross-sectional area.

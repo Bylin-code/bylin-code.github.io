@@ -6,7 +6,7 @@ date: 2025-09-03
 featured: true
 display: true
 role: "Maker"
-skills: "none"
+skills: "CAD, PCB design, Embedded development, Rapid prototyping"
 thumbnail: "assets/images/my-projects/stradex/stradex12.jpg"
 gallery:
   - image: "/assets/images/my-projects/stradex/stradex3.jpg"
@@ -29,7 +29,7 @@ I've always wanted to put my violin skills to use in a MIDI environment, but the
 
 Stradex features a SoftPot linear resistor to emulate the violin's fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range & modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player. 
 
-This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the headscratching was in the embedded firmware, namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysterisis, and numerous serial optimizations to ensure the controller intellegently decided when to send MIDI signals and when to ignore them. 
+This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the head-scratching was in the embedded firmware—namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysteresis, and numerous serial optimizations to ensure the controller intelligently decided when to send MIDI signals and when to ignore them.
 
 I'm currently developing a component-level PCB version of STRADEX, which should reduce manufacturing costs in the long run.
 
