@@ -9,23 +9,15 @@ highlighter: rouge
 
 # Plugins
 plugins:
-  - jekyll-paginate
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
 
-paginate: 6
-paginate_path: "/blog/page/:num"
-
 # Collections
-collections_dir: collections
+collections_dir: content
 collections:
   projects:
     output: true
     permalink: /:collection/:path/
-  posts:
-    output: true
-    permalink: /blog/:path/
 
 # Pages
 defaults:
@@ -35,24 +27,9 @@ defaults:
     values:
       layout: project
   - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      weight: 999
-  - scope:
       path: "images"
     values:
       image: true
-  - scope:
-      path: "categories"
-    values:
-      permalink: /category/:basename/
-  - scope:
-      path: "pages"
-    values:
-      permalink: /:basename/
-
 # SCSS
 sass:
   style: compact
@@ -70,7 +47,6 @@ exclude:
 # Theme Config
 # --------------------
 title: "Brady Y. Lin"
-category_dir: category
 
 colors:
   #light-mode colors
@@ -149,17 +125,6 @@ analytics:
   umami_data_website_id: "" # example: "ddd14336-5fb0-4cdd-8f32-e1bfa906cc2b"
   umami_src: "" # "https://analytics.eu.umami.is/script.js"
 
-comments:
-  commento:
-    enabled: false # Enable after configuring Commento for this domain.
-  disqus:
-    shortname: "" # Your disqus shortcode for example "zerostatic". leave this blank ie "" to disable.
-
-newsletter:
-  mailchimp:
-    form_action_url: ""
-    form_title: "Let's keep in touch"
-
 contact_form: 
   use_netlify_form: false
   use_formspree_form: true
@@ -187,4 +152,3 @@ bottom:
   enable_bottom: true # show/hide the entire bottom (below the footer)
   enable_bottom_menu: false # if enabled, the bottom menu can be edited in `_data/menu.yml`
   copyright_text: "© 2026 Brady Y. Lin"
-  show_rss_icon: false

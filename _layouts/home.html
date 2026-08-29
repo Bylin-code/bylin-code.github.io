@@ -143,7 +143,6 @@ body_classes: page-home
           title=card.title
           description=card.description
           thumbnail=card.thumbnail
-          categories=card.categories
           date=card.date
           url=card.url
           client=card.client
@@ -267,61 +266,3 @@ body_classes: page-home
 </style>
 {% endif %}
 <!-- Actions Section END -->
-
-{% comment %} 
-{% assign cards = site.posts | sort: 'date' | reverse %}
-{% assign limit = page.posts.limit | default: 3 %}
-{% assign sort_by = page.posts.sort | default: 'date' %}
-{% assign columns =  page.posts.columns | default: 3 %}
-{% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
-{% if sort_by == 'weight' %}
-  {% assign cards = cards | sort: 'weight' %}
-{% endif %}
-
-{% assign cards = site.posts %}
-{% if cards.size > 0 %}
-<div class="section section-base-bg-2">
-  <div class="container">
-    <div class="row">
-
-      {% include framework/grid-header.html 
-        heading=page.posts.heading 
-        sub_heading=page.posts.sub_heading 
-      %}
-
-      {% for card in cards limit: limit %}
-      <div class="col-12 col-md-4 {{ columns }} {% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mb-3 mb-md-6">
-        {% include theme/cards/card-post.html
-          title=card.title
-          description=card.description
-          url=card.url
-        %}
-      </div>
-      {% endfor %}
-
-      {% include framework/grid-footer.html 
-        view_more_button_text=page.posts.view_more_button_text
-        view_more_button_link=page.posts.view_more_button_link
-        align="right"
-        icon="fa-arrow-right"
-      %}
-
-    </div>
-  </div>
-</div>
-{% endif %}
-{% endcomment %}
-
-{% comment %}
-{% if site.newsletter.mailchimp.form_action_url and site.newsletter.mailchimp.form_action_url != '' %}
-  <div class="section section-base-bg-2">
-    <div class="container">
-      <div class="row">
-        <div class="col-12"></div>
-        {% include framework/subscribe.html %}
-        </div>
-      </div>
-    </div>
-  </div>
-{% endif %}
-{% endcomment %}

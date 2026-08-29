@@ -39,10 +39,9 @@ The generated site is written to `_site/`.
 
 ## Content locations
 
-- `index.md`: homepage content
-- `pages/`: standalone pages
-- `collections/_projects/`: portfolio projects
-- `collections/_posts/`: blog posts
+- `content/pages/home.md`: homepage content
+- `content/pages/`: standalone pages
+- `content/_projects/`: portfolio projects
 - `_data/menu.yml`: header and footer navigation
 - `_data/social.json`: footer social links
 - `_config.yml`: global site settings
@@ -51,7 +50,7 @@ The generated site is written to `_site/`.
 ## Add a project
 
 1. Create an image folder, such as `assets/images/my-projects/my-project/`.
-2. Create `collections/_projects/my-project.md`.
+2. Create `content/_projects/my-project.md`.
 3. Add front matter using an existing project with the desired gallery arrangement as a reference.
 
 Minimal example:
@@ -85,7 +84,7 @@ The current project layouts are `project-2p` through `project-7p`. They describe
 
 ## Add a standalone page
 
-Create `pages/page-name.md`:
+Create `content/pages/page-name.md`:
 
 ```yaml
 ---
@@ -104,4 +103,4 @@ Add it to `_data/menu.yml` only if it should appear in navigation.
 - `bundler: command not found: jekyll`: run `bundle install` first.
 - Dependency errors after changing Ruby versions: run `bundle install` again with Ruby 3.2.2 active.
 - A missing image: confirm the front-matter path matches the filename exactly, including capitalization.
-- Confusing homepage edits: `index.md` is the canonical homepage; `pages/home.md` is retained legacy content and should not be edited.
+- The canonical homepage is `content/pages/home.md`.
