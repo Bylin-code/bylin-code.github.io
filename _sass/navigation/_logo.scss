@@ -47,23 +47,3 @@
     display: none;
   }
 }
-html[data-bs-theme="dark"] {
-  .logo-desktop {
-    display: none;
-  }
-  .logo-mobile {
-    display: none;
-  }
-  .logo-desktop-invert {
-    display: none;
-    @include media-breakpoint-up(sm) {
-      display: flex;
-    }
-  }
-  .logo-mobile-invert {
-    display: flex;
-    @include media-breakpoint-up(sm) {
-      display: none;
-    }
-  }
-}

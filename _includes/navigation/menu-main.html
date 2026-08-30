@@ -19,9 +19,6 @@
                 {% if childitem.icon %}
                   <div class="dropdown-item-icon"><img src="{{ childitem.icon | relative_url }}" /></div>
                 {% endif %}
-                {% if childitem.icon_darkmode %}
-                  <div class="dropdown-item-icon icon-invert"><img src="{{ childitem.icon_darkmode  | relative_url }}" /></div>
-                {% endif %}
 
                 <div class="dropdown-item-content">
                   {% if childitem.name %}<div class="dropdown-item-name">{{ childitem.name }}</div>{% endif %}

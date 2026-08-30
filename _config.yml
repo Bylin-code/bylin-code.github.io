@@ -63,19 +63,6 @@ colors:
   logo_text: "#0d042b"
   header_text: "#0d042b"
 
-  # dark-mode colors
-  primary_bg_dark: "#fdfcf9"
-  primary_bg_2_dark: "#fdfcf9"
-  primary_bg_3_dark: "#fdfcf9"
-  primary_text_dark: "#0b0326"
-  base_bg_dark: "#0b0326"
-  base_bg_2_dark: "#150c32"
-  base_bg_3_dark: "#251654"
-  base_text_dark: "#f5f5ec"
-  base_text_2_dark: "#929eaf"
-  logo_text_dark: "#fdfcf9"
-  header_text_dark: "#fdfcf9"
-
 fonts:
   use_google_fonts: false
   google_fonts_url: "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,700&family=Fira+Mono&display=swap"
@@ -108,13 +95,6 @@ open_graph:
   meta_twitter_card: "summary"
   meta_twitter_site: ""
   meta_twitter_creator: ""
-
-darkmode:
-  enable_dark_mode: false
-  show_dark_mode_toggle_in_header: false
-  show_dark_mode_toggle_in_footer: false
-  show_dark_mode_toggle_in_bottom: false
-  show_dark_mode_toggle_in_mobile_menu: false
 
 cookie_banner:
   enabled: false
