@@ -2,6 +2,7 @@
 layout: project
 gallery_style: masonry
 gallery_count: 6
+gallery_flip: false
 title: "PULSE"
 description: "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control."
 date: 2025-06-12
@@ -9,7 +10,7 @@ featured: true
 display: true
 role: "Lead Engineer"
 skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
-thumbnail: "/assets/images/my-projects/pulse/pulse8.jpg"
+thumbnail: "/assets/images/my-projects/pulse/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/pulse/pulse18.jpg"
     caption: "Clear view of PULSE's mechanical and electrical components"
@@ -24,7 +25,7 @@ gallery:
   - image: "/assets/images/my-projects/pulse/pulse20.jpg"
     caption: "Ultra high-tech state-of-the-art sheet-metal manufacturing methods"
 ---
-**PULSE** is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology. 
+**PULSE** is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology.
 
 The robot has a welded stainless steel base, 7 servo-actuated arms, 2 solenoid actuated kicks, 3 stepper motors, 3 speakers, and an LCD screen face, all coordinated by a microcontroller and raspberry pi communicating through I2C.
 
