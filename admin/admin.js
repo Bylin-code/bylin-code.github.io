@@ -860,22 +860,32 @@
 
   async function commitChanges(entries, message) {
     const config = githubConfig();
-    const ref = await githubApi(`/git/ref/heads/${encodeURIComponent(config.branch)}`);
-    const parentSha = ref.object.sha;
-    const parent = await githubApi(`/git/commits/${parentSha}`);
-    const tree = await githubApi('/git/trees', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ base_tree: parent.tree.sha, tree: entries }),
-    });
-    const commit = await githubApi('/git/commits', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] }),
-    });
-    await githubApi(`/git/refs/heads/${encodeURIComponent(config.branch)}`, {
-      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sha: commit.sha, force: false }),
-    });
-    return commit;
+    const maxAttempts = 3;
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+      const ref = await githubApi(`/git/ref/heads/${encodeURIComponent(config.branch)}`);
+      const parentSha = ref.object.sha;
+      const parent = await githubApi(`/git/commits/${parentSha}`);
+      const tree = await githubApi('/git/trees', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ base_tree: parent.tree.sha, tree: entries }),
+      });
+      const commit = await githubApi('/git/commits', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] }),
+      });
+      try {
+        await githubApi(`/git/refs/heads/${encodeURIComponent(config.branch)}`, {
+          method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sha: commit.sha, force: false }),
+        });
+        return commit;
+      } catch (error) {
+        const branchMoved = error.status === 422 && /fast[ -]?forward/i.test(error.message || '');
+        if (!branchMoved || attempt === maxAttempts) throw error;
+        el.saveStatus.textContent = `The branch changed while publishing; retrying (${attempt}/${maxAttempts - 1})…`;
+      }
+    }
+    throw new Error('GitHub publishing could not update the branch.');
   }
 
   function isLocalImage(source = '') { return source.startsWith('blob:') || source.startsWith('data:'); }
