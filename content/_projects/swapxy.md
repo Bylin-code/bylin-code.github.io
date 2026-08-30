@@ -1,6 +1,6 @@
 ---
 layout: project
-gallery_style: filmstrip
+gallery_style: hero
 gallery_count: 1
 gallery_flip: false
 title: "SWAPXY (in progress)"
