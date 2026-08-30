@@ -6,23 +6,19 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="color-scheme" content="light">
 
-    <title>FORMJET - Brady Y. Lin</title>
+    <title>Resume - Brady Y. Lin</title>
 
-
-  <meta name="description" content="A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing."/>
 
 
 
 
     <meta property="og:type" content="website"/>
-<meta property="og:url" content="/projects/formjet/"/>
+<meta property="og:url" content="/resume/"/>
 
 
-  <meta property="og:title" content="FORMJET"/>
+  <meta property="og:title" content="Resume"/>
 
 
-
-  <meta property="og:description" content="A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing."/>
 
 
 
@@ -56,7 +52,7 @@
 
 
   </head>
-<body class="page page-project has-fixed-header">
+<body class="page page-resume has-fixed-header">
 
 
 <div class="menu-main-mobile " id="menu-main-mobile">
@@ -83,7 +79,7 @@
             <a href="/about/">About</a>
           </li>
         
-          <li class="menu-item-resume">
+          <li class="menu-item-resume active ">
             <a href="/resume/">Resume</a>
           </li>
         
@@ -210,7 +206,7 @@
     
       
         
-        <li class=" ">
+        <li class="active ">
           <a href="/resume/" >Resume</a>
         </li>
       
@@ -234,77 +230,38 @@
 
 
 <div id="wrapper" class="wrapper pt-5">     
-  
-
-
-
-<div class="section">
+  <div class="section pt-6 pb-6">
   <div class="container">
-    
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-6 mb-6 mb-md-0">
-          <div class="gallery gallery-single-column">
-            <div class="gallery-item">
-  <div class="gallery-image">
-    <img src="/assets/images/my-projects/formjet/formjet4.jpg" alt="Side view of the electronics, the UV light is curing" loading="lazy" />
-  </div>
-  
-
-  <div class="gallery-caption"><strong>Fig 1:</strong> Side view of the electronics, the UV light is curing</div>
-
-
-</div>
-<div class="gallery-item">
-  <div class="gallery-image">
-    <img src="/assets/images/my-projects/formjet/formjet1.jpg" alt="The team" loading="lazy" />
-  </div>
-  
-
-  <div class="gallery-caption"><strong>Fig 2:</strong> The team</div>
-
-
-</div>
-<div class="gallery-item">
-  <div class="gallery-image">
-    <img src="/assets/images/my-projects/formjet/formjet3.jpg" alt="Front View, after a wash" loading="lazy" />
-  </div>
-  
-
-  <div class="gallery-caption"><strong>Fig 3:</strong> Front View, after a wash</div>
-
-
-</div>
-
-          </div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="project-heading"><h1>FORMJET</h1></div>
-<div class="project-description">A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing.</div>
-<div class="mt-3">
-  <div class="project-date"><strong>Date </strong><span>01 February 2026</span></div>
-  
-  <div class="project-role"><strong>Role </strong><span>Mechatronics Engineer</span></div>
-  <div class="project-skills"><strong>Skills </strong><span>Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership</span></div>
-</div>
-
-          <div class="content mt-4"><p><strong>FORMJET</strong> is a hackathon project my team and I built in 48 hours to tackle one painfully familiar problem: the messy, multi-step post-processing workflow of SLA 3D printing. In this project, I owned the design and implementation of all electronics and embedded firmware, and also supported my teammates with CAD, mechanical design, and overall systems integration.</p>
-
-<p>SLA (stereolithography) produces parts by selectively curing liquid resin layer-by-layer. Because print speed is primarily limited by Z-axis motion and resolution is driven by a high-resolution LCD, SLA is an excellent method for producing large batches of highly detailed parts. The bottleneck, however, is post-processing: multiple cycles of washing in isopropyl alcohol, rinsing, drying, heating, and UV curing. It’s slow, messy, and not especially safe to do in a typical workspace.</p>
-
-<p>FORMJET compresses this entire workflow into a single, automated station while improving safety and usability. We wanted to eliminate open tanks of IPA, so we instead explored using Formlabs’ FormWash solution. While safer, this solution is not widely adopted because it leaves behind a slimy residue that’s difficult to remove when parts are simply submerged.</p>
-
-<p>To solve this, we designed a shower-style washing system. I built the fluid control system using a pump and solenoid-actuated ball valves to seamlessly switch between FormWash solution and clean water, allowing residue to be rinsed off in one continuous process. Mechanically, the part is mounted on a two-axis stepper-driven system: the nozzle traverses the Z-axis while the part rotates, ensuring uniform coverage from all angles.</p>
-
-<p>After washing, an array of UV LEDs cures the part while it spins, helping it dry evenly and preventing pooling or streaking. I wrote the firmware to coordinate the pump, valves, stepper motors, and UV LEDs into a single automated wash-and-cure cycle, effectively turning what used to be a messy, multi-step manual process into a one-button operation.</p>
-</div>
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="resume-document">
+          <object class="resume-pdf" data="/assets/files/brady_resume.pdf#view=FitH" type="application/pdf">
+            <p>Your browser cannot display the PDF here. <a href="/assets/files/brady_resume.pdf">Open or download the resume.</a></p>
+          </object>
         </div>
       </div>
 
-    
+      <aside class="col-12 col-lg-4 resume-experience" aria-label="Experience photos">
+        
+          <figure class="resume-experience-item">
+            <img class="resume-experience-image" src="/assets/images/resume/experience-1.jpg" alt="Brady and teammates presenting their work" loading="lazy">
+            <figcaption class="resume-experience-caption">Building and presenting DREAM with the team.</figcaption>
+          </figure>
+        
+          <figure class="resume-experience-item">
+            <img class="resume-experience-image" src="/assets/images/resume/experience-2.jpg" alt="Team members working together in a lab" loading="lazy">
+            <figcaption class="resume-experience-caption">Hands-on electromechanical development in the lab.</figcaption>
+          </figure>
+        
+          <figure class="resume-experience-item">
+            <img class="resume-experience-image" src="/assets/images/resume/experience-3.jpg" alt="Engineering project work" loading="lazy">
+            <figcaption class="resume-experience-caption">Turning mechanical, electrical, and software ideas into working systems.</figcaption>
+          </figure>
+        
+      </aside>
+    </div>
   </div>
 </div>
-
-
 
 </div>
 
@@ -378,7 +335,7 @@
         <a href="/about/">About</a>
       </li>
     
-      <li class="">
+      <li class="active">
         <a href="/resume/">Resume</a>
       </li>
     

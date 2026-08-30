@@ -1,6 +1,6 @@
 ---
 layout: contact
-title: Contact
+title:
 permalink: "/contact/"
 contact_links:
   - title: "LinkedIn"

@@ -34,7 +34,7 @@
       "client": "",
       "role": "Mechatronics Engineer",
       "skills": "Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership",
-      "thumbnail": "/assets/images/my-projects/formjet/formjet4.jpg",
+      "thumbnail": "/assets/images/my-projects/formjet/thumbnail.jpeg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/formjet/formjet4.jpg","caption":"Side view of the electronics, the UV light is curing"},{"image":"/assets/images/my-projects/formjet/formjet1.jpg","caption":"The team"},{"image":"/assets/images/my-projects/formjet/formjet3.jpg","caption":"Front View, after a wash"}],
@@ -44,7 +44,7 @@
     {
       "slug": "swapxy",
       "layout": "project",
-      "gallery_style": "filmstrip",
+      "gallery_style": "hero",
       "gallery_count": 1,
       "gallery_flip": false,
       "title": "SWAPXY (in progress)",
@@ -72,11 +72,11 @@
       "client": "",
       "role": "Maker",
       "skills": "CAD, PCB design, Embedded development, Rapid prototyping",
-      "thumbnail": "/assets/images/my-projects/stradex/stradex12.jpg",
+      "thumbnail": "/assets/images/my-projects/stradex/thumbnail.jpeg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/stradex/stradex3.jpg","caption":"Stradex1, held in playing position"},{"image":"/assets/images/my-projects/stradex/stradex7.jpg","caption":"Full CAD model, including the PCB inside OnShape"},{"image":"/assets/images/my-projects/stradex/stradex8.jpg","caption":"CAD model of the key, designed to be easily assembled with only 3D printed parts"},{"image":"/assets/images/my-projects/stradex/stradex11.jpg","caption":"Some of the previous iterations of the keys, improved upon over time"},{"image":"/assets/images/my-projects/stradex/stradex10.jpg","caption":"A breadboard prototype of the circuitry, used for pre-pcb testing"},{"image":"/assets/images/my-projects/stradex/stradex13.jpg","caption":"Schematic of Stradex"},{"image":"/assets/images/my-projects/stradex/stradex14.jpg","caption":"PCB design of Stradex"}],
-      "body": "<p>I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.</p>\n\n<p>Stradex features a SoftPot linear resistor to emulate the violin’s fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range &amp; modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player.</p>\n\n<p>This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the head-scratching was in the embedded firmware—namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysteresis, and numerous serial optimizations to ensure the controller intelligently decided when to send MIDI signals and when to ignore them.</p>\n\n<p>I’m currently developing a component-level PCB version of STRADEX, which should reduce manufacturing costs in the long run.</p>\n\n<p>Build Video &amp; Demo:</p>\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0cMQYN_HLao?start=13\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n\n<p>This project is fully open-sourced. If you want to build one for your self: <a href=\"https://github.com/Bylin-code/Stradex1/tree/main\">Stradex1 GitHub</a></p>\n\n<p>Also featured on <a href=\"https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced\">Hackaday</a></p>\n"
+      "body": "<p>I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.</p>\n\n<p>Stradex features a SoftPot linear resistor to emulate the violin’s fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range &amp; modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player.</p>\n\n<p>This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the head-scratching was in the embedded firmware—namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysteresis, and numerous serial optimizations to ensure the controller intelligently decided when to send MIDI signals and when to ignore them.</p>\n\n<p>I’m currently developing a component-level PCB version of STRADEX, which should reduce manufacturing costs in the long run.</p>\n\n<p>Build Video &amp; Demo:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/0cMQYN_HLao\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" loading=\"lazy\"></iframe>\n</div>\n\n<p>This project is fully open-sourced. If you want to build one for your self: <a href=\"https://github.com/Bylin-code/Stradex1/tree/main\">Stradex1 GitHub</a></p>\n\n<p>Also featured on <a href=\"https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced\">Hackaday</a></p>\n"
     },
   
     {
@@ -110,11 +110,11 @@
       "client": "",
       "role": "Engineer & Designer",
       "skills": "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/kermit/kermit8.jpg",
+      "thumbnail": "/assets/images/my-projects/kermit/thumbnail.jpeg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/kermit/kermit1.jpg","caption":"KERMIT looking at you with his froggy eyes"},{"image":"/assets/images/my-projects/kermit/kermit6.jpg","caption":"KERMIT's actual eyes, an OV7670 camera module"},{"image":"/assets/images/my-projects/kermit/kermit2.jpg","caption":"KERMIT's electronics on a breadboard."},{"image":"/assets/images/my-projects/kermit/kermit9.jpg","caption":"Schematics in KiCAD"},{"image":"/assets/images/my-projects/kermit/kermit11.jpg","caption":"CAD assembly"}],
-      "body": "<p><strong>KERMIT</strong> is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.</p>\n\n<p>KERMIT is powered by dual belt-driven DC motors, controlled by a Raspberry Pi Pico running firmware written in the C SDK. A simple PID controller is used to maintain a constant distance from the line, while a camera mounted on the front of the robot captures the horizontal position of the line and sends it to the Pico over I2C.</p>\n\n<p>The firmware averages the captured image into a line of pixels, it then calculates the center of mass of the line’s brightness and uses that to calculate the error for the PID controller.</p>\n\n"
+      "body": "<p><strong>KERMIT</strong> is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.</p>\n\n<p>KERMIT is powered by dual belt-driven DC motors, controlled by a Raspberry Pi Pico running firmware written in the C SDK. A simple PID controller is used to maintain a constant distance from the line, while a camera mounted on the front of the robot captures the horizontal position of the line and sends it to the Pico over I2C.</p>\n\n<p>The firmware averages the captured image into a line of pixels, it then calculates the center of mass of the line’s brightness and uses that to calculate the error for the PID controller.</p>\n"
     },
   
     {
@@ -167,11 +167,11 @@
       "client": "",
       "role": "Engineer",
       "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/harpa/harpa1.jpg",
+      "thumbnail": "/assets/images/my-projects/harpa/thumbnail.jpeg",
       "featured": false,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/harpa/harpa3.jpg","caption":"Side view"},{"image":"/assets/images/my-projects/harpa/harpa7.jpg","caption":"Close up on the electronics"},{"image":"/assets/images/my-projects/harpa/harpa1.jpg","caption":"HARPA under the blue sky"}],
-      "body": "<p><strong>HARPA</strong> is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should “capture some eyeballs,” thus, HARPA was born.</p>\n\n<p>21 servos are attached to an adjustable 2020 aluminum extrusion rail mounted on a 3D printed frame. Each servo has a hand-carved silicone plug designed to produce a pluck that sounds like that of a human finger. An Arduino Leonardo handles the MIDI signal processing while an Arduino Mega controls the servos with it’s many PWM-enabled pins. The two MCUs communicate with each other over I2C.</p>\n\n<p>HARPA is still standing in the makerspace and enternains visitors once in a while. Here’s a link to a video of it in action:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jgN24XgvbMA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n"
+      "body": "<p><strong>HARPA</strong> is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should “capture some eyeballs,” thus, HARPA was born.</p>\n\n<p>21 servos are attached to an adjustable 2020 aluminum extrusion rail mounted on a 3D printed frame. Each servo has a hand-carved silicone plug designed to produce a pluck that sounds like that of a human finger. An Arduino Leonardo handles the MIDI signal processing while an Arduino Mega controls the servos with it’s many PWM-enabled pins. The two MCUs communicate with each other over I2C.</p>\n\n<p>HARPA is still standing in the makerspace and enternains visitors once in a while. Here’s a link to a video of it in action:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/jgN24XgvbMA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" loading=\"lazy\"></iframe>\n</div>\n\n"
     },
   
     {
@@ -205,7 +205,7 @@
       "client": "",
       "role": "Engineer & Designer",
       "skills": "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/torin/torin11.jpg",
+      "thumbnail": "/assets/images/my-projects/torin/thumbnail.jpeg",
       "featured": false,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/torin/torin12.jpg","caption":"TORIN squeezing through a hole half it's cross-sectional area"},{"image":"/assets/images/my-projects/torin/torin9.jpg","caption":"TORIN's chassis and electronics"},{"image":"/assets/images/my-projects/torin/torin6.jpg","caption":"Testing RC controller integration"},{"image":"/assets/images/my-projects/torin/torin13.jpg","caption":"Three of many prototypical designs that were tested"}],
@@ -224,7 +224,7 @@
       "client": "",
       "role": "Lead Engineer & Designer",
       "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/buck/buck4.jpg",
+      "thumbnail": "/assets/images/my-projects/buck/thumbnail.jpeg",
       "featured": false,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/buck/buck4.jpg","caption":"BUCK bucket solenoid robot drummer in full performance setup"},{"image":"/assets/images/my-projects/buck/buck1.jpg","caption":"Solenoid actuation system and timing control circuitry"},{"image":"/assets/images/my-projects/buck/buck2.jpg","caption":"Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck6.jpg","caption":"Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck5.jpg","caption":"Precision bucket positioning and mounting hardware"}],
