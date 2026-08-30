@@ -1,7 +1,7 @@
 ---
 layout: project
-gallery_style: masonry
-gallery_count: 6
+gallery_style: editorial
+gallery_count: 7
 gallery_flip: false
 title: "PULSE"
 description: "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control."
@@ -24,6 +24,8 @@ gallery:
     caption: "An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"
   - image: "/assets/images/my-projects/pulse/pulse20.jpg"
     caption: "Ultra high-tech state-of-the-art sheet-metal manufacturing methods"
+  - image: "/assets/images/my-projects/pulse/img-4843.jpg"
+    caption: "PULSE without the drums"
 ---
 **PULSE** is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology.
 
