@@ -2,6 +2,7 @@
 layout: project
 gallery_style: rows
 gallery_count: 4
+gallery_flip: false
 title: "TORIN"
 description: "A biomimetic inflatable soft robot that can squeeze through holes smaller than itself."
 date: 2022-02-10
@@ -9,7 +10,7 @@ featured: false
 display: true
 role: "Engineer & Designer"
 skills: "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing"
-thumbnail: "/assets/images/my-projects/torin/torin11.jpg"
+thumbnail: "/assets/images/my-projects/torin/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/torin/torin12.jpg"
     caption: "TORIN squeezing through a hole half it's cross-sectional area"
