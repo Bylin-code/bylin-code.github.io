@@ -7,7 +7,7 @@ title: "SWAPXY (in progress)"
 description: "a 1.5m x 1.5m CoreCY gantry robot designed to autonomously manage the battery swapping process for a 150+ drone fleet"
 date: 2025-09-05
 featured: false
-display: true
+display: false
 role: "Lead Engineer & Designer"
 skills: "CAD, 3D Printing, Laser Cutting, Machining, Embedded Systems, Control Systems, Mechanical Design"
 thumbnail: "/assets/images/my-projects/swapxy/swapxy1.jpg"

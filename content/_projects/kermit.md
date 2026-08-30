@@ -10,7 +10,7 @@ featured: true
 display: true
 role: "Engineer & Designer"
 skills: "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing"
-thumbnail: "/assets/images/my-projects/kermit/thumbnail.jpeg"
+thumbnail: "/assets/images/my-projects/kermit/thumbnail.jpg"
 gallery:
   - image: "/assets/images/my-projects/kermit/kermit1.jpg"
     caption: "KERMIT looking at you with his froggy eyes"

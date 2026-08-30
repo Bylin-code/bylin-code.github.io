@@ -2,6 +2,7 @@
 layout: project
 gallery_style: masonry
 gallery_count: 6
+gallery_flip: false
 title: "DREAM"
 description: "A family of intelligent objects that listens to you and makes your life more like a dream"
 date: 2026-03-08
@@ -9,7 +10,7 @@ featured: true
 display: true
 role: "Hardware"
 skills: "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems"
-thumbnail: "/assets/images/my-projects/dream/dream1.jpg"
+thumbnail: "/assets/images/my-projects/dream/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/dream/dream1.jpg"
     caption: "The objects"

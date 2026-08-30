@@ -10,7 +10,7 @@ featured: true
 display: true
 role: "Mechatronics Engineer"
 skills: "Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership"
-thumbnail: "/assets/images/my-projects/formjet/thumbnail.jpeg"
+thumbnail: "/assets/images/my-projects/formjet/thumbnail.jpg"
 gallery:
   - image: "/assets/images/my-projects/formjet/formjet4.jpg"
     caption: "Side view of the electronics, the UV light is curing"
