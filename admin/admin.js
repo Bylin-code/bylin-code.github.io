@@ -62,6 +62,7 @@
   };
 
   const cropState = { kind: null, index: -1, image: null, source: '', fixed: false, rect: { x: 0, y: 0, width: 1, height: 1 }, drag: null };
+  let workspaceSequence = 0;
 
   const clone = (value) => JSON.parse(JSON.stringify(value));
   const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({
@@ -95,6 +96,9 @@
     normalized.thumbnailPreview = normalized.thumbnailPreview || normalized.thumbnail || '';
     normalized.thumbnailOriginal = normalized.thumbnailOriginal || normalized.thumbnail || '';
     normalized.body = htmlToMarkdown(normalized.body || '');
+    normalized._workspaceId = normalized._workspaceId || normalized.slug || `new-${workspaceSequence += 1}`;
+    normalized._publishedSlug = normalized._publishedSlug || normalized.slug || '';
+    normalized._pending = Boolean(normalized._pending);
     return normalized;
   }
 
@@ -127,9 +131,9 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.className = project.slug === state.loadedSlug ? 'active' : '';
-      button.innerHTML = `${escapeHtml(project.title)}<small>${escapeHtml(templateFor(project.gallery_style)?.label || project.gallery_style)} · ${project.gallery_count} image${project.gallery_count === 1 ? '' : 's'}</small>`;
+      const pending = project._pending ? 'Unpublished · ' : '';
+      button.innerHTML = `${escapeHtml(project.title || 'Untitled project')}<small>${pending}${escapeHtml(templateFor(project.gallery_style)?.label || project.gallery_style)} · ${project.gallery_count} image${project.gallery_count === 1 ? '' : 's'}</small>`;
       button.addEventListener('click', () => {
-        if (!confirmDiscard()) return;
         loadProject(project);
       });
       el.list.append(button);
@@ -163,12 +167,18 @@
   }
 
   function loadProject(project) {
-    const source = normalizeProject(project);
-    const draft = readDraft(source.slug);
-    state.current = draft ? normalizeProject({ ...source, ...draft }) : source;
-    state.loadedSlug = source.slug || null;
+    let source = project._workspaceId ? project : normalizeProject(project);
+    const draft = !source._pending && source.slug ? readDraft(source.slug) : null;
+    if (draft) {
+      source = normalizeProject({ ...source, ...draft, _workspaceId: source._workspaceId, _publishedSlug: source._publishedSlug });
+      source._pending = true;
+      const index = state.projects.findIndex((item) => item._workspaceId === source._workspaceId);
+      if (index >= 0) state.projects[index] = source;
+    }
+    state.current = source;
+    state.loadedSlug = source._publishedSlug || source.slug || null;
     writeForm();
-    setDirty(false, draft ? 'Browser draft loaded' : 'No unsaved changes');
+    updatePendingStatus(draft ? 'Browser draft loaded' : '');
     renderProjectList(el.search.value);
   }
 
@@ -833,7 +843,8 @@
     el.githubSettings.disabled = busy;
     el.deleteProject.disabled = busy;
     el.publishProject.classList.toggle('is-busy', busy);
-    el.publishProject.textContent = busy ? 'Publishing…' : 'Publish to GitHub';
+    const count = pendingProjects().length;
+    el.publishProject.textContent = busy ? 'Publishing…' : (count > 1 ? `Publish ${count} projects` : 'Publish to GitHub');
     if (message) el.saveStatus.textContent = message;
   }
 
@@ -892,55 +903,72 @@
 
   async function publishProject() {
     readForm();
-    if (!el.form.reportValidity()) return;
+    if (state.current._pending && !el.form.reportValidity()) return;
     if (!githubConfig()) { openGithubSettings('Connect once, then press Publish again.'); return; }
-    const project = state.current;
-    const count = activeImageCount();
-    const missing = project.gallery.slice(0, count).findIndex((item) => !item.image);
-    if (missing >= 0 && !window.confirm(`Image ${missing + 1} is empty. Publish this layout anyway?`)) return;
+    const projects = pendingProjects();
+    if (!projects.length) { setDirty(false, 'There are no unpublished project changes'); return; }
+    const invalid = projects.find((project) => !project.title || !project.slug || !project.date || !project.description);
+    if (invalid) {
+      window.alert(`${invalid.title || 'An unpublished project'} is missing its title, URL name, date, or short description.`);
+      loadProject(invalid);
+      return;
+    }
+    const incomplete = projects.filter((project) => {
+      const count = Math.max(1, Math.min(10, Number(project.gallery_count) || 1));
+      return project.gallery.slice(0, count).some((item) => !item.image);
+    });
+    if (incomplete.length && !window.confirm(`${incomplete.map((project) => project.title).join(', ')} ${incomplete.length === 1 ? 'has' : 'have'} empty image slots. Publish anyway?`)) return;
     try {
-      setPublishing(true, 'Preparing project and images…');
+      setPublishing(true, `Preparing ${projects.length} project${projects.length === 1 ? '' : 's'}…`);
       const entries = [];
-      const markdownSha = await createBlob(projectMarkdown(project));
-      entries.push({ path: `content/_projects/${project.slug}.md`, mode: '100644', type: 'blob', sha: markdownSha });
-
       const images = [];
-      const thumbnailSource = project.thumbnailCroppedData || project.thumbnailPreview;
-      if (project.thumbnail && isLocalImage(thumbnailSource)) images.push({ path: project.thumbnail, source: thumbnailSource });
-      project.gallery.slice(0, count).forEach((item) => {
-        const source = item.croppedData || item.preview;
-        if (item.image && isLocalImage(source)) images.push({ path: item.image, source });
-      });
-      for (let index = 0; index < images.length; index += 1) {
-        el.saveStatus.textContent = `Uploading image ${index + 1} of ${images.length}…`;
-        const sha = await createBlob(await sourceBase64(images[index].source), 'base64');
-        entries.push({ path: images[index].path.replace(/^\//, ''), mode: '100644', type: 'blob', sha });
+      for (const project of projects) {
+        const markdownSha = await createBlob(projectMarkdown(project));
+        entries.push({ path: `content/_projects/${project.slug}.md`, mode: '100644', type: 'blob', sha: markdownSha });
+        const thumbnailSource = project.thumbnailCroppedData || project.thumbnailPreview;
+        if (project.thumbnail && isLocalImage(thumbnailSource)) images.push({ path: project.thumbnail, source: thumbnailSource });
+        const count = Math.max(1, Math.min(10, Number(project.gallery_count) || 1));
+        project.gallery.slice(0, count).forEach((item) => {
+          const source = item.croppedData || item.preview;
+          if (item.image && isLocalImage(source)) images.push({ path: item.image, source });
+        });
+        if (project._publishedSlug && project._publishedSlug !== project.slug) {
+          entries.push({ path: `content/_projects/${project._publishedSlug}.md`, mode: '100644', type: 'blob', sha: null });
+        }
       }
-      if (state.loadedSlug && state.loadedSlug !== project.slug) {
-        entries.push({ path: `content/_projects/${state.loadedSlug}.md`, mode: '100644', type: 'blob', sha: null });
+      const uniqueImages = [...new Map(images.map((image) => [image.path, image])).values()];
+      for (let index = 0; index < uniqueImages.length; index += 1) {
+        el.saveStatus.textContent = `Uploading image ${index + 1} of ${uniqueImages.length}…`;
+        const sha = await createBlob(await sourceBase64(uniqueImages[index].source), 'base64');
+        entries.push({ path: uniqueImages[index].path.replace(/^\//, ''), mode: '100644', type: 'blob', sha });
       }
-      el.saveStatus.textContent = 'Creating GitHub commit…';
-      const action = project.isNew ? 'Add' : 'Update';
-      await commitChanges(entries, `${action} project: ${project.title}`);
+      el.saveStatus.textContent = 'Creating one GitHub commit…';
+      const titles = projects.map((project) => project.title);
+      const message = projects.length === 1
+        ? `${projects[0].isNew ? 'Add' : 'Update'} project: ${titles[0]}`
+        : `Update ${projects.length} projects: ${titles.join(', ')}`;
+      await commitChanges(entries, message);
 
-      project.isNew = false;
-      state.loadedSlug = project.slug;
-      project.thumbnailPreview = project.thumbnail;
-      project.thumbnailOriginal = project.thumbnail;
-      delete project.thumbnailCroppedData;
-      project.gallery.forEach((item) => {
-        item.preview = item.image; item.original = item.image;
-        delete item.croppedData; delete item.fileName;
+      projects.forEach((project) => {
+        project.isNew = false;
+        project._pending = false;
+        project._publishedSlug = project.slug;
+        project.thumbnailPreview = project.thumbnail;
+        project.thumbnailOriginal = project.thumbnail;
+        delete project.thumbnailCroppedData;
+        project.gallery.forEach((item) => {
+          item.preview = item.image; item.original = item.image;
+          delete item.croppedData; delete item.fileName;
+        });
+        localStorage.removeItem(draftKey(project.slug));
       });
-      const existing = state.projects.findIndex((item) => item.slug === project.slug);
-      if (existing >= 0) state.projects[existing] = normalizeProject(project);
-      else state.projects.push(normalizeProject(project));
+      state.loadedSlug = state.current.slug;
       state.projects.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-      localStorage.removeItem(draftKey(project.slug));
-      const deleted = deletedProjectSlugs().filter((slug) => slug !== project.slug);
+      const publishedSlugs = new Set(projects.map((project) => project.slug));
+      const deleted = deletedProjectSlugs().filter((slug) => !publishedSlugs.has(slug));
       localStorage.setItem('bradylin-deleted-projects', JSON.stringify(deleted));
       renderProjectList(el.search.value);
-      setDirty(false, 'Published successfully; GitHub Pages is rebuilding the site');
+      setDirty(false, `${projects.length} project${projects.length === 1 ? '' : 's'} published in one commit; GitHub Pages is rebuilding`);
     } catch (error) { publishingError(error); }
     finally { setPublishing(false); }
   }
@@ -1128,9 +1156,35 @@
     return String(value).replace(/^\s*(?:<strong>)?Fig\s+\d+:(?:<\/strong>)?\s*/i, '').trim();
   }
   function draftKey(slug) { return `bradylin-project-draft:${slug}`; }
-  function setDirty(dirty, message) { state.dirty = dirty; el.saveStatus.textContent = message || (dirty ? 'Unsaved changes' : 'No unsaved changes'); }
-  function changed(message) { readForm(); setDirty(true, message || 'Unsaved changes'); renderThumbnail(); renderPreview(); }
-  function confirmDiscard() { return !state.dirty || window.confirm('Discard the unsaved changes in the current editor?'); }
+  function pendingProjects() { return state.projects.filter((project) => project._pending); }
+  function ensureCurrentInWorkspace() {
+    if (!state.current) return;
+    const index = state.projects.findIndex((project) => project._workspaceId === state.current._workspaceId);
+    if (index >= 0) state.projects[index] = state.current;
+    else state.projects.push(state.current);
+  }
+  function updatePendingStatus(message = '') {
+    const count = pendingProjects().length;
+    state.dirty = count > 0;
+    el.saveStatus.textContent = message || (count ? `${count} unpublished project${count === 1 ? '' : 's'}` : 'No unpublished changes');
+    el.publishProject.textContent = count > 1 ? `Publish ${count} projects` : 'Publish to GitHub';
+  }
+  function setDirty(dirty, message) {
+    if (dirty && state.current) {
+      state.current._pending = true;
+      ensureCurrentInWorkspace();
+    }
+    updatePendingStatus(message);
+  }
+  function changed(message) {
+    readForm();
+    state.current._pending = true;
+    ensureCurrentInWorkspace();
+    updatePendingStatus(message || 'Unpublished changes');
+    renderProjectList(el.search.value);
+    renderThumbnail();
+    renderPreview();
+  }
 
   el.form.addEventListener('input', (event) => {
     if (event.target.name === 'title' && state.current.isNew && !el.form.elements.slug.dataset.edited) {
@@ -1145,7 +1199,7 @@
     updateSelectedTemplate();
     changed('Layout orientation updated');
   });
-  el.newProject.addEventListener('click', () => { if (confirmDiscard()) loadProject(blankProject()); });
+  el.newProject.addEventListener('click', () => loadProject(blankProject()));
   el.saveDraft.addEventListener('click', saveDraft);
   el.exportProject.addEventListener('click', exportProject);
   el.publishProject.addEventListener('click', publishProject);
