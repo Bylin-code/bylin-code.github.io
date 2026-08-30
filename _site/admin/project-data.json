@@ -15,7 +15,7 @@
       "client": "",
       "role": "Hardware",
       "skills": "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems",
-      "thumbnail": "/assets/images/my-projects/dream/dream1.jpg",
+      "thumbnail": "/assets/images/my-projects/dream/thumbnail.jpeg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/dream/dream1.jpg","caption":"The objects"},{"image":"/assets/images/my-projects/dream/dream2.jpg","caption":"The backend console coordinating communication between the objects"},{"image":"/assets/images/my-projects/dream/dream3.jpg","caption":"Radio"},{"image":"/assets/images/my-projects/dream/dream4.jpg","caption":"Lamp"},{"image":"/assets/images/my-projects/dream/dream5.jpg","caption":"Mirror"},{"image":"/assets/images/my-projects/dream/dream6.jpg","caption":"The winning team"}],
@@ -34,7 +34,7 @@
       "client": "",
       "role": "Mechatronics Engineer",
       "skills": "Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership",
-      "thumbnail": "/assets/images/my-projects/formjet/thumbnail.jpeg",
+      "thumbnail": "/assets/images/my-projects/formjet/thumbnail.jpg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/formjet/formjet4.jpg","caption":"Side view of the electronics, the UV light is curing"},{"image":"/assets/images/my-projects/formjet/formjet1.jpg","caption":"The team"},{"image":"/assets/images/my-projects/formjet/formjet3.jpg","caption":"Front View, after a wash"}],
@@ -91,7 +91,7 @@
       "client": "",
       "role": "Lead Engineer",
       "skills": "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging",
-      "thumbnail": "/assets/images/my-projects/pulse/pulse8.jpg",
+      "thumbnail": "/assets/images/my-projects/pulse/thumbnail.jpeg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/pulse/pulse18.jpg","caption":"Clear view of PULSE's mechanical and electrical components"},{"image":"/assets/images/my-projects/pulse/pulse7.jpg","caption":"My team and I after PULSE's debut performance"},{"image":"/assets/images/my-projects/pulse/pulse19.jpg","caption":"Full CAD assembly with 100+ parts all eventually fabricated and integrated with the electronics."},{"image":"/assets/images/my-projects/pulse/pulse4.jpg","caption":"Rows of drummer arm units that just went through the assembly line."},{"image":"/assets/images/my-projects/pulse/pulse3.jpg","caption":"An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"},{"image":"/assets/images/my-projects/pulse/pulse20.jpg","caption":"Ultra high-tech state-of-the-art sheet-metal manufacturing methods"}],
@@ -110,7 +110,7 @@
       "client": "",
       "role": "Engineer & Designer",
       "skills": "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/kermit/thumbnail.jpeg",
+      "thumbnail": "/assets/images/my-projects/kermit/thumbnail.jpg",
       "featured": true,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/kermit/kermit1.jpg","caption":"KERMIT looking at you with his froggy eyes"},{"image":"/assets/images/my-projects/kermit/kermit6.jpg","caption":"KERMIT's actual eyes, an OV7670 camera module"},{"image":"/assets/images/my-projects/kermit/kermit2.jpg","caption":"KERMIT's electronics on a breadboard."},{"image":"/assets/images/my-projects/kermit/kermit9.jpg","caption":"Schematics in KiCAD"},{"image":"/assets/images/my-projects/kermit/kermit11.jpg","caption":"CAD assembly"}],
@@ -243,11 +243,11 @@
       "client": "",
       "role": "Lead Developer & Sound Engineer",
       "skills": "Arduino, Audio generation, Basic circuit design",
-      "thumbnail": "/assets/images/my-projects/vsynth/vsynth3.jpg",
+      "thumbnail": "/assets/images/my-projects/vsynth/thumbnail.jpeg",
       "featured": false,
       "display": true,
       "gallery": [{"image":"/assets/images/my-projects/vsynth/vsynth1.jpg","caption":"Internal Circuits of VSYNTH"},{"image":"/assets/images/my-projects/vsynth/vsynth2.jpg","caption":"Close up of VSYNTH's buttons"}],
-      "body": "<p>VSYNTH was made to be easily playable by violinists. The four buttons on the right hand side controls which string is active, and the buttons on the left hand side control the pitch of the string. This control logic is similar to how a violinist changes the pitch of a violin.</p>\n\n<p>Other than that, VSYNTH is a simple arduino-based square-wave generator with a few potentiometer knobs to control the volume and tone: one for volume, two for high-cut and low-cut RC filters.</p>\n\n<p>Here’s a video of it playing the Zelda theme:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/49CzriqTJio\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n"
+      "body": "<p>VSYNTH was made to be easily playable by violinists. The four buttons on the right hand side controls which string is active, and the buttons on the left hand side control the pitch of the string. This control logic is similar to how a violinist changes the pitch of a violin.</p>\n\n<p>Other than that, VSYNTH is a simple arduino-based square-wave generator with a few potentiometer knobs to control the volume and tone: one for volume, two for high-cut and low-cut RC filters.</p>\n\n<p>Here’s a video of it playing the Zelda theme:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/49CzriqTJio\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" loading=\"lazy\"></iframe>\n</div>\n\n"
     }
   
   ]
