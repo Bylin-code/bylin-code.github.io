@@ -1,7 +1,8 @@
 ---
 layout: project
-gallery_style: hero
+gallery_style: filmstrip
 gallery_count: 1
+gallery_flip: false
 title: "SWAPXY (in progress)"
 description: "a 1.5m x 1.5m CoreCY gantry robot designed to autonomously manage the battery swapping process for a 150+ drone fleet"
 date: 2025-09-05
@@ -13,7 +14,6 @@ thumbnail: "/assets/images/my-projects/swapxy/swapxy1.jpg"
 gallery:
   - image: "/assets/images/my-projects/swapxy/swapxy1.jpg"
     caption: "CAD of the CoreXY gantry system"
-
 ---
 At Northwestern’s Center for Robotics and Biosystems, I’m developing a 1.5 m × 1.5 m CoreXY gantry system to autonomously manage a 150-drone battery-swap array. The project blends mechanical design, fabrication, and embedded systems, with over 100 custom parts created through 3D printing, laser cutting, and machining.
 
