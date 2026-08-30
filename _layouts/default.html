@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="color-scheme" content="light">
 
     {% include meta/seo.html %}
     {% include meta/open-graph.html %}
@@ -13,7 +14,8 @@
 
     <script>
       localStorage.removeItem('darkMode');
-      document.documentElement.removeAttribute('data-bs-theme');
+      document.documentElement.setAttribute('data-bs-theme', 'light');
+      document.documentElement.style.colorScheme = 'light';
     </script>
 
     {% if site.cookie_banner.enabled %}
