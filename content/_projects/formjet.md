@@ -1,8 +1,8 @@
 ---
 layout: project
 gallery_style: split
-gallery_flip: true
 gallery_count: 3
+gallery_flip: true
 title: "FORMJET"
 description: "A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing."
 date: 2026-02-01
@@ -10,7 +10,7 @@ featured: true
 display: true
 role: "Mechatronics Engineer"
 skills: "Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership"
-thumbnail: "/assets/images/my-projects/formjet/formjet4.jpg"
+thumbnail: "/assets/images/my-projects/formjet/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/formjet/formjet4.jpg"
     caption: "Side view of the electronics, the UV light is curing"
