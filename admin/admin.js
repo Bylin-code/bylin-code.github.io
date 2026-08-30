@@ -15,6 +15,11 @@
     search: document.querySelector('#project-search'),
     newProject: document.querySelector('#new-project'),
     templatePicker: document.querySelector('#template-picker'),
+    countPicker: document.querySelector('#image-count-picker'),
+    countLabel: document.querySelector('#image-count-label'),
+    flipControl: document.querySelector('#layout-flip-control'),
+    flipInput: document.querySelector('#layout-flip'),
+    flipHint: document.querySelector('#layout-flip-hint'),
     slots: document.querySelector('#image-slots'),
     slotTemplate: document.querySelector('#image-slot-template'),
     body: document.querySelector('#project-body'),
@@ -27,10 +32,18 @@
     saveStatus: document.querySelector('#save-status'),
     saveDraft: document.querySelector('#save-draft'),
     exportProject: document.querySelector('#export-project'),
+    publishProject: document.querySelector('#publish-project'),
+    githubSettings: document.querySelector('#github-settings'),
+    githubDialog: document.querySelector('#github-dialog'),
+    githubForm: document.querySelector('#github-form'),
+    githubToken: document.querySelector('#github-token'),
+    githubOwner: document.querySelector('#github-owner'),
+    githubRepo: document.querySelector('#github-repo'),
+    githubBranch: document.querySelector('#github-branch'),
+    githubStatus: document.querySelector('#github-status'),
     thumbnailDrop: document.querySelector('#thumbnail-drop'),
     thumbnailInput: document.querySelector('#thumbnail-input'),
     thumbnailImage: document.querySelector('#thumbnail-image'),
-    thumbnailCardImage: document.querySelector('#thumbnail-card-image'),
     thumbnailCardTitle: document.querySelector('#thumbnail-card-title'),
     cropThumbnail: document.querySelector('#crop-thumbnail'),
     removeThumbnail: document.querySelector('#remove-thumbnail'),
@@ -58,7 +71,7 @@
   function blankProject() {
     const today = new Date().toISOString().slice(0, 10);
     return {
-      slug: '', layout: state.templates[0]?.id || 'project-2p', title: '', description: '',
+      slug: '', layout: 'project', gallery_style: state.templates[0]?.id || 'editorial', gallery_count: 5, gallery_flip: false, title: '', description: '',
       date: today, client: '', role: '', skills: '', thumbnail: '', featured: false,
       display: true, gallery: [], body: '', isNew: true, thumbnailPreview: '', thumbnailOriginal: '',
     };
@@ -66,6 +79,16 @@
 
   function normalizeProject(project) {
     const normalized = { ...blankProject(), ...clone(project) };
+    const legacy = {
+      'project-2p': ['split', 2, false], 'project-3p': ['split', 3, true],
+      'project-4p': ['rows', 4], 'project-5p': ['editorial', 5],
+      'project-6p': ['masonry', 6], 'project-7p': ['hero', 7],
+    };
+    if (!normalized.gallery_style && legacy[normalized.layout]) {
+      [normalized.gallery_style, normalized.gallery_count, normalized.gallery_flip = false] = legacy[normalized.layout];
+    }
+    normalized.layout = 'project';
+    normalized.gallery_count = Math.max(1, Math.min(10, Number(normalized.gallery_count) || normalized.gallery.length || 1));
     normalized.gallery = Array.isArray(normalized.gallery) ? normalized.gallery.map((item) => ({
       image: item.image || '', caption: stripCaptionPrefix(item.caption || ''), alt: item.alt || '', preview: item.image || '', original: item.image || '',
     })) : [];
@@ -104,7 +127,7 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.className = project.slug === state.loadedSlug ? 'active' : '';
-      button.innerHTML = `${escapeHtml(project.title)}<small>${escapeHtml(templateFor(project.layout)?.label || project.layout)}</small>`;
+      button.innerHTML = `${escapeHtml(project.title)}<small>${escapeHtml(templateFor(project.gallery_style)?.label || project.gallery_style)} · ${project.gallery_count} image${project.gallery_count === 1 ? '' : 's'}</small>`;
       button.addEventListener('click', () => {
         if (!confirmDiscard()) return;
         loadProject(project);
@@ -120,14 +143,23 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'template-card';
-      button.dataset.layout = template.id;
+      button.dataset.style = template.id;
       button.innerHTML = `
-        <span class="template-sketch">${'<span></span>'.repeat(template.image_count)}</span>
+        ${layoutSketch(template.id)}
         <strong>${escapeHtml(template.label)}</strong>
         <small>${escapeHtml(template.description)}</small>`;
-      button.addEventListener('click', () => selectTemplate(template.id));
+      button.addEventListener('click', () => selectStyle(template.id));
       el.templatePicker.append(button);
     });
+    el.countPicker.innerHTML = '';
+    for (let count = 1; count <= 10; count += 1) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = count;
+      button.dataset.count = count;
+      button.addEventListener('click', () => selectImageCount(count));
+      el.countPicker.append(button);
+    }
   }
 
   function loadProject(project) {
@@ -146,6 +178,8 @@
     el.form.elements.display.checked = Boolean(state.current.display);
     el.form.elements.featured.checked = Boolean(state.current.featured);
     updateSelectedTemplate();
+    updateFlipControl();
+    updateSelectedCount();
     renderSlots();
     renderThumbnail();
     renderPreview();
@@ -162,24 +196,64 @@
     syncGalleryFields();
   }
 
-  function selectTemplate(layout) {
-    if (state.current.layout === layout) return;
+  function selectStyle(style) {
+    if (state.current.gallery_style === style) return;
     // Keep the full gallery in editor state. A smaller layout merely hides its
     // extra slots; switching back restores their images, captions, and alt text.
-    state.current.layout = layout;
+    state.current.gallery_style = style;
     updateSelectedTemplate();
+    updateFlipControl();
     renderSlots();
     changed();
   }
 
   function updateSelectedTemplate() {
     document.querySelectorAll('.template-card').forEach((card) => {
-      card.classList.toggle('selected', card.dataset.layout === state.current.layout);
+      const selected = card.dataset.style === state.current.gallery_style;
+      card.classList.toggle('selected', selected);
+      card.classList.toggle('is-flipped', selected && Boolean(state.current.gallery_flip));
     });
   }
 
+  function layoutSketch(style) {
+    const text = '<i class="mini-text"><b></b><b></b><b></b><b></b></i>';
+    const image = '<i class="mini-image"></i>';
+    const sketches = {
+      split: `<span class="template-sketch sketch-split"><span class="mini-copy">${text}</span><span class="mini-stack">${image}${image}${image}</span></span>`,
+      rows: `<span class="template-sketch sketch-rows"><span class="mini-grid-two">${image}${image}</span><span class="mini-copy">${text}</span><span class="mini-grid-two">${image}${image}</span></span>`,
+      editorial: `<span class="template-sketch sketch-editorial"><span class="mini-stack">${image}${image}${image}</span><span class="mini-editor-copy">${text}${image}${image}</span></span>`,
+      masonry: `<span class="template-sketch sketch-masonry"><span class="mini-copy-wide">${text}${text}</span><span class="mini-masonry">${image}${image}${image}${image}</span></span>`,
+      hero: `<span class="template-sketch sketch-hero">${image}<span class="mini-hero-lower"><span class="mini-copy">${text}</span><span class="mini-grid-two">${image}${image}${image}${image}</span></span></span>`,
+      filmstrip: `<span class="template-sketch sketch-filmstrip"><span class="mini-copy-wide">${text}${text}</span>${image}<span class="mini-strip">${image}${image}${image}</span></span>`,
+    };
+    return sketches[style] || sketches.editorial;
+  }
+
+  function updateFlipControl() {
+    const template = templateFor(state.current.gallery_style);
+    const flippable = Boolean(template?.flippable);
+    el.flipControl.hidden = !flippable;
+    el.flipInput.checked = Boolean(state.current.gallery_flip);
+    el.flipHint.textContent = template?.flip_description || 'Change the orientation of this layout.';
+  }
+
+  function selectImageCount(count) {
+    if (state.current.gallery_count === count) return;
+    state.current.gallery_count = count;
+    updateSelectedCount();
+    renderSlots();
+    changed('Image count updated');
+  }
+
+  function updateSelectedCount() {
+    el.countPicker.querySelectorAll('button').forEach((button) => button.classList.toggle('selected', Number(button.dataset.count) === state.current.gallery_count));
+    el.countLabel.textContent = `${state.current.gallery_count} image${state.current.gallery_count === 1 ? '' : 's'}`;
+  }
+
+  function activeImageCount() { return Math.max(1, Math.min(10, Number(state.current.gallery_count) || 1)); }
+
   function renderSlots() {
-    const count = templateFor(state.current.layout)?.image_count || 0;
+    const count = activeImageCount();
     while (state.current.gallery.length < count) state.current.gallery.push({ image: '', preview: '', caption: '', alt: '' });
     el.slots.innerHTML = '';
 
@@ -188,7 +262,7 @@
       const slot = el.slotTemplate.content.firstElementChild.cloneNode(true);
       slot.draggable = true;
       slot.dataset.index = index;
-      slot.querySelector('.slot-name').textContent = index === 0 && state.current.layout === 'project-7p'
+      slot.querySelector('.slot-name').textContent = index === 0 && ['hero', 'filmstrip'].includes(state.current.gallery_style)
         ? 'Image 1 · Hero image' : `Image ${index + 1}`;
       slot.querySelector('.image-caption').value = stripCaptionPrefix(item.caption);
       slot.querySelector('.image-caption').placeholder = `Caption for Fig ${index + 1}`;
@@ -253,7 +327,7 @@
   }
 
   function reorderImage(from, to) {
-    if (to < 0 || to >= (templateFor(state.current.layout)?.image_count || 0)) return;
+    if (to < 0 || to >= activeImageCount()) return;
     syncGalleryFields();
     const [item] = state.current.gallery.splice(from, 1);
     state.current.gallery.splice(to, 0, item);
@@ -285,7 +359,7 @@
     if (!state.current) return;
     readForm();
     const project = state.current;
-    const count = templateFor(project.layout)?.image_count || 0;
+    const count = activeImageCount();
     const gallery = project.gallery.slice(0, count);
     const stats = [
       project.date && `<div class="project-date"><strong>Date</strong><span>${escapeHtml(longDate(project.date))}</span></div>`,
@@ -333,40 +407,53 @@
   }
 
   function exactLayoutMarkup(project, gallery, stats, body) {
-    const layout = project.layout;
+    const style = project.gallery_style;
+    const flipped = Boolean(project.gallery_flip);
     const sectionStart = '<div class="section"><div class="container">';
     const sectionEnd = '</div></div>';
-    if (layout === 'project-2p') {
+    if (style === 'split') {
       const intro = projectIntro(project, stats, 'project-stats mt-3');
-      return `${sectionStart}<div class="row justify-content-center"><div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>
-        <div class="col-12 col-md-6 mt-6 mt-md-0">${galleryMarkup(gallery, 'gallery-single-column')}</div></div>${sectionEnd}`;
+      const images = `<div class="col-12 col-md-6 mb-6 mb-md-0">${galleryMarkup(gallery, 'gallery-single-column')}</div>`;
+      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>`;
+      return `${sectionStart}<div class="row justify-content-center">${flipped ? `${images}${copy}` : `${copy}${images}`}</div>${sectionEnd}`;
     }
-    if (layout === 'project-3p') {
-      const intro = projectIntro(project, stats, 'mt-3');
-      return `${sectionStart}<div class="row"><div class="col-12 col-md-6 mb-6 mb-md-0">${galleryMarkup(gallery, 'gallery-single-column')}</div>
-        <div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div></div>${sectionEnd}`;
-    }
-    if (layout === 'project-4p') {
+    if (style === 'rows') {
+      const firstCount = Math.min(2, gallery.length);
       const intro = projectIntro(project, stats, 'mt-4');
-      return `${sectionStart}<div class="row mb-6"><div class="col">${galleryMarkup(gallery.slice(0, 2), 'gallery-two-column')}</div></div>
-        <div class="row"><div class="col-12 col-md-6">${intro}</div><div class="col-12 col-md-6"><div class="content">${body}</div></div></div>
-        <div class="row mt-6"><div class="col">${galleryMarkup(gallery.slice(2), 'gallery-two-column', 2)}</div></div>${sectionEnd}`;
+      const firstRow = `<div class="row mb-6"><div class="col">${galleryMarkup(gallery.slice(0, firstCount), 'gallery-two-column')}</div></div>`;
+      const copyRow = `<div class="row"><div class="col-12 col-md-6">${intro}</div><div class="col-12 col-md-6"><div class="content">${body}</div></div></div>`;
+      return `${sectionStart}${flipped ? `${copyRow}${firstRow}` : `${firstRow}${copyRow}`}
+        ${gallery.length > firstCount ? `<div class="row mt-6"><div class="col">${galleryMarkup(gallery.slice(firstCount), 'gallery-two-column', firstCount)}</div></div>` : ''}${sectionEnd}`;
     }
-    if (layout === 'project-5p') {
+    if (style === 'editorial') {
+      const firstCount = Math.ceil(gallery.length / 2);
       const intro = projectIntro(project, stats, 'mt-4');
-      return `${sectionStart}<div class="row"><div class="col-12 col-md-6">${galleryMarkup(gallery.slice(0, 3), 'gallery-L-left')}</div>
-        <div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div>
-        ${galleryMarkup(gallery.slice(3), 'gallery-L-right mt-4', 3)}</div></div>${sectionEnd}`;
+      const images = `<div class="col-12 col-md-6">${galleryMarkup(gallery.slice(0, firstCount), 'gallery-L-left')}</div>`;
+      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div>${gallery.length > firstCount ? galleryMarkup(gallery.slice(firstCount), 'gallery-L-right mt-4', firstCount) : ''}</div>`;
+      return `${sectionStart}<div class="row">${flipped ? `${copy}${images}` : `${images}${copy}`}</div>${sectionEnd}`;
     }
-    if (layout === 'project-7p') {
+    if (style === 'hero') {
       const intro = projectIntro(project, stats, 'mt-4');
+      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>`;
+      const supporting = `<div class="col-12 col-md-6">${galleryMarkup(gallery.slice(1), 'gallery-two-column', 1)}</div>`;
       return `${sectionStart}${galleryMarkup(gallery.slice(0, 1), 'gallery-hero', 0, true)}
-        <div class="row mt-6"><div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>
-        <div class="col-12 col-md-6">${galleryMarkup(gallery.slice(1), 'gallery-two-column', 1)}</div></div>${sectionEnd}`;
+        <div class="row mt-6">${flipped ? `${supporting}${copy}` : `${copy}${supporting}`}</div>${sectionEnd}`;
+    }
+    if (style === 'filmstrip') {
+      const intro = projectIntro(project, stats, 'mt-4');
+      const copyRow = `<div class="row mb-6"><div class="col-12 col-md-5">${intro}</div><div class="col-12 col-md-7"><div class="content">${body}</div></div></div>`;
+      const lead = galleryMarkup(gallery.slice(0, 1), 'gallery-hero', 0, true);
+      return `${sectionStart}${flipped ? `${lead}${copyRow}` : `${copyRow}${lead}`}
+        ${gallery.length > 1 ? galleryMarkup(gallery.slice(1), 'gallery-three-column mt-4', 1) : ''}${sectionEnd}`;
+    }
+    if (style === 'masonry') {
+      const intro = projectIntro(project, stats, 'mt-4');
+      const copyRow = `<div class="row"><div class="col-12 col-md-6 mb-4">${intro}</div><div class="col-12 col-md-6 mb-4"><div class="content">${body}</div></div></div>`;
+      const images = `<div class="row"><div class="col">${galleryMarkup(gallery, 'gallery-masonry')}</div></div>`;
+      return `${sectionStart}${flipped ? `${images}${copyRow}` : `${copyRow}${images}`}${sectionEnd}`;
     }
     const intro = projectIntro(project, stats, 'mt-4');
-    return `${sectionStart}<div class="row"><div class="col-12 col-md-6 mb-4">${intro}</div><div class="col-12 col-md-6 mb-4"><div class="content">${body}</div></div></div>
-      <div class="row"><div class="col">${galleryMarkup(gallery, 'gallery-masonry')}</div></div>${sectionEnd}`;
+    return `${sectionStart}<div class="row"><div class="col-12">${intro}<div class="content mt-4">${body}</div></div></div>${galleryMarkup(gallery, 'gallery-two-column mt-6')}${sectionEnd}`;
   }
 
   function formatCaption(caption, index) {
@@ -394,8 +481,6 @@
     const source = state.current.thumbnailPreview || state.current.thumbnail;
     el.thumbnailDrop.classList.toggle('has-image', Boolean(source));
     el.thumbnailImage.src = source || '';
-    el.thumbnailCardImage.src = source || '';
-    el.thumbnailCardImage.style.visibility = source ? 'visible' : 'hidden';
     el.thumbnailCardTitle.textContent = state.current.title || 'Project title';
     el.cropThumbnail.disabled = !source;
     el.removeThumbnail.disabled = !source;
@@ -568,6 +653,7 @@
       const item = state.current.gallery[cropState.index];
       item.preview = data;
       item.croppedData = data;
+      item.image = item.image.replace(/\.[a-z0-9]+$/i, '.jpg');
       item.crop = { width: output.width, height: output.height, ...cropState.rect, preset: el.cropPreset.value };
       renderSlots();
     }
@@ -673,12 +759,205 @@
 
   function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
 
-  function deleteCurrentProject() {
+  function githubConfig() {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('bradylin-github-publishing') || 'null');
+      return saved?.token && saved?.owner && saved?.repo && saved?.branch ? saved : null;
+    } catch (_) { return null; }
+  }
+
+  function openGithubSettings(message = '') {
+    const config = githubConfig() || { owner: 'Bylin-code', repo: 'bylin-code.github.io', branch: 'main', token: '' };
+    el.githubToken.value = config.token;
+    el.githubOwner.value = config.owner;
+    el.githubRepo.value = config.repo;
+    el.githubBranch.value = config.branch;
+    el.githubStatus.textContent = message;
+    el.githubDialog.showModal();
+  }
+
+  async function connectGithub(event) {
+    event.preventDefault();
+    const config = {
+      token: el.githubToken.value.trim(), owner: el.githubOwner.value.trim(),
+      repo: el.githubRepo.value.trim(), branch: el.githubBranch.value.trim(),
+    };
+    sessionStorage.setItem('bradylin-github-publishing', JSON.stringify(config));
+    el.githubStatus.textContent = 'Checking repository access…';
+    try {
+      await githubApi(`/branches/${encodeURIComponent(config.branch)}`, {}, config);
+      el.githubDialog.close();
+      setDirty(state.dirty, `Connected to ${config.owner}/${config.repo} · ${config.branch}`);
+    } catch (error) {
+      sessionStorage.removeItem('bradylin-github-publishing');
+      el.githubStatus.textContent = friendlyGithubError(error);
+    }
+  }
+
+  async function githubApi(path, options = {}, configOverride = null) {
+    const config = configOverride || githubConfig();
+    if (!config) throw new Error('GitHub is not connected.');
+    const response = await fetch(`https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}${path}`, {
+      ...options,
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${config.token}`,
+        'X-GitHub-Api-Version': '2022-11-28',
+        ...(options.headers || {}),
+      },
+    });
+    const data = response.status === 204 ? null : await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const error = new Error(data?.message || `GitHub returned ${response.status}`);
+      error.status = response.status;
+      throw error;
+    }
+    return data;
+  }
+
+  function friendlyGithubError(error) {
+    if (error.status === 401) return 'GitHub rejected this token. Check that it is current and copied completely.';
+    if (error.status === 403) return 'The token needs Contents: Read and write permission for this repository.';
+    if (error.status === 404) return 'Repository or branch not found. Check the owner, repository, branch, and token access.';
+    return error.message || 'GitHub publishing failed.';
+  }
+
+  function publishingError(error) {
+    console.error(error);
+    window.alert(`Publishing failed: ${friendlyGithubError(error)}\n\nNothing was partially published.`);
+    setDirty(true, 'Publishing failed');
+  }
+
+  function setPublishing(busy, message = '') {
+    el.publishProject.disabled = busy;
+    el.githubSettings.disabled = busy;
+    el.deleteProject.disabled = busy;
+    el.publishProject.classList.toggle('is-busy', busy);
+    el.publishProject.textContent = busy ? 'Publishing…' : 'Publish to GitHub';
+    if (message) el.saveStatus.textContent = message;
+  }
+
+  async function sourceBase64(source) {
+    const blob = await fetch(source).then((response) => {
+      if (!response.ok) throw new Error(`Could not read an image selected for upload (${response.status}).`);
+      return response.blob();
+    });
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result).split(',')[1]);
+      reader.onerror = () => reject(new Error('Could not prepare an image for GitHub.'));
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function createBlob(content, encoding = 'utf-8') {
+    const blob = await githubApi('/git/blobs', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content, encoding }),
+    });
+    return blob.sha;
+  }
+
+  async function commitChanges(entries, message) {
+    const config = githubConfig();
+    const ref = await githubApi(`/git/ref/heads/${encodeURIComponent(config.branch)}`);
+    const parentSha = ref.object.sha;
+    const parent = await githubApi(`/git/commits/${parentSha}`);
+    const tree = await githubApi('/git/trees', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ base_tree: parent.tree.sha, tree: entries }),
+    });
+    const commit = await githubApi('/git/commits', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] }),
+    });
+    await githubApi(`/git/refs/heads/${encodeURIComponent(config.branch)}`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sha: commit.sha, force: false }),
+    });
+    return commit;
+  }
+
+  function isLocalImage(source = '') { return source.startsWith('blob:') || source.startsWith('data:'); }
+
+  async function publishProject() {
+    readForm();
+    if (!el.form.reportValidity()) return;
+    if (!githubConfig()) { openGithubSettings('Connect once, then press Publish again.'); return; }
+    const project = state.current;
+    const count = activeImageCount();
+    const missing = project.gallery.slice(0, count).findIndex((item) => !item.image);
+    if (missing >= 0 && !window.confirm(`Image ${missing + 1} is empty. Publish this layout anyway?`)) return;
+    try {
+      setPublishing(true, 'Preparing project and images…');
+      const entries = [];
+      const markdownSha = await createBlob(projectMarkdown(project));
+      entries.push({ path: `content/_projects/${project.slug}.md`, mode: '100644', type: 'blob', sha: markdownSha });
+
+      const images = [];
+      const thumbnailSource = project.thumbnailCroppedData || project.thumbnailPreview;
+      if (project.thumbnail && isLocalImage(thumbnailSource)) images.push({ path: project.thumbnail, source: thumbnailSource });
+      project.gallery.slice(0, count).forEach((item) => {
+        const source = item.croppedData || item.preview;
+        if (item.image && isLocalImage(source)) images.push({ path: item.image, source });
+      });
+      for (let index = 0; index < images.length; index += 1) {
+        el.saveStatus.textContent = `Uploading image ${index + 1} of ${images.length}…`;
+        const sha = await createBlob(await sourceBase64(images[index].source), 'base64');
+        entries.push({ path: images[index].path.replace(/^\//, ''), mode: '100644', type: 'blob', sha });
+      }
+      if (state.loadedSlug && state.loadedSlug !== project.slug) {
+        entries.push({ path: `content/_projects/${state.loadedSlug}.md`, mode: '100644', type: 'blob', sha: null });
+      }
+      el.saveStatus.textContent = 'Creating GitHub commit…';
+      const action = project.isNew ? 'Add' : 'Update';
+      await commitChanges(entries, `${action} project: ${project.title}`);
+
+      project.isNew = false;
+      state.loadedSlug = project.slug;
+      project.thumbnailPreview = project.thumbnail;
+      project.thumbnailOriginal = project.thumbnail;
+      delete project.thumbnailCroppedData;
+      project.gallery.forEach((item) => {
+        item.preview = item.image; item.original = item.image;
+        delete item.croppedData; delete item.fileName;
+      });
+      const existing = state.projects.findIndex((item) => item.slug === project.slug);
+      if (existing >= 0) state.projects[existing] = normalizeProject(project);
+      else state.projects.push(normalizeProject(project));
+      state.projects.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+      localStorage.removeItem(draftKey(project.slug));
+      const deleted = deletedProjectSlugs().filter((slug) => slug !== project.slug);
+      localStorage.setItem('bradylin-deleted-projects', JSON.stringify(deleted));
+      renderProjectList(el.search.value);
+      setDirty(false, 'Published successfully; Netlify is rebuilding the site');
+    } catch (error) { publishingError(error); }
+    finally { setPublishing(false); }
+  }
+
+  async function deleteCurrentProject() {
     const project = state.current;
     if (!project || (!project.slug && !project.title)) return;
     const expected = project.title || project.slug;
-    const confirmation = window.prompt(`Type “${expected}” to remove this project from the editor.`);
+    const target = project.isNew ? 'this draft' : 'GitHub and the live site';
+    const confirmation = window.prompt(`Type “${expected}” to delete this project from ${target}.`);
     if (confirmation !== expected) return;
+    if (!project.isNew) {
+      if (!githubConfig()) { openGithubSettings('Connect GitHub before deleting a published project.'); return; }
+      try {
+        setPublishing(true, 'Deleting project from GitHub…');
+        const prefix = `assets/images/my-projects/${project.slug}/`;
+        const tree = await githubApi(`/git/trees/${encodeURIComponent(githubConfig().branch)}?recursive=1`);
+        const deletions = tree.tree
+          .filter((entry) => entry.path === `content/_projects/${project.slug}.md` || entry.path.startsWith(prefix))
+          .map((entry) => ({ path: entry.path, mode: '100644', type: 'blob', sha: null }));
+        if (!deletions.length) throw new Error('GitHub could not find this project on the publishing branch.');
+        await commitChanges(deletions, `Delete project: ${project.title}`);
+      } catch (error) {
+        publishingError(error);
+        return;
+      } finally { setPublishing(false); }
+    }
     if (project.slug) {
       const deleted = deletedProjectSlugs();
       if (!deleted.includes(project.slug)) deleted.push(project.slug);
@@ -687,7 +966,7 @@
       state.projects = state.projects.filter((item) => item.slug !== project.slug);
     }
     loadProject(state.projects[0] || blankProject());
-    setDirty(false, 'Project removed from this browser');
+    setDirty(false, project.isNew ? 'Draft removed' : 'Project deleted from GitHub; the site is rebuilding');
   }
 
   function deletedProjectSlugs() {
@@ -810,10 +1089,11 @@
   }
 
   function projectMarkdown(project) {
-    const count = templateFor(project.layout)?.image_count || project.gallery.length;
+    const count = Math.max(1, Math.min(10, Number(project.gallery_count) || project.gallery.length));
     const gallery = project.gallery.slice(0, count).filter((item) => item.image);
     const lines = [
-      '---', `layout: ${project.layout}`, `title: ${yamlString(project.title)}`,
+      '---', 'layout: project', `gallery_style: ${project.gallery_style}`, `gallery_count: ${count}`,
+      `gallery_flip: ${Boolean(project.gallery_flip)}`, `title: ${yamlString(project.title)}`,
       `description: ${yamlString(project.description)}`, `date: ${project.date}`,
       `featured: ${project.featured}`, `display: ${project.display}`,
     ];
@@ -850,9 +1130,17 @@
     changed();
   });
   el.search.addEventListener('input', () => renderProjectList(el.search.value));
+  el.flipInput.addEventListener('change', () => {
+    state.current.gallery_flip = el.flipInput.checked;
+    updateSelectedTemplate();
+    changed('Layout orientation updated');
+  });
   el.newProject.addEventListener('click', () => { if (confirmDiscard()) loadProject(blankProject()); });
   el.saveDraft.addEventListener('click', saveDraft);
   el.exportProject.addEventListener('click', exportProject);
+  el.publishProject.addEventListener('click', publishProject);
+  el.githubSettings.addEventListener('click', () => openGithubSettings());
+  el.githubForm.addEventListener('submit', connectGithub);
   el.addYoutube.addEventListener('click', addYoutube);
   el.thumbnailInput.addEventListener('change', uploadThumbnail);
   el.cropThumbnail.addEventListener('click', () => openCrop('thumbnail'));

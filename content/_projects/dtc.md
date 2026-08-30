@@ -1,5 +1,7 @@
 ---
-layout: project-4p
+layout: project
+gallery_style: rows
+gallery_count: 4
 title: "DTC"
 description: "Projects I did relating to Northwestern's Design Thinking and Communications courses"
 date: 2023-12-29

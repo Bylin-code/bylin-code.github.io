@@ -1,0 +1,102 @@
+---
+layout: default
+body_classes: page-project
+---
+
+{% assign gallery_style = page.gallery_style | default: "editorial" %}
+{% assign image_count = page.gallery_count | default: page.gallery.size | at_most: 10 | at_least: 1 %}
+{% assign first_group_count = image_count | plus: 1 | divided_by: 2 %}
+
+<div class="section">
+  <div class="container">
+    {% if gallery_style == "split" %}
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6{% unless page.gallery_flip %} order-md-2{% endunless %} mb-6 mb-md-0">
+          <div class="gallery gallery-single-column">
+            {% for item in page.gallery limit: image_count %}{% include project/gallery-item.html item=item number=forloop.index %}{% endfor %}
+          </div>
+        </div>
+        <div class="col-12 col-md-6{% unless page.gallery_flip %} order-md-1{% endunless %}">
+          {% include project/project-intro.html stats_class="mt-3" %}
+          <div class="content mt-4">{{ content }}</div>
+        </div>
+      </div>
+
+    {% elsif gallery_style == "rows" %}
+      <div class="project-stack{% if page.gallery_flip %} is-flipped{% endif %}">
+        <div class="project-stack-first row mb-6"><div class="col"><div class="gallery gallery-two-column">
+          {% for item in page.gallery limit: 2 %}{% include project/gallery-item.html item=item number=forloop.index %}{% endfor %}
+        </div></div></div>
+        <div class="project-stack-second row{% if page.gallery_flip %} mb-6{% endif %}">
+          <div class="col-12 col-md-6">{% include project/project-intro.html stats_class="mt-4" %}</div>
+          <div class="col-12 col-md-6"><div class="content">{{ content }}</div></div>
+        </div>
+      </div>
+      {% if image_count > 2 %}
+        <div class="row mt-6"><div class="col"><div class="gallery gallery-two-column">
+          {% for item in page.gallery offset: 2 limit: image_count %}
+            {% assign figure_number = forloop.index | plus: 2 %}
+            {% include project/gallery-item.html item=item number=figure_number %}
+          {% endfor %}
+        </div></div></div>
+      {% endif %}
+
+    {% elsif gallery_style == "masonry" %}
+      <div class="project-stack{% if page.gallery_flip %} is-flipped{% endif %}">
+        <div class="project-stack-first row{% if page.gallery_flip %} mt-6{% endif %}">
+          <div class="col-12 col-md-6 mb-4">{% include project/project-intro.html stats_class="mt-4" %}</div>
+          <div class="col-12 col-md-6 mb-4"><div class="content">{{ content }}</div></div>
+        </div>
+        <div class="project-stack-second row"><div class="col"><div class="gallery gallery-masonry">
+          {% for item in page.gallery limit: image_count %}{% include project/gallery-item.html item=item number=forloop.index %}{% endfor %}
+        </div></div></div>
+      </div>
+
+    {% elsif gallery_style == "hero" %}
+      {% assign hero_item = page.gallery[0] %}
+      {% if hero_item %}<div class="gallery gallery-hero">{% include project/gallery-item.html item=hero_item number=1 hero=true %}</div>{% endif %}
+      <div class="row mt-6">
+        <div class="col-12 col-md-6{% if page.gallery_flip %} order-md-2{% endif %}">{% include project/project-intro.html stats_class="mt-4" %}<div class="content mt-4">{{ content }}</div></div>
+        <div class="col-12 col-md-6{% if page.gallery_flip %} order-md-1{% endif %}"><div class="gallery gallery-two-column">
+          {% for item in page.gallery offset: 1 limit: image_count %}{% assign figure_number = forloop.index | plus: 1 %}{% include project/gallery-item.html item=item number=figure_number %}{% endfor %}
+        </div></div>
+      </div>
+
+    {% elsif gallery_style == "filmstrip" %}
+      <div class="project-stack{% if page.gallery_flip %} is-flipped{% endif %}">
+        <div class="project-stack-first row mb-6{% if page.gallery_flip %} mt-6{% endif %}">
+          <div class="col-12 col-md-5">{% include project/project-intro.html stats_class="mt-4" %}</div>
+          <div class="col-12 col-md-7"><div class="content">{{ content }}</div></div>
+        </div>
+        <div class="project-stack-second">
+          {% assign lead_item = page.gallery[0] %}
+          {% if lead_item %}<div class="gallery gallery-hero">{% include project/gallery-item.html item=lead_item number=1 hero=true %}</div>{% endif %}
+        </div>
+      </div>
+      {% if image_count > 1 %}<div class="gallery gallery-three-column mt-4">
+        {% for item in page.gallery offset: 1 limit: image_count %}{% assign figure_number = forloop.index | plus: 1 %}{% include project/gallery-item.html item=item number=figure_number %}{% endfor %}
+      </div>{% endif %}
+
+    {% else %}
+      <div class="row">
+        <div class="col-12 col-md-6{% if page.gallery_flip %} order-md-2{% endif %}">
+          <div class="gallery gallery-L-left">
+            {% for item in page.gallery limit: first_group_count %}{% include project/gallery-item.html item=item number=forloop.index %}{% endfor %}
+          </div>
+        </div>
+        <div class="col-12 col-md-6{% if page.gallery_flip %} order-md-1{% endif %}">
+          {% include project/project-intro.html stats_class="mt-4" %}<div class="content mt-4">{{ content }}</div>
+          {% if image_count > first_group_count %}<div class="gallery gallery-L-right mt-4">
+            {% for item in page.gallery offset: first_group_count limit: image_count %}{% assign figure_number = forloop.index | plus: first_group_count %}{% include project/gallery-item.html item=item number=figure_number %}{% endfor %}
+          </div>{% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% if gallery_style == "masonry" %}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>var grid=document.querySelector('.gallery-masonry');if(grid){imagesLoaded(grid,function(){new Masonry(grid,{itemSelector:'.gallery-item',percentPosition:true});});}</script>
+{% endif %}

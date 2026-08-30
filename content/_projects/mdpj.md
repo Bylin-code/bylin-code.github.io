@@ -1,5 +1,7 @@
 ---
-layout: project-5p
+layout: project
+gallery_style: editorial
+gallery_count: 5
 title: "MDPJ"
 description: "A mural exhibition with a music-synched and choreographed light show involving more than 200 students"
 date: 2023-08-03

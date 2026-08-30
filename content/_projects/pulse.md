@@ -1,5 +1,7 @@
 ---
-layout: project-6p # alternative layouts: project-6p, project-3p, project-1p, project-4p
+layout: project
+gallery_style: masonry
+gallery_count: 6
 title: "PULSE"
 description: "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control."
 date: 2025-06-12

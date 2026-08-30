@@ -1,11 +1,14 @@
 {
-  "templates": [{"id":"project-2p","label":"Split / 2 images","image_count":2,"description":"Text on the left with a two-image column on the right."},{"id":"project-3p","label":"Split / 3 images","image_count":3,"description":"A three-image column on the left with text on the right."},{"id":"project-4p","label":"Rows / 4 images","image_count":4,"description":"Two images above the project introduction and two below it."},{"id":"project-5p","label":"Editorial / 5 images","image_count":5,"description":"A staggered editorial gallery arranged around the project copy."},{"id":"project-6p","label":"Masonry / 6 images","image_count":6,"description":"Project introduction followed by a six-image masonry gallery."},{"id":"project-7p","label":"Hero / 7 images","image_count":7,"description":"One large hero image followed by six supporting images."}],
+  "templates": [{"id":"split","label":"Split","flippable":true,"flip_description":"Swap the text and gallery between the left and right sides.","description":"Project text beside a vertical image column; use Flip to choose the side."},{"id":"rows","label":"Rows","flippable":true,"flip_description":"Move the text above the first image row instead of below it.","description":"Images divided into rows above and below the project introduction."},{"id":"editorial","label":"Editorial","flippable":true,"flip_description":"Swap the editorial gallery and text between the left and right sides.","description":"Images distributed around the copy in a magazine-style composition."},{"id":"masonry","label":"Masonry","flippable":true,"flip_description":"Move the full masonry gallery above the text instead of below it.","description":"A two-column introduction followed by a natural-height image grid."},{"id":"hero","label":"Hero","flippable":true,"flip_description":"Swap the supporting gallery and text below the hero image.","description":"One wide lead image followed by the project copy and supporting images."},{"id":"filmstrip","label":"Filmstrip","flippable":true,"flip_description":"Move the large lead image above the text instead of below it.","description":"Full-width introduction, a large lead image, and a compact three-column strip."}],
   "projects": [
   
   
     {
       "slug": "dream",
-      "layout": "project-6p",
+      "layout": "project",
+      "gallery_style": "masonry",
+      "gallery_count": 6,
+      "gallery_flip": false,
       "title": "DREAM",
       "description": "A family of intelligent objects that listens to you and makes your life more like a dream",
       "date": "2026-03-08",
@@ -21,7 +24,10 @@
   
     {
       "slug": "formjet",
-      "layout": "project-3p",
+      "layout": "project",
+      "gallery_style": "split",
+      "gallery_count": 3,
+      "gallery_flip": true,
       "title": "FORMJET",
       "description": "A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing.",
       "date": "2026-02-01",
@@ -37,7 +43,10 @@
   
     {
       "slug": "swapxy",
-      "layout": "project-7p",
+      "layout": "project",
+      "gallery_style": "hero",
+      "gallery_count": 1,
+      "gallery_flip": false,
       "title": "SWAPXY (in progress)",
       "description": "a 1.5m x 1.5m CoreCY gantry robot designed to autonomously manage the battery swapping process for a 150+ drone fleet",
       "date": "2025-09-05",
@@ -53,7 +62,10 @@
   
     {
       "slug": "stradex",
-      "layout": "project-7p",
+      "layout": "project",
+      "gallery_style": "hero",
+      "gallery_count": 7,
+      "gallery_flip": false,
       "title": "STRADEX",
       "description": "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics.",
       "date": "2025-09-03",
@@ -69,7 +81,10 @@
   
     {
       "slug": "pulse",
-      "layout": "project-6p",
+      "layout": "project",
+      "gallery_style": "masonry",
+      "gallery_count": 6,
+      "gallery_flip": false,
       "title": "PULSE",
       "description": "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control.",
       "date": "2025-06-12",
@@ -85,7 +100,10 @@
   
     {
       "slug": "kermit",
-      "layout": "project-5p",
+      "layout": "project",
+      "gallery_style": "editorial",
+      "gallery_count": 5,
+      "gallery_flip": false,
       "title": "KERMIT",
       "description": "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place.",
       "date": "2025-05-08",
@@ -101,7 +119,10 @@
   
     {
       "slug": "dtc",
-      "layout": "project-4p",
+      "layout": "project",
+      "gallery_style": "rows",
+      "gallery_count": 4,
+      "gallery_flip": false,
       "title": "DTC",
       "description": "Projects I did relating to Northwestern's Design Thinking and Communications courses",
       "date": "2023-12-29",
@@ -117,7 +138,10 @@
   
     {
       "slug": "mdpj",
-      "layout": "project-5p",
+      "layout": "project",
+      "gallery_style": "editorial",
+      "gallery_count": 5,
+      "gallery_flip": false,
       "title": "MDPJ",
       "description": "A mural exhibition with a music-synched and choreographed light show involving more than 200 students",
       "date": "2023-08-03",
@@ -133,7 +157,10 @@
   
     {
       "slug": "harpa",
-      "layout": "project-3p",
+      "layout": "project",
+      "gallery_style": "split",
+      "gallery_count": 3,
+      "gallery_flip": true,
       "title": "HARPA",
       "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
       "date": "2022-09-29",
@@ -149,7 +176,10 @@
   
     {
       "slug": "gui-nw",
-      "layout": "project-2p",
+      "layout": "project",
+      "gallery_style": "split",
+      "gallery_count": 2,
+      "gallery_flip": false,
       "title": "GUI-NW",
       "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
       "date": "2022-09-29",
@@ -165,7 +195,10 @@
   
     {
       "slug": "torin",
-      "layout": "project-4p",
+      "layout": "project",
+      "gallery_style": "rows",
+      "gallery_count": 4,
+      "gallery_flip": false,
       "title": "TORIN",
       "description": "A biomimetic inflatable soft robot that can squeeze through holes smaller than itself.",
       "date": "2022-02-10",
@@ -181,7 +214,10 @@
   
     {
       "slug": "buck",
-      "layout": "project-5p",
+      "layout": "project",
+      "gallery_style": "editorial",
+      "gallery_count": 5,
+      "gallery_flip": false,
       "title": "BUCK",
       "description": "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE.",
       "date": "2021-09-20",
@@ -197,7 +233,10 @@
   
     {
       "slug": "vsynth",
-      "layout": "project-2p",
+      "layout": "project",
+      "gallery_style": "split",
+      "gallery_count": 2,
+      "gallery_flip": false,
       "title": "VSYNTH",
       "description": "An Arduino-based violin-inspired square-wave synthesizer. The precursor to the STRADEX line.",
       "date": "2020-09-04",

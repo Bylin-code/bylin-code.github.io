@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Portfolio editor · Brady Y. Lin</title>
-    <link rel="stylesheet" href="/admin/admin.css?v=6">
+    <link rel="stylesheet" href="/admin/admin.css?v=15">
   </head>
   <body>
     <header class="admin-header">
@@ -17,7 +17,8 @@
         <span id="save-status" class="save-status" role="status">No unsaved changes</span>
         <button id="save-draft" class="button button-secondary" type="button">Save browser draft</button>
         <button id="export-project" class="button button-secondary" type="button">Download Markdown</button>
-        <button class="button" type="button" disabled title="Added in the secure GitHub publishing phase">Publish to GitHub</button>
+        <button id="github-settings" class="button button-secondary" type="button">GitHub settings</button>
+        <button id="publish-project" class="button" type="button">Publish to GitHub</button>
       </div>
     </header>
 
@@ -36,7 +37,7 @@
 
       <main class="editor-pane">
         <div id="editor-notice" class="notice">
-          This first version saves text and image paths as a browser draft or downloads a Markdown file. Newly selected image files are preview-only until secure GitHub uploading is added in the publishing phase.
+          Preview freely, then publish the project Markdown and changed images to GitHub in one commit. Netlify will rebuild the live site after publishing.
         </div>
 
         <form id="project-form" autocomplete="off">
@@ -44,11 +45,14 @@
             <div class="section-heading">
               <div>
                 <p class="eyebrow">Step 1</p>
-                <h2>Choose a layout</h2>
+                <h2>Choose a style</h2>
               </div>
-              <p>Each layout has a fixed number and arrangement of image slots.</p>
+              <p>First choose the composition, then choose how many images it contains.</p>
             </div>
             <div id="template-picker" class="template-picker"></div>
+            <label id="layout-flip-control" class="layout-flip-control"><input id="layout-flip" type="checkbox"><span><strong>Flip layout</strong><small id="layout-flip-hint">Move the gallery and text to opposite sides.</small></span></label>
+            <div class="count-picker-heading"><strong>Number of images</strong><span id="image-count-label">5 images</span></div>
+            <div id="image-count-picker" class="image-count-picker" aria-label="Number of images"></div>
           </section>
 
           <section class="editor-section">
@@ -80,18 +84,17 @@
               <p>The thumbnail is separate from the gallery and always cropped to 4:3.</p>
             </div>
             <div class="thumbnail-editor">
-              <div id="thumbnail-drop" class="image-drop thumbnail-drop">
-                <img id="thumbnail-image" alt="Project thumbnail preview">
-                <div class="image-empty"><span>+</span><strong>Upload thumbnail</strong><small>Fixed 4:3 crop</small></div>
-                <input id="thumbnail-input" class="image-input" type="file" accept="image/jpeg,image/png,image/gif,image/webp">
+              <div class="thumbnail-final-preview">
+                <div id="thumbnail-drop" class="image-drop thumbnail-drop">
+                  <img id="thumbnail-image" alt="Final project thumbnail">
+                  <div class="image-empty"><span>+</span><strong>Upload thumbnail</strong><small>Fixed 4:3 crop</small></div>
+                  <input id="thumbnail-input" class="image-input" type="file" accept="image/jpeg,image/png,image/gif,image/webp">
+                </div>
+                <strong id="thumbnail-card-title">Project title</strong>
               </div>
               <div class="thumbnail-actions">
                 <button id="crop-thumbnail" class="button button-secondary" type="button">Edit 4:3 crop</button>
                 <button id="remove-thumbnail" class="remove-image" type="button">Remove thumbnail</button>
-                <div class="thumbnail-card-preview">
-                  <div><img id="thumbnail-card-image" alt=""></div>
-                  <strong id="thumbnail-card-title">Project title</strong>
-                </div>
               </div>
             </div>
           </section>
@@ -133,7 +136,7 @@
           </section>
 
           <section class="editor-section danger-zone">
-            <div><p class="eyebrow">Danger zone</p><h2>Delete project</h2><p>This removes the project from this browser editor. Repository deletion will be connected in the GitHub publishing phase.</p></div>
+            <div><p class="eyebrow">Danger zone</p><h2>Delete project</h2><p>For a published project, this removes its Markdown and image folder from GitHub in one commit.</p></div>
             <button id="delete-project" class="button button-danger" type="button">Delete project</button>
           </section>
         </form>
@@ -149,6 +152,21 @@
         </div>
       </aside>
     </div>
+
+    <dialog id="github-dialog" class="github-dialog">
+      <form id="github-form" method="dialog" class="github-shell">
+        <div class="crop-heading"><div><p class="eyebrow">Publishing</p><h2>Connect GitHub</h2></div><button class="dialog-close" value="cancel" aria-label="Close">×</button></div>
+        <div class="github-fields">
+          <p>Create a fine-grained personal access token with <strong>Contents: Read and write</strong> access to this repository. The token stays in this browser tab and is never added to the site.</p>
+          <label class="field field-wide">Fine-grained access token<input id="github-token" type="password" autocomplete="off" placeholder="github_pat_…" required></label>
+          <label class="field">Repository owner<input id="github-owner" value="Bylin-code" required></label>
+          <label class="field">Repository name<input id="github-repo" value="bylin-code.github.io" required></label>
+          <label class="field field-wide">Publishing branch<input id="github-branch" value="main" required></label>
+          <p id="github-status" class="save-status field-wide" role="status"></p>
+        </div>
+        <div class="crop-footer"><span></span><button class="button button-secondary" value="cancel">Cancel</button><button id="github-connect" class="button" type="submit">Connect</button></div>
+      </form>
+    </dialog>
 
     <template id="image-slot-template">
       <article class="image-slot">
@@ -207,6 +225,6 @@
       </form>
     </dialog>
 
-    <script src="/admin/admin.js?v=7" defer></script>
+    <script src="/admin/admin.js?v=13" defer></script>
   </body>
 </html>

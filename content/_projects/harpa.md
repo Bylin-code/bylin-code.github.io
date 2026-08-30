@@ -1,5 +1,8 @@
 ---
-layout: project-3p
+layout: project
+gallery_style: split
+gallery_flip: true
+gallery_count: 3
 title: "HARPA"
 description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers."
 date: 2022-09-29

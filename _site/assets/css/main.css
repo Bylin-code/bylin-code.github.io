@@ -4694,6 +4694,9 @@ html[data-bs-theme="dark"] .dropdown-menu .dropdown-item .dropdown-item-icon.ico
 .grid-heading h2, .grid-heading .h2 { text-transform: uppercase; font-size: 16px; border-left: none; padding-left: 0; font-weight: 500; color: var(--color-base-text); font-family: var(--bs-font-sans-serif); }
 .grid-heading p { font-size: 18px; }
 
+.page-project .project-stack { display: flex; flex-direction: column; }
+.page-project .project-stack.is-flipped .project-stack-first { order: 2; }
+.page-project .project-stack.is-flipped .project-stack-second { order: 1; }
 .page-project .project-heading h1, .page-project .project-heading .h1 { font-size: 36px; letter-spacing: -2px; line-height: 1.2; font-weight: 700; margin-bottom: 10px; }
 @media (min-width: 768px) { .page-project .project-heading h1, .page-project .project-heading .h1 { font-size: 48px; } }
 .page-project .project-description { width: 80%; }

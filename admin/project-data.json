@@ -10,6 +10,9 @@ permalink: /admin/project-data.json
     {
       "slug": {{ project.slug | jsonify }},
       "layout": {{ project.layout | jsonify }},
+      "gallery_style": {{ project.gallery_style | default: "" | jsonify }},
+      "gallery_count": {{ project.gallery_count | default: project.gallery.size | jsonify }},
+      "gallery_flip": {{ project.gallery_flip | default: false | jsonify }},
       "title": {{ project.title | jsonify }},
       "description": {{ project.description | default: "" | jsonify }},
       "date": {{ project.date | date: "%Y-%m-%d" | jsonify }},

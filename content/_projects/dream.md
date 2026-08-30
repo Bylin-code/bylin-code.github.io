@@ -1,5 +1,7 @@
 ---
-layout: project-6p # alternative layouts: project-6p, project-3p, project-1p, project-4p
+layout: project
+gallery_style: masonry
+gallery_count: 6
 title: "DREAM"
 description: "A family of intelligent objects that listens to you and makes your life more like a dream"
 date: 2026-03-08

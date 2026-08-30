@@ -24,13 +24,19 @@ bundle exec jekyll serve --livereload
 ### Project editor
 
 With the local server running, open `http://localhost:4000/admin/`. The editor
-loads every file in `content/_projects`, lets you select one of the rigid
-project layouts, edit its fields and Markdown, preview YouTube includes, and
-fill the template's image slots.
+loads every file in `content/_projects`, lets you select a reusable gallery
+style and then 1–10 images, edit its fields and Markdown, preview YouTube
+includes, and fill the selected number of image slots.
 
-The six template definitions live in `_data/project_templates.yml`. Their slot
-order is the order of the `gallery` items in project front matter. YouTube
-embeds use `{% include youtube.html id="VIDEO_ID" %}`.
+The gallery-style definitions live in `_data/project_templates.yml`; each one
+is rendered by `_layouts/project.html` and works with 1–10 images. Slot order is
+the order of the `gallery` items in project front matter. YouTube embeds use
+`{% include youtube.html id="VIDEO_ID" %}`.
+
+Every gallery style is flippable with `gallery_flip: true`. Split and Editorial
+swap left/right columns; Hero swaps its lower text and supporting gallery;
+Masonry moves its gallery above the text; Rows moves its text above the first
+image row; and Filmstrip moves its lead image above the text.
 
 The current editor phase can save a browser-local draft or download the
 resulting `.md` file. Uploaded images are preview-only until the authenticated

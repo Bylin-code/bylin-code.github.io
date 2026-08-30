@@ -1,5 +1,7 @@
 ---
-layout: project-4p
+layout: project
+gallery_style: rows
+gallery_count: 4
 title: "TORIN"
 description: "A biomimetic inflatable soft robot that can squeeze through holes smaller than itself."
 date: 2022-02-10

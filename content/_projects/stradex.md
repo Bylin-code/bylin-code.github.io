@@ -1,5 +1,7 @@
 ---
-layout: project-7p
+layout: project
+gallery_style: hero
+gallery_count: 7
 title: "STRADEX"
 description: "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics."
 date: 2025-09-03

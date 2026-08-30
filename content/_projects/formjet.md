@@ -1,5 +1,8 @@
 ---
-layout: project-3p
+layout: project
+gallery_style: split
+gallery_flip: true
+gallery_count: 3
 title: "FORMJET"
 description: "A safer all-in-one solution to SLA 3D printing post-processing, with a FormWash + water-washing sequence and UV curing."
 date: 2026-02-01

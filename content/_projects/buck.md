@@ -1,5 +1,7 @@
 ---
-layout: project-5p
+layout: project
+gallery_style: editorial
+gallery_count: 5
 title: "BUCK"
 description: "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE."
 date: 2021-09-20

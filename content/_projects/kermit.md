@@ -1,5 +1,7 @@
 ---
-layout: project-5p
+layout: project
+gallery_style: editorial
+gallery_count: 5
 title: "KERMIT"
 description: "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place."
 date: 2025-05-08

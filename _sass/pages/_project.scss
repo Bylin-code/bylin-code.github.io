@@ -1,4 +1,12 @@
 .page-project {
+  .project-stack {
+    display: flex;
+    flex-direction: column;
+    &.is-flipped {
+      .project-stack-first { order: 2; }
+      .project-stack-second { order: 1; }
+    }
+  }
   .project-heading {
     h1 {
       font-size: 36px;

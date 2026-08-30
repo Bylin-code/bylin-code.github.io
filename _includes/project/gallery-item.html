@@ -1,0 +1,6 @@
+<div class="gallery-item">
+  <div class="gallery-image{% if include.hero %} gallery-hero-image{% endif %}">
+    <img src="{{ include.item.image | relative_url }}" alt="{{ include.item.alt | default: include.item.caption | strip_html | escape }}" loading="lazy" />
+  </div>
+  {% include project/figure-caption.html number=include.number caption=include.item.caption %}
+</div>

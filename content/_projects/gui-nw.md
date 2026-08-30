@@ -1,5 +1,8 @@
 ---
-layout: project-2p
+layout: project
+gallery_style: split
+gallery_flip: false
+gallery_count: 2
 title: "GUI-NW"
 description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers."
 date: 2022-09-29
