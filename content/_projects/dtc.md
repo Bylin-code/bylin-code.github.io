@@ -10,13 +10,13 @@ skills: "none"
 thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
 gallery:
   - image: "/assets/images/gen/projects/project-1-3.webp"
-    caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"
+    caption: "BUCK bucket solenoid robot drummer in full performance setup"
   - image: "/assets/images/gen/projects/project-2-2.webp"
-    caption: "<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"
+    caption: "Solenoid actuation system and timing control circuitry"
   - image: "/assets/images/gen/projects/project-3-4.webp"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+    caption: "Precision bucket positioning and mounting hardware"
   - image: "/assets/images/gen/projects/project-3-4.webp"
-    caption: "<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"
+    caption: "Precision bucket positioning and mounting hardware"
 ---
 BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.
 

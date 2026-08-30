@@ -10,17 +10,17 @@ skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterj
 thumbnail: "/assets/images/my-projects/pulse/pulse8.jpg"
 gallery:
   - image: "/assets/images/my-projects/pulse/pulse18.jpg"
-    caption: "<strong>Fig 1:</strong> Clear view of PULSE's mechanical and electrical components"
+    caption: "Clear view of PULSE's mechanical and electrical components"
   - image: "/assets/images/my-projects/pulse/pulse7.jpg"
-    caption: "<strong>Fig 2:</strong> My team and I after PULSE's debut performance"
+    caption: "My team and I after PULSE's debut performance"
   - image: "/assets/images/my-projects/pulse/pulse19.jpg"
-    caption: "<strong>Fig 3:</strong> Full CAD assembly with 100+ parts all eventually fabricated and integrated with the electronics."
+    caption: "Full CAD assembly with 100+ parts all eventually fabricated and integrated with the electronics."
   - image: "/assets/images/my-projects/pulse/pulse4.jpg"
-    caption: "<strong>Fig 4:</strong> Rows of drummer arm units that just went through the assembly line."
+    caption: "Rows of drummer arm units that just went through the assembly line."
   - image: "/assets/images/my-projects/pulse/pulse3.jpg"
-    caption: "<strong>Fig 5:</strong> An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"
+    caption: "An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"
   - image: "/assets/images/my-projects/pulse/pulse20.jpg"
-    caption: "<strong>Fig 6:</strong> Ultra high-tech state-of-the-art sheet-metal manufacturing methods"
+    caption: "Ultra high-tech state-of-the-art sheet-metal manufacturing methods"
 ---
 **PULSE** is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology. 
 

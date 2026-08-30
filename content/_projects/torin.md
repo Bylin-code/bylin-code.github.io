@@ -7,16 +7,16 @@ featured: false
 display: true
 role: "Engineer & Designer"
 skills: "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing"
-thumbnail: "assets/images/my-projects/torin/torin11.jpg"
+thumbnail: "/assets/images/my-projects/torin/torin11.jpg"
 gallery:
-  - image: "assets/images/my-projects/torin/torin12.jpg"
-    caption: "<strong>Fig 1:</strong> TORIN squeezing through a hole half it's cross-sectional area"
-  - image: "assets/images/my-projects/torin/torin9.jpg"
-    caption: "<strong>Fig 2:</strong> TORIN's chassis and electronics"
-  - image: "assets/images/my-projects/torin/torin6.jpg"
-    caption: "<strong>Fig 3:</strong> Testing RC controller integration"
-  - image: "assets/images/my-projects/torin/torin13.jpg"
-    caption: "<strong>Fig 4:</strong> Three of many prototypical designs that were tested"
+  - image: "/assets/images/my-projects/torin/torin12.jpg"
+    caption: "TORIN squeezing through a hole half it's cross-sectional area"
+  - image: "/assets/images/my-projects/torin/torin9.jpg"
+    caption: "TORIN's chassis and electronics"
+  - image: "/assets/images/my-projects/torin/torin6.jpg"
+    caption: "Testing RC controller integration"
+  - image: "/assets/images/my-projects/torin/torin13.jpg"
+    caption: "Three of many prototypical designs that were tested"
 ---
 **TORIN** was inspired by a method of locomotion used by amoebas called Whole Skin Locomotion, where they move by pulling in the skin near the front of their body and expelling it out the back. You can imagine it as a torus endlessly turning itself inside-out, a seamless loop of surface motion generating forward movement.
 

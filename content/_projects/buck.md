@@ -10,15 +10,15 @@ skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/buck/buck4.jpg"
 gallery:
   - image: "/assets/images/my-projects/buck/buck4.jpg"
-    caption: "<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"
+    caption: "BUCK bucket solenoid robot drummer in full performance setup"
   - image: "/assets/images/my-projects/buck/buck1.jpg"
-    caption: "<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"
+    caption: "Solenoid actuation system and timing control circuitry"
   - image: "/assets/images/my-projects/buck/buck2.jpg"
-    caption: "<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"
+    caption: "Precision bucket positioning and mounting hardware"
   - image: "/assets/images/my-projects/buck/buck6.jpg"
-    caption: "<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"
+    caption: "Precision bucket positioning and mounting hardware"
   - image: "/assets/images/my-projects/buck/buck5.jpg"
-    caption: "<strong>Fig 5:</strong> Precision bucket positioning and mounting hardware"
+    caption: "Precision bucket positioning and mounting hardware"
 ---
 BUCK is a cement bucket drummer robot that my team and I built over my sophomore year of highschool. The lack of good funding meant we had to be extremely efficient with parts sourcing, and we ended up spending under 150 USD for the entire project.
 

@@ -1,0 +1,4 @@
+{% assign figure_caption = include.caption | default: "" %}
+{% if figure_caption != "" %}
+  <div class="gallery-caption"><strong>Fig {{ include.number }}:</strong> {{ figure_caption }}</div>
+{% endif %}

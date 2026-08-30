@@ -13,7 +13,7 @@ body_classes: page-project
           {% for item in page.gallery limit: 3 %}
           <div class="gallery-item">
             <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" /></div>
-            <div class="gallery-caption">{{ item.caption }}</div>
+            {% include project/figure-caption.html number=forloop.index caption=item.caption %}
           </div>
           {% endfor %}
         </div>
@@ -49,7 +49,8 @@ body_classes: page-project
           {% for item in page.gallery offset: 3 %}
           <div class="gallery-item">
             <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" /></div>
-            <div class="gallery-caption">{{ item.caption }}</div>
+            {% assign figure_number = forloop.index | plus: 3 %}
+            {% include project/figure-caption.html number=figure_number caption=item.caption %}
           </div>
           {% endfor %}
         </div>

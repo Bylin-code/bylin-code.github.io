@@ -10,17 +10,17 @@ skills: "Engineering management, 3D Printing, Hardware integration, Embedded des
 thumbnail: "/assets/images/my-projects/dream/dream1.jpg"
 gallery:
   - image: "/assets/images/my-projects/dream/dream1.jpg"
-    caption: "<strong>Fig 1:</strong> The objects"
+    caption: "The objects"
   - image: "/assets/images/my-projects/dream/dream2.jpg"
-    caption: "<strong>Fig 2:</strong> The backend console coordinating communication between the objects"
+    caption: "The backend console coordinating communication between the objects"
   - image: "/assets/images/my-projects/dream/dream3.jpg"
-    caption: "<strong>Fig 3:</strong> Radio"
+    caption: "Radio"
   - image: "/assets/images/my-projects/dream/dream4.jpg"
-    caption: "<strong>Fig 4:</strong> Lamp"
+    caption: "Lamp"
   - image: "/assets/images/my-projects/dream/dream5.jpg"
-    caption: "<strong>Fig 5:</strong> Mirror"
+    caption: "Mirror"
   - image: "/assets/images/my-projects/dream/dream6.jpg"
-    caption: "<strong>Fig 6:</strong> The winning team"
+    caption: "The winning team"
 ---
 **DREAM** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. What started as a strange late night idea turned into an experiment in giving everyday objects their own personalities and voices.
 

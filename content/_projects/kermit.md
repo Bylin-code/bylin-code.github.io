@@ -10,15 +10,15 @@ skills: "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, C
 thumbnail: "/assets/images/my-projects/kermit/kermit8.jpg"
 gallery:
   - image: "/assets/images/my-projects/kermit/kermit1.jpg"
-    caption: "<strong>Fig 1:</strong> KERMIT looking at you with his froggy eyes"
+    caption: "KERMIT looking at you with his froggy eyes"
   - image: "/assets/images/my-projects/kermit/kermit6.jpg"
-    caption: "<strong>Fig 2:</strong> KERMIT's actual eyes, an OV7670 camera module"
+    caption: "KERMIT's actual eyes, an OV7670 camera module"
   - image: "/assets/images/my-projects/kermit/kermit2.jpg"
-    caption: "<strong>Fig 3:</strong> KERMIT's electronics on a breadboard."
+    caption: "KERMIT's electronics on a breadboard."
   - image: "/assets/images/my-projects/kermit/kermit9.jpg"
-    caption: "<strong>Fig 4:</strong> Schematics in KiCAD"
+    caption: "Schematics in KiCAD"
   - image: "/assets/images/my-projects/kermit/kermit11.jpg"
-    caption: "<strong>Fig 5:</strong> CAD assembly"
+    caption: "CAD assembly"
 ---
 
 **KERMIT** is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.

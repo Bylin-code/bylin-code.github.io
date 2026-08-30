@@ -7,22 +7,22 @@ featured: true
 display: true
 role: "Maker"
 skills: "CAD, PCB design, Embedded development, Rapid prototyping"
-thumbnail: "assets/images/my-projects/stradex/stradex12.jpg"
+thumbnail: "/assets/images/my-projects/stradex/stradex12.jpg"
 gallery:
   - image: "/assets/images/my-projects/stradex/stradex3.jpg"
-    caption: "<strong>Fig 1:</strong> Stradex1, held in playing position"
+    caption: "Stradex1, held in playing position"
   - image: "/assets/images/my-projects/stradex/stradex7.jpg"
-    caption: "<strong>Fig 2:</strong> Full CAD model, including the PCB inside OnShape"
+    caption: "Full CAD model, including the PCB inside OnShape"
   - image: "/assets/images/my-projects/stradex/stradex8.jpg"
-    caption: "<strong>Fig 3:</strong> CAD model of the key, designed to be easily assembled with only 3D printed parts"
+    caption: "CAD model of the key, designed to be easily assembled with only 3D printed parts"
   - image: "/assets/images/my-projects/stradex/stradex11.jpg"
-    caption: "<strong>Fig 4:</strong> Some of the previous iterations of the keys, improved upon over time"
+    caption: "Some of the previous iterations of the keys, improved upon over time"
   - image: "/assets/images/my-projects/stradex/stradex10.jpg"
-    caption: "<strong>Fig 5:</strong> A breadboard prototype of the circuitry, used for pre-pcb testing"
+    caption: "A breadboard prototype of the circuitry, used for pre-pcb testing"
   - image: "/assets/images/my-projects/stradex/stradex13.jpg"
-    caption: "<strong>Fig 6:</strong> Schematic of Stradex"
+    caption: "Schematic of Stradex"
   - image: "/assets/images/my-projects/stradex/stradex14.jpg"
-    caption: "<strong>Fig 7:</strong> PCB design of Stradex"
+    caption: "PCB design of Stradex"
 ---
 
 I've always wanted to put my violin skills to use in a MIDI environment, but there really isn't a controller on the market that can emulate the feel of a violin to the extent that Stradex does. 

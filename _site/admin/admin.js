@@ -27,7 +27,28 @@
     saveStatus: document.querySelector('#save-status'),
     saveDraft: document.querySelector('#save-draft'),
     exportProject: document.querySelector('#export-project'),
+    thumbnailDrop: document.querySelector('#thumbnail-drop'),
+    thumbnailInput: document.querySelector('#thumbnail-input'),
+    thumbnailImage: document.querySelector('#thumbnail-image'),
+    thumbnailCardImage: document.querySelector('#thumbnail-card-image'),
+    thumbnailCardTitle: document.querySelector('#thumbnail-card-title'),
+    cropThumbnail: document.querySelector('#crop-thumbnail'),
+    removeThumbnail: document.querySelector('#remove-thumbnail'),
+    deleteProject: document.querySelector('#delete-project'),
+    cropDialog: document.querySelector('#crop-dialog'),
+    cropTitle: document.querySelector('#crop-title'),
+    cropStage: document.querySelector('#crop-stage'),
+    cropSource: document.querySelector('#crop-source'),
+    cropBox: document.querySelector('#crop-box'),
+    cropPreset: document.querySelector('#crop-preset'),
+    cropWidth: document.querySelector('#crop-width'),
+    cropHeight: document.querySelector('#crop-height'),
+    cropSourceSize: document.querySelector('#crop-source-size'),
+    resetCrop: document.querySelector('#reset-crop'),
+    applyCrop: document.querySelector('#apply-crop'),
   };
+
+  const cropState = { kind: null, index: -1, image: null, source: '', fixed: false, rect: { x: 0, y: 0, width: 1, height: 1 }, drag: null };
 
   const clone = (value) => JSON.parse(JSON.stringify(value));
   const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({
@@ -39,15 +60,17 @@
     return {
       slug: '', layout: state.templates[0]?.id || 'project-2p', title: '', description: '',
       date: today, client: '', role: '', skills: '', thumbnail: '', featured: false,
-      display: true, gallery: [], body: '', isNew: true,
+      display: true, gallery: [], body: '', isNew: true, thumbnailPreview: '', thumbnailOriginal: '',
     };
   }
 
   function normalizeProject(project) {
     const normalized = { ...blankProject(), ...clone(project) };
     normalized.gallery = Array.isArray(normalized.gallery) ? normalized.gallery.map((item) => ({
-      image: item.image || '', caption: item.caption || '', alt: item.alt || '', preview: item.image || '',
+      image: item.image || '', caption: stripCaptionPrefix(item.caption || ''), alt: item.alt || '', preview: item.image || '', original: item.image || '',
     })) : [];
+    normalized.thumbnailPreview = normalized.thumbnailPreview || normalized.thumbnail || '';
+    normalized.thumbnailOriginal = normalized.thumbnailOriginal || normalized.thumbnail || '';
     normalized.body = htmlToMarkdown(normalized.body || '');
     return normalized;
   }
@@ -58,7 +81,11 @@
       if (!response.ok) throw new Error(`Project data returned ${response.status}`);
       const data = await response.json();
       state.templates = data.templates || [];
-      state.projects = (data.projects || []).map(normalizeProject);
+      const deleted = deletedProjectSlugs();
+      state.projects = (data.projects || [])
+        .map(normalizeProject)
+        .filter((project) => !deleted.includes(project.slug))
+        .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
       renderTemplates();
       renderProjectList();
       loadProject(state.projects[0] || blankProject());
@@ -120,6 +147,7 @@
     el.form.elements.featured.checked = Boolean(state.current.featured);
     updateSelectedTemplate();
     renderSlots();
+    renderThumbnail();
     renderPreview();
   }
 
@@ -158,12 +186,13 @@
     for (let index = 0; index < count; index += 1) {
       const item = state.current.gallery[index];
       const slot = el.slotTemplate.content.firstElementChild.cloneNode(true);
+      slot.draggable = true;
       slot.dataset.index = index;
       slot.querySelector('.slot-name').textContent = index === 0 && state.current.layout === 'project-7p'
         ? 'Image 1 · Hero image' : `Image ${index + 1}`;
-      slot.querySelector('.image-caption').value = stripCaptionHtml(item.caption);
+      slot.querySelector('.image-caption').value = stripCaptionPrefix(item.caption);
+      slot.querySelector('.image-caption').placeholder = `Caption for Fig ${index + 1}`;
       slot.querySelector('.image-alt').value = item.alt || '';
-      slot.querySelector('.thumbnail-choice input').checked = Boolean(item.image && item.image === state.current.thumbnail);
       const drop = slot.querySelector('.image-drop');
       const img = slot.querySelector('img');
       if (item.preview || item.image) {
@@ -173,11 +202,13 @@
       }
       slot.querySelector('.image-input').addEventListener('change', (event) => uploadImage(event, index));
       slot.querySelector('.remove-image').addEventListener('click', () => removeImage(index));
-      slot.querySelector('.thumbnail-choice input').addEventListener('change', () => {
-        syncGalleryFields();
-        state.current.thumbnail = state.current.gallery[index].image;
-        changed();
-      });
+      slot.querySelector('.crop-image').disabled = !(item.preview || item.image);
+      slot.querySelector('.crop-image').addEventListener('click', () => openCrop('gallery', index));
+      slot.querySelector('.move-up').disabled = index === 0;
+      slot.querySelector('.move-down').disabled = index === count - 1;
+      slot.querySelector('.move-up').addEventListener('click', () => reorderImage(index, index - 1));
+      slot.querySelector('.move-down').addEventListener('click', () => reorderImage(index, index + 1));
+      addDragEvents(slot, index);
       slot.querySelectorAll('input[type="text"], .image-caption, .image-alt').forEach((input) => input.addEventListener('input', changed));
       el.slots.append(slot);
     }
@@ -195,10 +226,11 @@
     const projectSlug = slugify(el.form.elements.slug.value || el.form.elements.title.value || 'new-project');
     const path = `/assets/images/my-projects/${projectSlug}/${filename}.${extension}`;
     if (state.current.gallery[index]?.preview?.startsWith('blob:')) URL.revokeObjectURL(state.current.gallery[index].preview);
+    const source = URL.createObjectURL(file);
     state.current.gallery[index] = {
-      ...state.current.gallery[index], image: path, preview: URL.createObjectURL(file), fileName: file.name,
+      ...state.current.gallery[index], image: path, preview: source,
+      original: source, fileName: file.name,
     };
-    if (!state.current.thumbnail) state.current.thumbnail = path;
     renderSlots();
     changed('Image selected locally');
   }
@@ -217,6 +249,35 @@
       const index = Number(slot.dataset.index);
       state.current.gallery[index].caption = slot.querySelector('.image-caption').value;
       state.current.gallery[index].alt = slot.querySelector('.image-alt').value;
+    });
+  }
+
+  function reorderImage(from, to) {
+    if (to < 0 || to >= (templateFor(state.current.layout)?.image_count || 0)) return;
+    syncGalleryFields();
+    const [item] = state.current.gallery.splice(from, 1);
+    state.current.gallery.splice(to, 0, item);
+    renderSlots();
+    changed('Image order updated');
+  }
+
+  function addDragEvents(slot, index) {
+    slot.addEventListener('dragstart', (event) => {
+      syncGalleryFields();
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', String(index));
+      slot.classList.add('dragging');
+    });
+    slot.addEventListener('dragend', () => {
+      document.querySelectorAll('.image-slot').forEach((item) => item.classList.remove('dragging', 'drag-over'));
+    });
+    slot.addEventListener('dragover', (event) => { event.preventDefault(); slot.classList.add('drag-over'); });
+    slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
+    slot.addEventListener('drop', (event) => {
+      event.preventDefault();
+      slot.classList.remove('drag-over');
+      const from = Number(event.dataTransfer.getData('text/plain'));
+      if (Number.isInteger(from) && from !== index) reorderImage(from, index);
     });
   }
 
@@ -264,7 +325,7 @@
       ? `<img src="${escapeHtml(source)}" alt="${escapeHtml(item.alt || '')}" loading="lazy">`
       : `<span class="admin-empty-image">Image ${index + 1}</span>`;
     return `<div class="gallery-item"><div class="gallery-image${hero ? ' gallery-hero-image' : ''}">${image}</div>
-      ${item.caption ? `<div class="gallery-caption">${formatCaption(item.caption)}</div>` : ''}</div>`;
+      ${item.caption ? `<div class="gallery-caption">${formatCaption(item.caption, index)}</div>` : ''}</div>`;
   }
 
   function galleryMarkup(items, className, offset = 0, hero = false) {
@@ -308,9 +369,8 @@
       <div class="row"><div class="col">${galleryMarkup(gallery, 'gallery-masonry')}</div></div>${sectionEnd}`;
   }
 
-  function formatCaption(caption) {
-    const safe = escapeHtml(stripCaptionHtml(caption));
-    return safe.replace(/^(Fig\s+\d+:)/i, '<strong>$1</strong>');
+  function formatCaption(caption, index) {
+    return `<strong>Fig ${index + 1}:</strong> ${escapeHtml(stripCaptionPrefix(caption))}`;
   }
 
   function longDate(value) {
@@ -328,6 +388,310 @@
     el.preview.style.height = `${documentHeight}px`;
     el.preview.style.transform = `scale(${scale})`;
     el.previewWrap.style.height = `${Math.ceil(documentHeight * scale)}px`;
+  }
+
+  function renderThumbnail() {
+    const source = state.current.thumbnailPreview || state.current.thumbnail;
+    el.thumbnailDrop.classList.toggle('has-image', Boolean(source));
+    el.thumbnailImage.src = source || '';
+    el.thumbnailCardImage.src = source || '';
+    el.thumbnailCardImage.style.visibility = source ? 'visible' : 'hidden';
+    el.thumbnailCardTitle.textContent = state.current.title || 'Project title';
+    el.cropThumbnail.disabled = !source;
+    el.removeThumbnail.disabled = !source;
+  }
+
+  function uploadThumbnail(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (!/^image\/(jpeg|png|gif|webp)$/.test(file.type)) {
+      window.alert('Please choose a JPG, PNG, GIF, or WebP image.');
+      return;
+    }
+    const source = URL.createObjectURL(file);
+    const extension = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const slug = slugify(el.form.elements.slug.value || el.form.elements.title.value || 'new-project');
+    state.current.thumbnail = `/assets/images/my-projects/${slug}/thumbnail.${extension}`;
+    state.current.thumbnailPreview = source;
+    state.current.thumbnailOriginal = source;
+    state.current.thumbnailFileName = file.name;
+    renderThumbnail();
+    changed('Thumbnail selected locally');
+  }
+
+  function removeThumbnail() {
+    if (state.current.thumbnailPreview?.startsWith('blob:')) URL.revokeObjectURL(state.current.thumbnailPreview);
+    state.current.thumbnail = '';
+    state.current.thumbnailPreview = '';
+    state.current.thumbnailOriginal = '';
+    delete state.current.thumbnailCroppedData;
+    renderThumbnail();
+    changed('Thumbnail removed');
+  }
+
+  async function openCrop(kind, index = -1) {
+    const source = kind === 'thumbnail'
+      ? state.current.thumbnailOriginal || state.current.thumbnailPreview || state.current.thumbnail
+      : state.current.gallery[index]?.original || state.current.gallery[index]?.preview || state.current.gallery[index]?.image;
+    if (!source) return;
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    try {
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = reject;
+        image.src = source;
+      });
+    } catch (_) {
+      window.alert('This image could not be opened in the crop editor.');
+      return;
+    }
+    cropState.kind = kind;
+    cropState.index = index;
+    cropState.image = image;
+    cropState.source = source;
+    cropState.fixed = kind === 'thumbnail';
+    el.cropTitle.textContent = kind === 'thumbnail' ? 'Crop project thumbnail (4:3)' : `Crop image ${index + 1}`;
+    el.cropSource.src = source;
+    el.cropSourceSize.textContent = `Original image: ${image.naturalWidth} × ${image.naturalHeight} pixels`;
+    el.cropPreset.value = kind === 'thumbnail' ? '4:3' : 'custom';
+    el.cropPreset.disabled = kind === 'thumbnail';
+    el.cropWidth.value = kind === 'thumbnail' ? 1200 : image.naturalWidth;
+    el.cropHeight.value = kind === 'thumbnail' ? 900 : image.naturalHeight;
+    el.cropWidth.disabled = kind === 'thumbnail';
+    el.cropHeight.disabled = kind === 'thumbnail';
+    setCropPreset(kind === 'thumbnail' ? '4:3' : 'custom', true);
+    el.cropDialog.showModal();
+    requestAnimationFrame(renderCropBox);
+  }
+
+  function resetCropControls() {
+    if (cropState.fixed) {
+      setCropPreset('4:3');
+    } else {
+      el.cropPreset.value = 'custom';
+      el.cropWidth.value = cropState.image.naturalWidth;
+      el.cropHeight.value = cropState.image.naturalHeight;
+      setCropPreset('custom', true);
+    }
+  }
+
+  function cropDimensions() {
+    return {
+      width: Math.max(1, Math.min(12000, Number(el.cropWidth.value) || cropState.image?.naturalWidth || 1200)),
+      height: Math.max(1, Math.min(12000, Number(el.cropHeight.value) || cropState.image?.naturalHeight || 900)),
+    };
+  }
+
+  function presetRatio(preset = el.cropPreset.value) {
+    if (preset === 'free') return null;
+    if (preset === 'custom') {
+      const output = cropDimensions();
+      return output.width / output.height;
+    }
+    const [width, height] = preset.split(':').map(Number);
+    return width / height;
+  }
+
+  function setCropPreset(preset, useFullImage = false) {
+    if (!cropState.image) return;
+    const image = cropState.image;
+    if (preset === 'custom' && useFullImage) {
+      cropState.rect = { x: 0, y: 0, width: 1, height: 1 };
+      el.cropWidth.value = image.naturalWidth;
+      el.cropHeight.value = image.naturalHeight;
+      el.cropWidth.disabled = false;
+      el.cropHeight.disabled = false;
+    } else {
+      el.cropWidth.disabled = cropState.fixed;
+      el.cropHeight.disabled = cropState.fixed;
+      if (preset === 'free') {
+        cropState.rect = { x: .1, y: .1, width: .8, height: .8 };
+        updateFreeformDimensions();
+      } else {
+        if (preset !== 'custom' && !cropState.fixed) {
+          const standardSizes = { '1:1': [1200, 1200], '4:3': [1600, 1200], '3:2': [1800, 1200], '16:9': [1920, 1080], '21:9': [2100, 900] };
+          [el.cropWidth.value, el.cropHeight.value] = standardSizes[preset];
+        }
+        cropState.rect = largestCenteredRect(presetRatio(preset));
+      }
+    }
+    renderCropBox();
+  }
+
+  function largestCenteredRect(aspect) {
+    const image = cropState.image;
+    const normalizedRatio = aspect * image.naturalHeight / image.naturalWidth;
+    let width = 1;
+    let height = 1 / normalizedRatio;
+    if (height > 1) { height = 1; width = normalizedRatio; }
+    return { x: (1 - width) / 2, y: (1 - height) / 2, width, height };
+  }
+
+  function renderCropBox() {
+    const rect = cropState.rect;
+    el.cropBox.style.left = `${rect.x * 100}%`;
+    el.cropBox.style.top = `${rect.y * 100}%`;
+    el.cropBox.style.width = `${rect.width * 100}%`;
+    el.cropBox.style.height = `${rect.height * 100}%`;
+  }
+
+  function updateFreeformDimensions() {
+    if (!cropState.image || el.cropPreset.value !== 'free') return;
+    el.cropWidth.value = Math.max(1, Math.round(cropState.rect.width * cropState.image.naturalWidth));
+    el.cropHeight.value = Math.max(1, Math.round(cropState.rect.height * cropState.image.naturalHeight));
+  }
+
+  function applyCrop() {
+    if (!cropState.image) return;
+    const output = cropDimensions();
+    const canvas = document.createElement('canvas');
+    canvas.width = output.width;
+    canvas.height = output.height;
+    const rect = cropState.rect;
+    canvas.getContext('2d').drawImage(
+      cropState.image,
+      Math.round(rect.x * cropState.image.naturalWidth),
+      Math.round(rect.y * cropState.image.naturalHeight),
+      Math.round(rect.width * cropState.image.naturalWidth),
+      Math.round(rect.height * cropState.image.naturalHeight),
+      0, 0, output.width, output.height,
+    );
+    const data = canvas.toDataURL('image/jpeg', 0.9);
+    if (cropState.kind === 'thumbnail') {
+      state.current.thumbnailPreview = data;
+      state.current.thumbnailCroppedData = data;
+      const slug = state.current.slug || 'new-project';
+      state.current.thumbnail = `/assets/images/my-projects/${slug}/thumbnail.jpg`;
+      renderThumbnail();
+    } else {
+      const item = state.current.gallery[cropState.index];
+      item.preview = data;
+      item.croppedData = data;
+      item.crop = { width: output.width, height: output.height, ...cropState.rect, preset: el.cropPreset.value };
+      renderSlots();
+    }
+    el.cropDialog.close();
+    changed('Crop applied');
+  }
+
+  function beginCropPointer(event) {
+    if (!cropState.image) return;
+    const handle = event.target.closest('[data-handle]')?.dataset.handle || '';
+    cropState.drag = {
+      mode: handle ? 'resize' : 'move', handle,
+      startX: event.clientX, startY: event.clientY,
+      rect: { ...cropState.rect },
+    };
+    el.cropBox.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  }
+
+  function moveCropPointer(event) {
+    const drag = cropState.drag;
+    if (!drag) return;
+    const imageWidth = el.cropSource.clientWidth;
+    const imageHeight = el.cropSource.clientHeight;
+    const dx = (event.clientX - drag.startX) / imageWidth;
+    const dy = (event.clientY - drag.startY) / imageHeight;
+    if (drag.mode === 'move') {
+      cropState.rect.x = clamp(drag.rect.x + dx, 0, 1 - drag.rect.width);
+      cropState.rect.y = clamp(drag.rect.y + dy, 0, 1 - drag.rect.height);
+    } else {
+      resizeCropRect(drag, dx, dy);
+    }
+    updateFreeformDimensions();
+    renderCropBox();
+  }
+
+  function endCropPointer() { cropState.drag = null; }
+
+  function resizeCropRect(drag, dx, dy) {
+    const handle = drag.handle;
+    const original = drag.rect;
+    const minWidth = Math.min(.25, 36 / Math.max(1, el.cropSource.clientWidth));
+    const minHeight = Math.min(.25, 36 / Math.max(1, el.cropSource.clientHeight));
+    const ratio = presetRatio();
+    if (!ratio) {
+      let left = original.x;
+      let top = original.y;
+      let right = original.x + original.width;
+      let bottom = original.y + original.height;
+      if (handle.includes('w')) left = clamp(original.x + dx, 0, right - minWidth);
+      if (handle.includes('e')) right = clamp(right + dx, left + minWidth, 1);
+      if (handle.includes('n')) top = clamp(original.y + dy, 0, bottom - minHeight);
+      if (handle.includes('s')) bottom = clamp(bottom + dy, top + minHeight, 1);
+      cropState.rect = { x: left, y: top, width: right - left, height: bottom - top };
+      return;
+    }
+
+    const normalizedRatio = ratio * cropState.image.naturalHeight / cropState.image.naturalWidth;
+    if (handle.length === 1) {
+      const centerX = original.x + original.width / 2;
+      const centerY = original.y + original.height / 2;
+      if (handle === 'e' || handle === 'w') {
+        const anchorX = handle === 'e' ? original.x : original.x + original.width;
+        let width = Math.max(minWidth, Math.abs((handle === 'e' ? original.x + original.width + dx : original.x + dx) - anchorX));
+        let height = width / normalizedRatio;
+        width = Math.min(width, handle === 'e' ? 1 - anchorX : anchorX, Math.min(centerY, 1 - centerY) * 2 * normalizedRatio);
+        height = width / normalizedRatio;
+        cropState.rect = { x: handle === 'e' ? anchorX : anchorX - width, y: centerY - height / 2, width, height };
+      } else {
+        const anchorY = handle === 's' ? original.y : original.y + original.height;
+        let height = Math.max(minHeight, Math.abs((handle === 's' ? original.y + original.height + dy : original.y + dy) - anchorY));
+        let width = height * normalizedRatio;
+        height = Math.min(height, handle === 's' ? 1 - anchorY : anchorY, Math.min(centerX, 1 - centerX) * 2 / normalizedRatio);
+        width = height * normalizedRatio;
+        cropState.rect = { x: centerX - width / 2, y: handle === 's' ? anchorY : anchorY - height, width, height };
+      }
+      return;
+    }
+
+    const east = handle.includes('e');
+    const south = handle.includes('s');
+    const anchorX = east ? original.x : original.x + original.width;
+    const anchorY = south ? original.y : original.y + original.height;
+    const pointerX = clamp(east ? original.x + original.width + dx : original.x + dx, 0, 1);
+    const pointerY = clamp(south ? original.y + original.height + dy : original.y + dy, 0, 1);
+    let width = Math.max(minWidth, Math.abs(pointerX - anchorX));
+    let heightFromWidth = width / normalizedRatio;
+    const heightFromPointer = Math.max(minHeight, Math.abs(pointerY - anchorY));
+    if (Math.abs(dy) > Math.abs(dx)) {
+      heightFromWidth = heightFromPointer;
+      width = heightFromWidth * normalizedRatio;
+    }
+    const maxWidth = east ? 1 - anchorX : anchorX;
+    const maxHeight = south ? 1 - anchorY : anchorY;
+    width = Math.min(width, maxWidth, maxHeight * normalizedRatio);
+    const height = width / normalizedRatio;
+    cropState.rect = {
+      x: east ? anchorX : anchorX - width,
+      y: south ? anchorY : anchorY - height,
+      width, height,
+    };
+  }
+
+  function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+
+  function deleteCurrentProject() {
+    const project = state.current;
+    if (!project || (!project.slug && !project.title)) return;
+    const expected = project.title || project.slug;
+    const confirmation = window.prompt(`Type “${expected}” to remove this project from the editor.`);
+    if (confirmation !== expected) return;
+    if (project.slug) {
+      const deleted = deletedProjectSlugs();
+      if (!deleted.includes(project.slug)) deleted.push(project.slug);
+      localStorage.setItem('bradylin-deleted-projects', JSON.stringify(deleted));
+      localStorage.removeItem(draftKey(project.slug));
+      state.projects = state.projects.filter((item) => item.slug !== project.slug);
+    }
+    loadProject(state.projects[0] || blankProject());
+    setDirty(false, 'Project removed from this browser');
+  }
+
+  function deletedProjectSlugs() {
+    try { return JSON.parse(localStorage.getItem('bradylin-deleted-projects') || '[]'); } catch (_) { return []; }
   }
 
   function markdownPreview(markdown = '') {
@@ -414,8 +778,11 @@
     const safeProject = clone(state.current);
     safeProject.gallery.forEach((item) => {
       if (item.preview?.startsWith('blob:')) item.preview = '';
+      if (item.original?.startsWith('blob:')) item.original = '';
       delete item.fileName;
     });
+    if (safeProject.thumbnailPreview?.startsWith('blob:')) safeProject.thumbnailPreview = '';
+    if (safeProject.thumbnailOriginal?.startsWith('blob:')) safeProject.thumbnailOriginal = '';
     try {
       localStorage.setItem(key, JSON.stringify(safeProject));
       setDirty(false, 'Draft saved in this browser');
@@ -467,10 +834,12 @@
   function yamlString(value) { return JSON.stringify(String(value || '')); }
   function templateFor(id) { return state.templates.find((template) => template.id === id); }
   function slugify(value) { return String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
-  function stripCaptionHtml(value = '') { return String(value).replace(/<\/?strong>/g, ''); }
+  function stripCaptionPrefix(value = '') {
+    return String(value).replace(/^\s*(?:<strong>)?Fig\s+\d+:(?:<\/strong>)?\s*/i, '').trim();
+  }
   function draftKey(slug) { return `bradylin-project-draft:${slug}`; }
   function setDirty(dirty, message) { state.dirty = dirty; el.saveStatus.textContent = message || (dirty ? 'Unsaved changes' : 'No unsaved changes'); }
-  function changed(message) { readForm(); setDirty(true, message || 'Unsaved changes'); renderPreview(); }
+  function changed(message) { readForm(); setDirty(true, message || 'Unsaved changes'); renderThumbnail(); renderPreview(); }
   function confirmDiscard() { return !state.dirty || window.confirm('Discard the unsaved changes in the current editor?'); }
 
   el.form.addEventListener('input', (event) => {
@@ -485,6 +854,23 @@
   el.saveDraft.addEventListener('click', saveDraft);
   el.exportProject.addEventListener('click', exportProject);
   el.addYoutube.addEventListener('click', addYoutube);
+  el.thumbnailInput.addEventListener('change', uploadThumbnail);
+  el.cropThumbnail.addEventListener('click', () => openCrop('thumbnail'));
+  el.removeThumbnail.addEventListener('click', removeThumbnail);
+  el.deleteProject.addEventListener('click', deleteCurrentProject);
+  el.cropPreset.addEventListener('change', () => setCropPreset(el.cropPreset.value));
+  [el.cropWidth, el.cropHeight].forEach((input) => input.addEventListener('input', () => {
+    if (el.cropPreset.value === 'custom') {
+      cropState.rect = largestCenteredRect(presetRatio('custom'));
+      renderCropBox();
+    }
+  }));
+  el.cropBox.addEventListener('pointerdown', beginCropPointer);
+  el.cropBox.addEventListener('pointermove', moveCropPointer);
+  el.cropBox.addEventListener('pointerup', endCropPointer);
+  el.cropBox.addEventListener('pointercancel', endCropPointer);
+  el.resetCrop.addEventListener('click', resetCropControls);
+  el.applyCrop.addEventListener('click', applyCrop);
   el.preview.addEventListener('load', sizePreview);
   new ResizeObserver(sizePreview).observe(el.previewWrap);
   document.querySelectorAll('[data-format]').forEach((button) => button.addEventListener('click', () => formatText(button.dataset.format)));

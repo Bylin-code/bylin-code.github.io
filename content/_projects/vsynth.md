@@ -10,9 +10,9 @@ skills: "Arduino, Audio generation, Basic circuit design"
 thumbnail: "/assets/images/my-projects/vsynth/vsynth3.jpg"
 gallery:
   - image: "/assets/images/my-projects/vsynth/vsynth1.jpg"
-    caption: "<strong>Fig 1:</strong> Internal Circuits of VSYNTH"
+    caption: "Internal Circuits of VSYNTH"
   - image: "/assets/images/my-projects/vsynth/vsynth2.jpg"
-    caption: "<strong>Fig 2:</strong> Close up of VSYNTH's buttons"
+    caption: "Close up of VSYNTH's buttons"
 ---
 
 VSYNTH was made to be easily playable by violinists. The four buttons on the right hand side controls which string is active, and the buttons on the left hand side control the pitch of the string. This control logic is similar to how a violinist changes the pitch of a violin. 

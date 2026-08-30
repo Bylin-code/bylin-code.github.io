@@ -5,7 +5,7 @@ permalink: /admin/project-data.json
 {
   "templates": {{ site.data.project_templates | jsonify }},
   "projects": [
-  {% assign ordered_projects = site.projects | sort: "title" %}
+  {% assign ordered_projects = site.projects | sort: "date" | reverse %}
   {% for project in ordered_projects %}
     {
       "slug": {{ project.slug | jsonify }},

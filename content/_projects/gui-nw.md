@@ -10,9 +10,9 @@ role: "Building Designer"
 skills: "none"
 gallery:
   - image: "/assets/images/gen/projects/project-1-1.webp"
-    caption: "<strong>Fig 1:</strong> North easterly aspect showing curved design"
+    caption: "North easterly aspect showing curved design"
   - image: "/assets/images/gen/projects/project-1-2.webp"
-    caption: "<strong>Fig 2:</strong> Rear offices square design in contrast"
+    caption: "Rear offices square design in contrast"
 ---
 
 Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.

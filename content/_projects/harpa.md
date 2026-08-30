@@ -10,11 +10,11 @@ skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/harpa/harpa1.jpg"
 gallery:
   - image: "/assets/images/my-projects/harpa/harpa3.jpg"
-    caption: "<strong>Fig 1:</strong> Side view"
+    caption: "Side view"
   - image: "/assets/images/my-projects/harpa/harpa7.jpg"
-    caption: "<strong>Fig 2:</strong> Close up on the electronics"
+    caption: "Close up on the electronics"
   - image: "/assets/images/my-projects/harpa/harpa1.jpg"
-    caption: "<strong>Fig 3:</strong> HARPA under the blue sky"
+    caption: "HARPA under the blue sky"
 ---
 **HARPA** is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should "capture some eyeballs," thus, HARPA was born. 
 

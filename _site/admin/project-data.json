@@ -4,22 +4,6 @@
   
   
     {
-      "slug": "buck",
-      "layout": "project-5p",
-      "title": "BUCK",
-      "description": "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE.",
-      "date": "2021-09-20",
-      "client": "",
-      "role": "Lead Engineer & Designer",
-      "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/buck/buck4.jpg",
-      "featured": false,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/buck/buck4.jpg","caption":"<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"},{"image":"/assets/images/my-projects/buck/buck1.jpg","caption":"<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"},{"image":"/assets/images/my-projects/buck/buck2.jpg","caption":"<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck6.jpg","caption":"<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck5.jpg","caption":"<strong>Fig 5:</strong> Precision bucket positioning and mounting hardware"}],
-      "body": "<p>BUCK is a cement bucket drummer robot that my team and I built over my sophomore year of highschool. The lack of good funding meant we had to be extremely efficient with parts sourcing, and we ended up spending under 150 USD for the entire project.</p>\n\n<p>It featured 8 relay-driven solenoids operated by an arduino leonardo. 8 LED strips were located inside the bucket and can be independently controled through MIDI signals. The latency is about 100ms, which was good enough for our purposes. The robot performed live 3 times at various highschool events.</p>\n"
-    },
-  
-    {
       "slug": "dream",
       "layout": "project-6p",
       "title": "DREAM",
@@ -31,24 +15,8 @@
       "thumbnail": "/assets/images/my-projects/dream/dream1.jpg",
       "featured": true,
       "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/dream/dream1.jpg","caption":"<strong>Fig 1:</strong> The objects"},{"image":"/assets/images/my-projects/dream/dream2.jpg","caption":"<strong>Fig 2:</strong> The backend console coordinating communication between the objects"},{"image":"/assets/images/my-projects/dream/dream3.jpg","caption":"<strong>Fig 3:</strong> Radio"},{"image":"/assets/images/my-projects/dream/dream4.jpg","caption":"<strong>Fig 4:</strong> Lamp"},{"image":"/assets/images/my-projects/dream/dream5.jpg","caption":"<strong>Fig 5:</strong> Mirror"},{"image":"/assets/images/my-projects/dream/dream6.jpg","caption":"<strong>Fig 6:</strong> The winning team"}],
+      "gallery": [{"image":"/assets/images/my-projects/dream/dream1.jpg","caption":"The objects"},{"image":"/assets/images/my-projects/dream/dream2.jpg","caption":"The backend console coordinating communication between the objects"},{"image":"/assets/images/my-projects/dream/dream3.jpg","caption":"Radio"},{"image":"/assets/images/my-projects/dream/dream4.jpg","caption":"Lamp"},{"image":"/assets/images/my-projects/dream/dream5.jpg","caption":"Mirror"},{"image":"/assets/images/my-projects/dream/dream6.jpg","caption":"The winning team"}],
       "body": "<p><strong>DREAM</strong> is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. What started as a strange late night idea turned into an experiment in giving everyday objects their own personalities and voices.</p>\n\n<p>The system revolves around four AI powered objects: a lamp, a phone, a mirror, and a speaker. Each object has its own character and way of interpreting the world around it. Instead of acting alone, they communicate through a central console, which serves as the shared hub that allows them to talk to each other, react to what the humans in the room are doing, and build conversations together.</p>\n\n<p>The result is something that sits somewhere between robotics, storytelling, and performance art. It is funny, a little unsettling, and meant to make you think about the silent objects that surround us every day.</p>\n"
-    },
-  
-    {
-      "slug": "dtc",
-      "layout": "project-4p",
-      "title": "DTC",
-      "description": "Projects I did relating to Northwestern's Design Thinking and Communications courses",
-      "date": "2023-12-29",
-      "client": "",
-      "role": "Lead Engineer & Designer",
-      "skills": "none",
-      "thumbnail": "/assets/images/gen/projects/project-1-3-thumbnail.webp",
-      "featured": false,
-      "display": true,
-      "gallery": [{"image":"/assets/images/gen/projects/project-1-3.webp","caption":"<strong>Fig 1:</strong> BUCK bucket solenoid robot drummer in full performance setup"},{"image":"/assets/images/gen/projects/project-2-2.webp","caption":"<strong>Fig 2:</strong> Solenoid actuation system and timing control circuitry"},{"image":"/assets/images/gen/projects/project-3-4.webp","caption":"<strong>Fig 3:</strong> Precision bucket positioning and mounting hardware"},{"image":"/assets/images/gen/projects/project-3-4.webp","caption":"<strong>Fig 4:</strong> Precision bucket positioning and mounting hardware"}],
-      "body": "<p>BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.</p>\n\n<p>The project integrates mechanical engineering principles with musical performance requirements, resulting in a robust and expressive robotic drummer capable of live performance scenarios.</p>\n\n<p>Built with durability and reliability in mind, BUCK demonstrates the intersection of engineering creativity and musical expression, pushing the boundaries of what’s possible in robotic music performance.</p>\n"
     },
   
     {
@@ -63,104 +31,8 @@
       "thumbnail": "/assets/images/my-projects/formjet/formjet4.jpg",
       "featured": true,
       "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/formjet/formjet4.jpg","caption":"<strong>Fig 1:</strong> Side view of the electronics, the UV light is curing"},{"image":"/assets/images/my-projects/formjet/formjet1.jpg","caption":"<strong>Fig 2:</strong> The team"},{"image":"/assets/images/my-projects/formjet/formjet3.jpg","caption":"<strong>Fig 3:</strong> Front View, after a wash"}],
+      "gallery": [{"image":"/assets/images/my-projects/formjet/formjet4.jpg","caption":"Side view of the electronics, the UV light is curing"},{"image":"/assets/images/my-projects/formjet/formjet1.jpg","caption":"The team"},{"image":"/assets/images/my-projects/formjet/formjet3.jpg","caption":"Front View, after a wash"}],
       "body": "<p><strong>FORMJET</strong> is a hackathon project my team and I built in 48 hours to tackle one painfully familiar problem: the messy, multi-step post-processing workflow of SLA 3D printing. In this project, I owned the design and implementation of all electronics and embedded firmware, and also supported my teammates with CAD, mechanical design, and overall systems integration.</p>\n\n<p>SLA (stereolithography) produces parts by selectively curing liquid resin layer-by-layer. Because print speed is primarily limited by Z-axis motion and resolution is driven by a high-resolution LCD, SLA is an excellent method for producing large batches of highly detailed parts. The bottleneck, however, is post-processing: multiple cycles of washing in isopropyl alcohol, rinsing, drying, heating, and UV curing. It’s slow, messy, and not especially safe to do in a typical workspace.</p>\n\n<p>FORMJET compresses this entire workflow into a single, automated station while improving safety and usability. We wanted to eliminate open tanks of IPA, so we instead explored using Formlabs’ FormWash solution. While safer, this solution is not widely adopted because it leaves behind a slimy residue that’s difficult to remove when parts are simply submerged.</p>\n\n<p>To solve this, we designed a shower-style washing system. I built the fluid control system using a pump and solenoid-actuated ball valves to seamlessly switch between FormWash solution and clean water, allowing residue to be rinsed off in one continuous process. Mechanically, the part is mounted on a two-axis stepper-driven system: the nozzle traverses the Z-axis while the part rotates, ensuring uniform coverage from all angles.</p>\n\n<p>After washing, an array of UV LEDs cures the part while it spins, helping it dry evenly and preventing pooling or streaking. I wrote the firmware to coordinate the pump, valves, stepper motors, and UV LEDs into a single automated wash-and-cure cycle, effectively turning what used to be a messy, multi-step manual process into a one-button operation.</p>\n"
-    },
-  
-    {
-      "slug": "gui-nw",
-      "layout": "project-2p",
-      "title": "GUI-NW",
-      "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
-      "date": "2022-09-29",
-      "client": "",
-      "role": "Building Designer",
-      "skills": "none",
-      "thumbnail": "/assets/images/gen/projects/project-1-1-thumbnail.webp",
-      "featured": false,
-      "display": true,
-      "gallery": [{"image":"/assets/images/gen/projects/project-1-1.webp","caption":"<strong>Fig 1:</strong> North easterly aspect showing curved design"},{"image":"/assets/images/gen/projects/project-1-2.webp","caption":"<strong>Fig 2:</strong> Rear offices square design in contrast"}],
-      "body": "<p>Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.</p>\n\n<p>The practice, which began in the prehistoric era, has been used as a way of expressing culture for civilizations on all seven continents.</p>\n\n<p>Architecture began as rural, oral vernacular architecture that developed from trial and error to successful replication. Ancient urban architecture was preoccupied with building religious structures and buildings symbolizing the political power of rulers until Greek and Roman architecture shifted focus to civic virtues.</p>\n"
-    },
-  
-    {
-      "slug": "harpa",
-      "layout": "project-3p",
-      "title": "HARPA",
-      "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
-      "date": "2022-09-29",
-      "client": "",
-      "role": "Engineer",
-      "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/harpa/harpa1.jpg",
-      "featured": false,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/harpa/harpa3.jpg","caption":"<strong>Fig 1:</strong> Side view"},{"image":"/assets/images/my-projects/harpa/harpa7.jpg","caption":"<strong>Fig 2:</strong> Close up on the electronics"},{"image":"/assets/images/my-projects/harpa/harpa1.jpg","caption":"<strong>Fig 3:</strong> HARPA under the blue sky"}],
-      "body": "<p><strong>HARPA</strong> is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should “capture some eyeballs,” thus, HARPA was born.</p>\n\n<p>21 servos are attached to an adjustable 2020 aluminum extrusion rail mounted on a 3D printed frame. Each servo has a hand-carved silicone plug designed to produce a pluck that sounds like that of a human finger. An Arduino Leonardo handles the MIDI signal processing while an Arduino Mega controls the servos with it’s many PWM-enabled pins. The two MCUs communicate with each other over I2C.</p>\n\n<p>HARPA is still standing in the makerspace and enternains visitors once in a while. Here’s a link to a video of it in action:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jgN24XgvbMA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n"
-    },
-  
-    {
-      "slug": "kermit",
-      "layout": "project-5p",
-      "title": "KERMIT",
-      "description": "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place.",
-      "date": "2025-05-08",
-      "client": "",
-      "role": "Engineer & Designer",
-      "skills": "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing",
-      "thumbnail": "/assets/images/my-projects/kermit/kermit8.jpg",
-      "featured": true,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/kermit/kermit1.jpg","caption":"<strong>Fig 1:</strong> KERMIT looking at you with his froggy eyes"},{"image":"/assets/images/my-projects/kermit/kermit6.jpg","caption":"<strong>Fig 2:</strong> KERMIT's actual eyes, an OV7670 camera module"},{"image":"/assets/images/my-projects/kermit/kermit2.jpg","caption":"<strong>Fig 3:</strong> KERMIT's electronics on a breadboard."},{"image":"/assets/images/my-projects/kermit/kermit9.jpg","caption":"<strong>Fig 4:</strong> Schematics in KiCAD"},{"image":"/assets/images/my-projects/kermit/kermit11.jpg","caption":"<strong>Fig 5:</strong> CAD assembly"}],
-      "body": "<p><strong>KERMIT</strong> is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.</p>\n\n<p>KERMIT is powered by dual belt-driven DC motors, controlled by a Raspberry Pi Pico running firmware written in the C SDK. A simple PID controller is used to maintain a constant distance from the line, while a camera mounted on the front of the robot captures the horizontal position of the line and sends it to the Pico over I2C.</p>\n\n<p>The firmware averages the captured image into a line of pixels, it then calculates the center of mass of the line’s brightness and uses that to calculate the error for the PID controller.</p>\n\n"
-    },
-  
-    {
-      "slug": "mdpj",
-      "layout": "project-5p",
-      "title": "MDPJ",
-      "description": "A mural exhibition with a music-synched and choreographed light show involving more than 200 students",
-      "date": "2023-08-03",
-      "client": "",
-      "role": "Project Manager",
-      "skills": "Leadership, Parts sourcing",
-      "thumbnail": "/assets/images/my-projects/mdpj/mdpj1.jpg",
-      "featured": false,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/mdpj/mdpj1.jpg","caption":"<strong>Fig 1:</strong> The view at night"},{"image":"/assets/images/my-projects/mdpj/mdpj8.jpg","caption":"<strong>Fig 2:</strong> Taping out the letters of the mural before the students paint them"},{"image":"/assets/images/my-projects/mdpj/mdpj10.jpg","caption":"<strong>Fig 3:</strong> Early conceptual sketches"},{"image":"/assets/images/my-projects/mdpj/mdpj6.jpg","caption":"<strong>Fig 4:</strong> Rescuing the mural from the rain"},{"image":"/assets/images/my-projects/mdpj/mdpj7.jpg","caption":"<strong>Fig 5:</strong> Each Panel of the mural"}],
-      "body": "<p>MDPJ, or Microdistance Project, is a part of a liberal arts summer program in China my friends and I ran all throughout highschool. The program brings in experts in different fields to lead discussions, each one leading a small group of highschool students to deeply explore a topic. The centerpiece of this week-long program was MDPJ.</p>\n\n<p>Every year’s MDPJ should satisfy three criteria: memorable to participants, engaging to observers, and should emphasize both the invuviduality and cohesiveness of the different groups involved.</p>\n\n<p>For my final year working on MDPJ, I planned to have every group paint a translucent mural, each corresponding to a letter of MICRODISTANCE 2023 and should represent the spirit of the group. Once the murals were completed, they would be displayed in a gallery-style exhibition, outside at night, with a music-synched and choreographed light show.</p>\n\n<p>In five days, my team and I brought the exhibition to life: designing the light show, sourcing materials from factories, and preparing the space. When the day arrived, I guided 200 students and their instructors as they painted vibrant murals. We sang and danced as the lights and music weaved around us.</p>\n"
-    },
-  
-    {
-      "slug": "pulse",
-      "layout": "project-6p",
-      "title": "PULSE",
-      "description": "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control.",
-      "date": "2025-06-12",
-      "client": "",
-      "role": "Lead Engineer",
-      "skills": "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging",
-      "thumbnail": "/assets/images/my-projects/pulse/pulse8.jpg",
-      "featured": true,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/pulse/pulse18.jpg","caption":"<strong>Fig 1:</strong> Clear view of PULSE's mechanical and electrical components"},{"image":"/assets/images/my-projects/pulse/pulse7.jpg","caption":"<strong>Fig 2:</strong> My team and I after PULSE's debut performance"},{"image":"/assets/images/my-projects/pulse/pulse19.jpg","caption":"<strong>Fig 3:</strong> Full CAD assembly with 100+ parts all eventually fabricated and integrated with the electronics."},{"image":"/assets/images/my-projects/pulse/pulse4.jpg","caption":"<strong>Fig 4:</strong> Rows of drummer arm units that just went through the assembly line."},{"image":"/assets/images/my-projects/pulse/pulse3.jpg","caption":"<strong>Fig 5:</strong> An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"},{"image":"/assets/images/my-projects/pulse/pulse20.jpg","caption":"<strong>Fig 6:</strong> Ultra high-tech state-of-the-art sheet-metal manufacturing methods"}],
-      "body": "<p><strong>PULSE</strong> is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology.</p>\n\n<p>The robot has a welded stainless steel base, 7 servo-actuated arms, 2 solenoid actuated kicks, 3 stepper motors, 3 speakers, and an LCD screen face, all coordinated by a microcontroller and raspberry pi communicating through I2C.</p>\n\n<p>What started as an ambitious eight-month build turned into a test of resilience: parts shortages, firmware conflicts, machining errors, even shifting team dynamics. Yet when PULSE finally took the stage at our debut performance, the sense of fulfillment was indescribable.</p>\n"
-    },
-  
-    {
-      "slug": "stradex",
-      "layout": "project-7p",
-      "title": "STRADEX",
-      "description": "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics.",
-      "date": "2025-09-03",
-      "client": "",
-      "role": "Maker",
-      "skills": "CAD, PCB design, Embedded development, Rapid prototyping",
-      "thumbnail": "assets/images/my-projects/stradex/stradex12.jpg",
-      "featured": true,
-      "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/stradex/stradex3.jpg","caption":"<strong>Fig 1:</strong> Stradex1, held in playing position"},{"image":"/assets/images/my-projects/stradex/stradex7.jpg","caption":"<strong>Fig 2:</strong> Full CAD model, including the PCB inside OnShape"},{"image":"/assets/images/my-projects/stradex/stradex8.jpg","caption":"<strong>Fig 3:</strong> CAD model of the key, designed to be easily assembled with only 3D printed parts"},{"image":"/assets/images/my-projects/stradex/stradex11.jpg","caption":"<strong>Fig 4:</strong> Some of the previous iterations of the keys, improved upon over time"},{"image":"/assets/images/my-projects/stradex/stradex10.jpg","caption":"<strong>Fig 5:</strong> A breadboard prototype of the circuitry, used for pre-pcb testing"},{"image":"/assets/images/my-projects/stradex/stradex13.jpg","caption":"<strong>Fig 6:</strong> Schematic of Stradex"},{"image":"/assets/images/my-projects/stradex/stradex14.jpg","caption":"<strong>Fig 7:</strong> PCB design of Stradex"}],
-      "body": "<p>I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.</p>\n\n<p>Stradex features a SoftPot linear resistor to emulate the violin’s fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range &amp; modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player.</p>\n\n<p>This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the head-scratching was in the embedded firmware—namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysteresis, and numerous serial optimizations to ensure the controller intelligently decided when to send MIDI signals and when to ignore them.</p>\n\n<p>I’m currently developing a component-level PCB version of STRADEX, which should reduce manufacturing costs in the long run.</p>\n\n<p>Build Video &amp; Demo:</p>\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0cMQYN_HLao?start=13\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n\n<p>This project is fully open-sourced. If you want to build one for your self: <a href=\"https://github.com/Bylin-code/Stradex1/tree/main\">Stradex1 GitHub</a></p>\n\n<p>Also featured on <a href=\"https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced\">Hackaday</a></p>\n"
     },
   
     {
@@ -175,8 +47,120 @@
       "thumbnail": "/assets/images/my-projects/swapxy/swapxy1.jpg",
       "featured": false,
       "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/swapxy/swapxy1.jpg","caption":"<strong>Fig 1:</strong> CAD of the CoreXY gantry system"}],
+      "gallery": [{"image":"/assets/images/my-projects/swapxy/swapxy1.jpg","caption":"CAD of the CoreXY gantry system"}],
       "body": "<p>At Northwestern’s Center for Robotics and Biosystems, I’m developing a 1.5 m × 1.5 m CoreXY gantry system to autonomously manage a 150-drone battery-swap array. The project blends mechanical design, fabrication, and embedded systems, with over 100 custom parts created through 3D printing, laser cutting, and machining.</p>\n\n<p>After completing a scaled down version of the final product, I redesigned the gantry’s architecture to dramatically cut unwanted torque and reduce racking from ~8° to less than 0.5°, while also integrating closed-loop stepper control and I²C networking for 20+ charging nodes. The result is a scalable platform that combines precision motion with robust distributed electronics.</p>\n\n<p>This project is still in progress, which is why photos and final results are limited for now. Feel free to reach out to me directly for the latest updates.</p>\n"
+    },
+  
+    {
+      "slug": "stradex",
+      "layout": "project-7p",
+      "title": "STRADEX",
+      "description": "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics.",
+      "date": "2025-09-03",
+      "client": "",
+      "role": "Maker",
+      "skills": "CAD, PCB design, Embedded development, Rapid prototyping",
+      "thumbnail": "/assets/images/my-projects/stradex/stradex12.jpg",
+      "featured": true,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/stradex/stradex3.jpg","caption":"Stradex1, held in playing position"},{"image":"/assets/images/my-projects/stradex/stradex7.jpg","caption":"Full CAD model, including the PCB inside OnShape"},{"image":"/assets/images/my-projects/stradex/stradex8.jpg","caption":"CAD model of the key, designed to be easily assembled with only 3D printed parts"},{"image":"/assets/images/my-projects/stradex/stradex11.jpg","caption":"Some of the previous iterations of the keys, improved upon over time"},{"image":"/assets/images/my-projects/stradex/stradex10.jpg","caption":"A breadboard prototype of the circuitry, used for pre-pcb testing"},{"image":"/assets/images/my-projects/stradex/stradex13.jpg","caption":"Schematic of Stradex"},{"image":"/assets/images/my-projects/stradex/stradex14.jpg","caption":"PCB design of Stradex"}],
+      "body": "<p>I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.</p>\n\n<p>Stradex features a SoftPot linear resistor to emulate the violin’s fingerboard, four custom force-sensitive keys to emulate the strings, and three potentiometers for range &amp; modulation control. This setup allows Stradex to generate pitch bends, vibrato, dynamic expression, and incredible range, all while remaining intuitive for the average string player.</p>\n\n<p>This project took me a good while. Sure, there was a lot of time spent fiddling with faulty ADS1115 chips and iterating on key designs, but most of the head-scratching was in the embedded firmware—namely, the MIDI signal interface. Many digital signal filtering and processing techniques had to be employed, including buffering, low-pass filtering, digital hysteresis, and numerous serial optimizations to ensure the controller intelligently decided when to send MIDI signals and when to ignore them.</p>\n\n<p>I’m currently developing a component-level PCB version of STRADEX, which should reduce manufacturing costs in the long run.</p>\n\n<p>Build Video &amp; Demo:</p>\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0cMQYN_HLao?start=13\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n\n<p>This project is fully open-sourced. If you want to build one for your self: <a href=\"https://github.com/Bylin-code/Stradex1/tree/main\">Stradex1 GitHub</a></p>\n\n<p>Also featured on <a href=\"https://hackaday.com/2025/10/07/a-childhood-dream-created-and-open-sourced\">Hackaday</a></p>\n"
+    },
+  
+    {
+      "slug": "pulse",
+      "layout": "project-6p",
+      "title": "PULSE",
+      "description": "A six-armed robot drummer built with Teensy and RasPi, integrating MIDI velocity curves, servo actuation, and synced stepper motion control.",
+      "date": "2025-06-12",
+      "client": "",
+      "role": "Lead Engineer",
+      "skills": "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging",
+      "thumbnail": "/assets/images/my-projects/pulse/pulse8.jpg",
+      "featured": true,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/pulse/pulse18.jpg","caption":"Clear view of PULSE's mechanical and electrical components"},{"image":"/assets/images/my-projects/pulse/pulse7.jpg","caption":"My team and I after PULSE's debut performance"},{"image":"/assets/images/my-projects/pulse/pulse19.jpg","caption":"Full CAD assembly with 100+ parts all eventually fabricated and integrated with the electronics."},{"image":"/assets/images/my-projects/pulse/pulse4.jpg","caption":"Rows of drummer arm units that just went through the assembly line."},{"image":"/assets/images/my-projects/pulse/pulse3.jpg","caption":"An early conceptual sketch I used to pitch PULSE to my team and to NU's faculty"},{"image":"/assets/images/my-projects/pulse/pulse20.jpg","caption":"Ultra high-tech state-of-the-art sheet-metal manufacturing methods"}],
+      "body": "<p><strong>PULSE</strong> is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology.</p>\n\n<p>The robot has a welded stainless steel base, 7 servo-actuated arms, 2 solenoid actuated kicks, 3 stepper motors, 3 speakers, and an LCD screen face, all coordinated by a microcontroller and raspberry pi communicating through I2C.</p>\n\n<p>What started as an ambitious eight-month build turned into a test of resilience: parts shortages, firmware conflicts, machining errors, even shifting team dynamics. Yet when PULSE finally took the stage at our debut performance, the sense of fulfillment was indescribable.</p>\n"
+    },
+  
+    {
+      "slug": "kermit",
+      "layout": "project-5p",
+      "title": "KERMIT",
+      "description": "A low-level computer vision line following robot. Final project for graduate-level mechatronics course. Won first place.",
+      "date": "2025-05-08",
+      "client": "",
+      "role": "Engineer & Designer",
+      "skills": "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing",
+      "thumbnail": "/assets/images/my-projects/kermit/kermit8.jpg",
+      "featured": true,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/kermit/kermit1.jpg","caption":"KERMIT looking at you with his froggy eyes"},{"image":"/assets/images/my-projects/kermit/kermit6.jpg","caption":"KERMIT's actual eyes, an OV7670 camera module"},{"image":"/assets/images/my-projects/kermit/kermit2.jpg","caption":"KERMIT's electronics on a breadboard."},{"image":"/assets/images/my-projects/kermit/kermit9.jpg","caption":"Schematics in KiCAD"},{"image":"/assets/images/my-projects/kermit/kermit11.jpg","caption":"CAD assembly"}],
+      "body": "<p><strong>KERMIT</strong> is a low-level computer vision line following robot that I built as the final project for a graduate-level mechatronics class. The project won first place in the class competition for the fastest robot to go one loop around the course.</p>\n\n<p>KERMIT is powered by dual belt-driven DC motors, controlled by a Raspberry Pi Pico running firmware written in the C SDK. A simple PID controller is used to maintain a constant distance from the line, while a camera mounted on the front of the robot captures the horizontal position of the line and sends it to the Pico over I2C.</p>\n\n<p>The firmware averages the captured image into a line of pixels, it then calculates the center of mass of the line’s brightness and uses that to calculate the error for the PID controller.</p>\n\n"
+    },
+  
+    {
+      "slug": "dtc",
+      "layout": "project-4p",
+      "title": "DTC",
+      "description": "Projects I did relating to Northwestern's Design Thinking and Communications courses",
+      "date": "2023-12-29",
+      "client": "",
+      "role": "Lead Engineer & Designer",
+      "skills": "none",
+      "thumbnail": "/assets/images/gen/projects/project-1-3-thumbnail.webp",
+      "featured": false,
+      "display": true,
+      "gallery": [{"image":"/assets/images/gen/projects/project-1-3.webp","caption":"BUCK bucket solenoid robot drummer in full performance setup"},{"image":"/assets/images/gen/projects/project-2-2.webp","caption":"Solenoid actuation system and timing control circuitry"},{"image":"/assets/images/gen/projects/project-3-4.webp","caption":"Precision bucket positioning and mounting hardware"},{"image":"/assets/images/gen/projects/project-3-4.webp","caption":"Precision bucket positioning and mounting hardware"}],
+      "body": "<p>BUCK represents an innovative approach to robotic percussion, combining industrial solenoids with repurposed bucket drums to create a unique musical instrument. The system features precise timing control, multiple percussion elements, and the ability to perform complex rhythmic patterns.</p>\n\n<p>The project integrates mechanical engineering principles with musical performance requirements, resulting in a robust and expressive robotic drummer capable of live performance scenarios.</p>\n\n<p>Built with durability and reliability in mind, BUCK demonstrates the intersection of engineering creativity and musical expression, pushing the boundaries of what’s possible in robotic music performance.</p>\n"
+    },
+  
+    {
+      "slug": "mdpj",
+      "layout": "project-5p",
+      "title": "MDPJ",
+      "description": "A mural exhibition with a music-synched and choreographed light show involving more than 200 students",
+      "date": "2023-08-03",
+      "client": "",
+      "role": "Project Manager",
+      "skills": "Leadership, Parts sourcing",
+      "thumbnail": "/assets/images/my-projects/mdpj/mdpj1.jpg",
+      "featured": false,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/mdpj/mdpj1.jpg","caption":"The view at night"},{"image":"/assets/images/my-projects/mdpj/mdpj8.jpg","caption":"Taping out the letters of the mural before the students paint them"},{"image":"/assets/images/my-projects/mdpj/mdpj10.jpg","caption":"Early conceptual sketches"},{"image":"/assets/images/my-projects/mdpj/mdpj6.jpg","caption":"Rescuing the mural from the rain"},{"image":"/assets/images/my-projects/mdpj/mdpj7.jpg","caption":"Each Panel of the mural"}],
+      "body": "<p>MDPJ, or Microdistance Project, is a part of a liberal arts summer program in China my friends and I ran all throughout highschool. The program brings in experts in different fields to lead discussions, each one leading a small group of highschool students to deeply explore a topic. The centerpiece of this week-long program was MDPJ.</p>\n\n<p>Every year’s MDPJ should satisfy three criteria: memorable to participants, engaging to observers, and should emphasize both the invuviduality and cohesiveness of the different groups involved.</p>\n\n<p>For my final year working on MDPJ, I planned to have every group paint a translucent mural, each corresponding to a letter of MICRODISTANCE 2023 and should represent the spirit of the group. Once the murals were completed, they would be displayed in a gallery-style exhibition, outside at night, with a music-synched and choreographed light show.</p>\n\n<p>In five days, my team and I brought the exhibition to life: designing the light show, sourcing materials from factories, and preparing the space. When the day arrived, I guided 200 students and their instructors as they painted vibrant murals. We sang and danced as the lights and music weaved around us.</p>\n"
+    },
+  
+    {
+      "slug": "harpa",
+      "layout": "project-3p",
+      "title": "HARPA",
+      "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
+      "date": "2022-09-29",
+      "client": "",
+      "role": "Engineer",
+      "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
+      "thumbnail": "/assets/images/my-projects/harpa/harpa1.jpg",
+      "featured": false,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/harpa/harpa3.jpg","caption":"Side view"},{"image":"/assets/images/my-projects/harpa/harpa7.jpg","caption":"Close up on the electronics"},{"image":"/assets/images/my-projects/harpa/harpa1.jpg","caption":"HARPA under the blue sky"}],
+      "body": "<p><strong>HARPA</strong> is a self-playing harp I built over two weekends in the start of my junior year of highschool. My school commisioned me to build an acoustic structure that would be displayed by the makerspace and should “capture some eyeballs,” thus, HARPA was born.</p>\n\n<p>21 servos are attached to an adjustable 2020 aluminum extrusion rail mounted on a 3D printed frame. Each servo has a hand-carved silicone plug designed to produce a pluck that sounds like that of a human finger. An Arduino Leonardo handles the MIDI signal processing while an Arduino Mega controls the servos with it’s many PWM-enabled pins. The two MCUs communicate with each other over I2C.</p>\n\n<p>HARPA is still standing in the makerspace and enternains visitors once in a while. Here’s a link to a video of it in action:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jgN24XgvbMA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n"
+    },
+  
+    {
+      "slug": "gui-nw",
+      "layout": "project-2p",
+      "title": "GUI-NW",
+      "description": "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers.",
+      "date": "2022-09-29",
+      "client": "",
+      "role": "Building Designer",
+      "skills": "none",
+      "thumbnail": "/assets/images/gen/projects/project-1-1-thumbnail.webp",
+      "featured": false,
+      "display": true,
+      "gallery": [{"image":"/assets/images/gen/projects/project-1-1.webp","caption":"North easterly aspect showing curved design"},{"image":"/assets/images/gen/projects/project-1-2.webp","caption":"Rear offices square design in contrast"}],
+      "body": "<p>Architecture is both the process and the product of planning, designing, and constructing buildings or other structures.Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art.</p>\n\n<p>The practice, which began in the prehistoric era, has been used as a way of expressing culture for civilizations on all seven continents.</p>\n\n<p>Architecture began as rural, oral vernacular architecture that developed from trial and error to successful replication. Ancient urban architecture was preoccupied with building religious structures and buildings symbolizing the political power of rulers until Greek and Roman architecture shifted focus to civic virtues.</p>\n"
     },
   
     {
@@ -188,11 +172,27 @@
       "client": "",
       "role": "Engineer & Designer",
       "skills": "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing",
-      "thumbnail": "assets/images/my-projects/torin/torin11.jpg",
+      "thumbnail": "/assets/images/my-projects/torin/torin11.jpg",
       "featured": false,
       "display": true,
-      "gallery": [{"image":"assets/images/my-projects/torin/torin12.jpg","caption":"<strong>Fig 1:</strong> TORIN squeezing through a hole half it's cross-sectional area"},{"image":"assets/images/my-projects/torin/torin9.jpg","caption":"<strong>Fig 2:</strong> TORIN's chassis and electronics"},{"image":"assets/images/my-projects/torin/torin6.jpg","caption":"<strong>Fig 3:</strong> Testing RC controller integration"},{"image":"assets/images/my-projects/torin/torin13.jpg","caption":"<strong>Fig 4:</strong> Three of many prototypical designs that were tested"}],
+      "gallery": [{"image":"/assets/images/my-projects/torin/torin12.jpg","caption":"TORIN squeezing through a hole half it's cross-sectional area"},{"image":"/assets/images/my-projects/torin/torin9.jpg","caption":"TORIN's chassis and electronics"},{"image":"/assets/images/my-projects/torin/torin6.jpg","caption":"Testing RC controller integration"},{"image":"/assets/images/my-projects/torin/torin13.jpg","caption":"Three of many prototypical designs that were tested"}],
       "body": "<p><strong>TORIN</strong> was inspired by a method of locomotion used by amoebas called Whole Skin Locomotion, where they move by pulling in the skin near the front of their body and expelling it out the back. You can imagine it as a torus endlessly turning itself inside-out, a seamless loop of surface motion generating forward movement.</p>\n\n<p>My robot does exactly that. Four motors are mechanically pressed agains a tubular plastic membrane, which is then flipped inside out to wrap around the whole body of the robot. When the motors are turned on, the membrane is pulled inwards by a front chassis while expelled outwards by a rear chassis, generating forward movement. Steering is done by four chords between the two chassis that are pulled in or out using 4 additional motors, allowing the robot to turn left or right.</p>\n\n<p>The robot is able to move at a speed of 10 cm/s and can squeeze through holes half its cross-sectional area.</p>\n"
+    },
+  
+    {
+      "slug": "buck",
+      "layout": "project-5p",
+      "title": "BUCK",
+      "description": "A bucket solenoid robot drummer with synchronized RGB lighting my team and I built in highschool. It was the precursor to PULSE.",
+      "date": "2021-09-20",
+      "client": "",
+      "role": "Lead Engineer & Designer",
+      "skills": "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing",
+      "thumbnail": "/assets/images/my-projects/buck/buck4.jpg",
+      "featured": false,
+      "display": true,
+      "gallery": [{"image":"/assets/images/my-projects/buck/buck4.jpg","caption":"BUCK bucket solenoid robot drummer in full performance setup"},{"image":"/assets/images/my-projects/buck/buck1.jpg","caption":"Solenoid actuation system and timing control circuitry"},{"image":"/assets/images/my-projects/buck/buck2.jpg","caption":"Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck6.jpg","caption":"Precision bucket positioning and mounting hardware"},{"image":"/assets/images/my-projects/buck/buck5.jpg","caption":"Precision bucket positioning and mounting hardware"}],
+      "body": "<p>BUCK is a cement bucket drummer robot that my team and I built over my sophomore year of highschool. The lack of good funding meant we had to be extremely efficient with parts sourcing, and we ended up spending under 150 USD for the entire project.</p>\n\n<p>It featured 8 relay-driven solenoids operated by an arduino leonardo. 8 LED strips were located inside the bucket and can be independently controled through MIDI signals. The latency is about 100ms, which was good enough for our purposes. The robot performed live 3 times at various highschool events.</p>\n"
     },
   
     {
@@ -207,7 +207,7 @@
       "thumbnail": "/assets/images/my-projects/vsynth/vsynth3.jpg",
       "featured": false,
       "display": true,
-      "gallery": [{"image":"/assets/images/my-projects/vsynth/vsynth1.jpg","caption":"<strong>Fig 1:</strong> Internal Circuits of VSYNTH"},{"image":"/assets/images/my-projects/vsynth/vsynth2.jpg","caption":"<strong>Fig 2:</strong> Close up of VSYNTH's buttons"}],
+      "gallery": [{"image":"/assets/images/my-projects/vsynth/vsynth1.jpg","caption":"Internal Circuits of VSYNTH"},{"image":"/assets/images/my-projects/vsynth/vsynth2.jpg","caption":"Close up of VSYNTH's buttons"}],
       "body": "<p>VSYNTH was made to be easily playable by violinists. The four buttons on the right hand side controls which string is active, and the buttons on the left hand side control the pitch of the string. This control logic is similar to how a violinist changes the pitch of a violin.</p>\n\n<p>Other than that, VSYNTH is a simple arduino-based square-wave generator with a few potentiometer knobs to control the volume and tone: one for volume, two for high-cut and low-cut RC filters.</p>\n\n<p>Here’s a video of it playing the Zelda theme:</p>\n\n<div class=\"video-container\">\n  <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/49CzriqTJio\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\"></iframe>\n</div>\n"
     }
   

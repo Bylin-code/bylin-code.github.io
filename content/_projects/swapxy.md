@@ -10,7 +10,7 @@ skills: "CAD, 3D Printing, Laser Cutting, Machining, Embedded Systems, Control S
 thumbnail: "/assets/images/my-projects/swapxy/swapxy1.jpg"
 gallery:
   - image: "/assets/images/my-projects/swapxy/swapxy1.jpg"
-    caption: "<strong>Fig 1:</strong> CAD of the CoreXY gantry system"
+    caption: "CAD of the CoreXY gantry system"
 
 ---
 At Northwestern’s Center for Robotics and Biosystems, I’m developing a 1.5 m × 1.5 m CoreXY gantry system to autonomously manage a 150-drone battery-swap array. The project blends mechanical design, fabrication, and embedded systems, with over 100 custom parts created through 3D printing, laser cutting, and machining.

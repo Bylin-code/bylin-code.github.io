@@ -60,7 +60,7 @@ body_classes: page-project
           {% for item in page.gallery limit: limit %}
             <div class="gallery-item">
               <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy"/></div>
-              <div class="gallery-caption">{{ item.caption }}</div>
+              {% include project/figure-caption.html number=forloop.index caption=item.caption %}
             </div>
           {% endfor %}
         </div>
