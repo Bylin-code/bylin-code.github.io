@@ -2,7 +2,7 @@
 layout: resume
 title: Resume
 permalink: "/resume/"
-resume_file: "/assets/files/brady_resume.pdf"
+resume_file: "/assets/files/brady-lin-resume.pdf"
 experience_gallery:
   - image: "/assets/images/resume/XP1.jpg"
     alt: ""
