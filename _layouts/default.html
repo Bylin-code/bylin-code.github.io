@@ -11,11 +11,10 @@
 
     <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
 
-    {% if site.darkmode.enable_dark_mode != false %}
-      <script>
-          localStorage.getItem('darkMode') === 'true' && document.documentElement.setAttribute('data-bs-theme', 'dark');
-      </script>
-    {% endif %}
+    <script>
+      localStorage.removeItem('darkMode');
+      document.documentElement.removeAttribute('data-bs-theme');
+    </script>
 
     {% if site.cookie_banner.enabled %}
       {% include meta/cookie-consent.html %}
@@ -46,7 +45,6 @@
   <script type="text/javascript" src="{{ '/assets/js/header.js' | relative_url }}"></script>
 {% endif %}
 <script type="text/javascript" src="{{ '/assets/js/hamburger.js' | relative_url }}"></script>
-<script type="text/javascript" src="{{ '/assets/js/darkModeSwitch.js' | relative_url }}"></script>
 
 {% include meta/google-analytics.html %}
 {% include meta/plausible-analytics.html %}
