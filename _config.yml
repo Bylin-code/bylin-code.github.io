@@ -36,6 +36,7 @@ sass:
 
 # Excludes
 exclude:
+  - vendor
   - Gemfile
   - Gemfile.lock
   - README.md

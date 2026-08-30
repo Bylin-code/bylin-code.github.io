@@ -34,9 +34,9 @@ jobs:
         shell: bash
         run: |
           rm -rf _site
-          if ! bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" > build.log 2>&1; then
-            tail -100 build.log
-            message=$(tail -40 build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')
+          if ! bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" > /tmp/jekyll-build.log 2>&1; then
+            tail -100 /tmp/jekyll-build.log
+            message=$(tail -40 /tmp/jekyll-build.log | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')
             echo "::error title=Jekyll build failed::$message"
             exit 1
           fi
