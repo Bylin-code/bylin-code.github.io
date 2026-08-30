@@ -2,8 +2,8 @@
 layout: home
 body_classes: page-home
 permalink: "/"
-title: "I'm Brady, a Full-Stack Mechatronics Engineer Passionate About Bringing Products From the Ground Up"
-description: "Turning ideas into working systems is my obsession. I build and oversee full-stack electromechanical systems, spanning CAD and manufacturing, circuit analysis and PCB design, RTOS development, and embedded firmware. And to the recruiters, here's my [resume](/resume/)!"
+title: "I'm Brady. I Turn Concepts Into Working Products: Hardware, Software, and Everything Between"
+description: "My obsession: ideas that become working machines. I design PCBs, model in CAD, write RTOS and embedded code, and build the robot software that ties it all together. Here's my [resume](/resume/) if you're hiring."
 cta_text: "Check out what I've been working on"
 meta_description: "Brady Lin - Full-Stack Mechatronics Engineer"
 meta_title: Brady Lin - Full-Stack Mechatronics Engineer

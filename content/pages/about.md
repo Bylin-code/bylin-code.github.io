@@ -11,11 +11,11 @@ gallery:
     caption: "<strong>Above:</strong> My team and I after our robot drummer's debut live performance."
 gallery_limit: 2
 ---
-Hey! This is Brady. On paper, I'm an electrical engineering student at Northwestern, but I'd like to think of myself more as an artist who treats engineering disciplines (in all its shapes and sizes) as a means, not an end. 
+Hey, I'm Brady. On paper, I'm an electrical engineering student at Northwestern. In practice, I'm an artist who treats engineering disciplines — all of them — as a means, not an end.
 
-Our institutions love putting boxes around people: "he's a MechE, he can't code," "she's a ChemE, don't make her draw schematics." Intentional or not, this system imposes an identity that deters individuals from exploring beyond their labels—and that's where the majority of interesting work actually happens.
+Our institutions love putting boxes around people: "he's a MechE, he can't code," "she's a ChemE, don't make her draw schematics." Intentional or not, this trains people to stop exploring beyond their labels — and that's where most of the interesting work actually happens.
 
-Mind you, I'm not condemning specialization; deep expertise is how real things get built and shipped. I do believe, though, in a world where tools of automation are abundant and problems are messy across disciplines, knowing what to build (and why) is a matter of discernment, and there’s an art to that. 
+Mind you, I'm not condemning specialization; deep expertise is how real things get built and shipped. I do believe, though, in a world where tools of automation are abundant and problems are messy across disciplines, knowing what to build, and why, is the real skill. That's the art I'm practicing.
 
 Outside of engineering, I enjoy singing with my a cappella group, hostel hopping, producing EDM music, and keeping pet ant colonies (ask me about it).
 
