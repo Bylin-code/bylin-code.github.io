@@ -1,0 +1,27 @@
+---
+layout: default
+body_classes: page-resume
+---
+
+<div class="section pt-6 pb-6">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="resume-document">
+          <object class="resume-pdf" data="{{ page.resume_file | relative_url }}#view=FitH" type="application/pdf">
+            <p>Your browser cannot display the PDF here. <a href="{{ page.resume_file | relative_url }}">Open or download the resume.</a></p>
+          </object>
+        </div>
+      </div>
+
+      <aside class="col-12 col-lg-4 resume-experience" aria-label="Experience photos">
+        {% for item in page.experience_gallery %}
+          <figure class="resume-experience-item">
+            <img class="resume-experience-image" src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | escape }}" loading="lazy">
+            {% if item.caption %}<figcaption class="resume-experience-caption">{{ item.caption }}</figcaption>{% endif %}
+          </figure>
+        {% endfor %}
+      </aside>
+    </div>
+  </div>
+</div>

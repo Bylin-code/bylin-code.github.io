@@ -18,7 +18,7 @@ body_classes: page-home
           title=page.title
           %}
           <div class="content" style="margin-top: 30px;">
-            <p>{{ page.description }}</p>
+            {{ page.description | markdownify }}
           </div>
           <div class="content" style="margin-top: 30px;">
             <p>{{ page.cta_text }} <i class="fa-solid fa-arrow-down animated-arrow"></i></p>
@@ -176,7 +176,7 @@ body_classes: page-home
       
       <div class="col-12 col-md-4 mb-3 mb-md-0">
         <div class="action-card">
-          <a href="{{ page.actions.resume_link | relative_url }}" class="action-link" target="_blank" rel="noopener noreferrer">
+          <a href="{{ page.actions.resume_link | relative_url }}" class="action-link">
             <i class="fa-solid fa-download action-icon"></i>
             <span class="action-text">{{ page.actions.resume_text }}</span>
           </a>

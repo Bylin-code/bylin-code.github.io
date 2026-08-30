@@ -208,4 +208,11 @@
 .page-about .gallery-image {
   overflow: hidden;
   border-radius: 4px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
 }

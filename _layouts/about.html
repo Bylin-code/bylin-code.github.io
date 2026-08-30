@@ -1,173 +1,60 @@
 ---
 layout: default
+body_classes: page-about
 ---
 
-<div class="section pt-6 pb-6">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-8 offset-md-2">
-        
-        <!-- Page Header -->
-        <div class="about-header mb-5">
-          {% include components/title.html
-            title=page.title
-          %}
-          {% if page.description %}
-            <div class="about-description mt-4">
-              <p class="lead">{{ page.description }}</p>
-            </div>
-          {% endif %}
-        </div>
+{% assign limit = page.gallery_limit | default: nil %}
 
-        <!-- Featured Image -->
-        {% if page.image %}
-          <div class="about-image mb-5">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="img-fluid">
+{% comment %}
+  Change pt-6 below to adjust only the About page's top padding.
+  Available spacing utilities include pt-0, pt-1, pt-2, and so on.
+{% endcomment %}
+<div class="section pt-6">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        {% if page.title %}
+          <div class="project-heading">
+            <h1>{{ page.title }}</h1>
           </div>
         {% endif %}
 
-        <!-- Content with Image -->
-        <div class="about-content-wrapper">
-          <div class="about-image-inline">
-            <img src="/assets/images/about/about-main.jpg" alt="Brady Lin" class="img-fluid">
-          </div>
-          <div class="about-content">
-            {{ content }}
-          </div>
-        </div>
+        {% if page.description %}
+          <div class="project-description">{{ page.description }}</div>
+        {% endif %}
 
+        {% if page.date or page.client or page.role or page.skills %}
+          <div class="project-stats mt-3">
+            {% if page.date %}
+              <div class="project-date"><strong>Date </strong><span>{{ page.date | date_to_long_string }}</span></div>
+            {% endif %}
+            {% if page.client %}
+              <div class="project-client"><strong>Client </strong><span>{{ page.client }}</span></div>
+            {% endif %}
+            {% if page.role %}
+              <div class="project-role"><strong>Role </strong><span>{{ page.role }}</span></div>
+            {% endif %}
+            {% if page.skills %}
+              <div class="project-skills"><strong>Skills </strong><span>{{ page.skills }}</span></div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="content mt-4">{{ content }}</div>
+      </div>
+
+      <div class="col-12 col-md-6 mt-6 mt-md-0">
+        <div class="gallery gallery-single-column">
+          {% for item in page.gallery limit: limit %}
+            <div class="gallery-item">
+              <div class="gallery-image">
+                <img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" />
+              </div>
+              {% include project/figure-caption.html number=forloop.index caption=item.caption %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-.about-header {
-  margin-bottom: 3rem;
-}
-
-.about-description {
-  font-size: 1.2rem;
-  color: var(--color-base-text-2);
-  line-height: 1.6;
-  font-family: var(--font-family-base);
-}
-
-.about-image {
-  width: 100%;
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.about-content-wrapper {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-image-inline {
-  flex: 0 0 calc(50% - 1rem);
-  width: calc(50% - 1rem);
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.about-image-inline img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 0;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.about-content {
-  flex: 1;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--color-base-text);
-  font-family: var(--font-family-base);
-}
-
-.about-content h1,
-.about-content h2,
-.about-content h3,
-.about-content h4,
-.about-content h5,
-.about-content h6 {
-  font-family: var(--font-family-heading);
-  color: var(--color-base-text);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.about-content h2 {
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-.about-content h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.about-content p {
-  margin-bottom: 1.5rem;
-  text-align: justify;
-  hyphens: auto;
-}
-
-.about-content blockquote {
-  border-left: 4px solid var(--color-primary-bg);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--color-base-text-2);
-}
-
-.about-content ul,
-.about-content ol {
-  margin-bottom: 1.5rem;
-  padding-left: 2rem;
-}
-
-.about-content li {
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .about-description {
-    font-size: 1.1rem;
-  }
-  
-  .about-content-wrapper {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .about-image-inline {
-    flex: none;
-    min-width: auto;
-    max-width: 250px;
-    align-self: center;
-  }
-  
-  .about-content {
-    font-size: 1rem;
-  }
-  
-  .about-content h2 {
-    font-size: 1.75rem;
-  }
-  
-  .about-content h3 {
-    font-size: 1.25rem;
-  }
-  
-}
-</style>

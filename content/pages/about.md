@@ -1,5 +1,5 @@
 ---
-layout: project-2p
+layout: about
 title: "About Me"
 permalink: "/about/"
 weight: 1
@@ -19,4 +19,4 @@ Mind you, I'm not condemning specialization; deep expertise is how real things g
 
 Outside of engineering, I enjoy singing with my a cappella group, hostel hopping, producing EDM music, and keeping pet ant colonies (ask me about it).
 
-I'm always building something new. Check out my projects [here](/projects/), watch my [YouTube](https://www.youtube.com/@brady-y-lin), or dive into my [resume](/assets/files/brady_resume.docx.pdf) for more!
+I'm always building something new. Check out my projects [here](/projects/), watch my [YouTube](https://www.youtube.com/@brady-y-lin), or dive into my [resume](/resume/) for more!
