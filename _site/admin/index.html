@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Portfolio editor · Brady Y. Lin</title>
+    <link rel="stylesheet" href="/admin/admin.css?v=3">
+  </head>
+  <body>
+    <header class="admin-header">
+      <div>
+        <a class="brand" href="/">Brady Y. Lin</a>
+        <span class="admin-label">Project editor</span>
+      </div>
+      <div class="header-actions">
+        <span id="save-status" class="save-status" role="status">No unsaved changes</span>
+        <button id="save-draft" class="button button-secondary" type="button">Save browser draft</button>
+        <button id="export-project" class="button button-secondary" type="button">Download Markdown</button>
+        <button class="button" type="button" disabled title="Added in the secure GitHub publishing phase">Publish to GitHub</button>
+      </div>
+    </header>
+
+    <div class="admin-shell">
+      <aside class="project-sidebar">
+        <div class="sidebar-heading">
+          <h1>Projects</h1>
+          <button id="new-project" class="icon-button" type="button" aria-label="Create project">+</button>
+        </div>
+        <label class="search-label">
+          <span class="sr-only">Search projects</span>
+          <input id="project-search" type="search" placeholder="Search projects">
+        </label>
+        <nav id="project-list" class="project-list" aria-label="Projects"></nav>
+      </aside>
+
+      <main class="editor-pane">
+        <div id="editor-notice" class="notice">
+          This first version saves text and image paths as a browser draft or downloads a Markdown file. Newly selected image files are preview-only until secure GitHub uploading is added in the publishing phase.
+        </div>
+
+        <form id="project-form" autocomplete="off">
+          <section class="editor-section">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Step 1</p>
+                <h2>Choose a layout</h2>
+              </div>
+              <p>Each layout has a fixed number and arrangement of image slots.</p>
+            </div>
+            <div id="template-picker" class="template-picker"></div>
+          </section>
+
+          <section class="editor-section">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Step 2</p>
+                <h2>Project information</h2>
+              </div>
+            </div>
+            <div class="field-grid">
+              <label class="field field-wide">Title<input name="title" required></label>
+              <label class="field">URL name<input name="slug" required pattern="[a-z0-9-]+"><small>Lowercase letters, numbers, and hyphens.</small></label>
+              <label class="field">Date<input name="date" type="date" required></label>
+              <label class="field field-wide">Short description<textarea name="description" rows="3" required></textarea></label>
+              <label class="field">Role<input name="role"></label>
+              <label class="field">Client<input name="client"></label>
+              <label class="field field-wide">Skills<input name="skills" placeholder="CAD, Arduino, prototyping"></label>
+              <label class="check-field"><input name="display" type="checkbox"> Show on projects page</label>
+              <label class="check-field"><input name="featured" type="checkbox"> Feature on home page</label>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Step 3</p>
+                <h2>Page text</h2>
+              </div>
+              <p>Use Markdown for headings, links, lists, bold, and italic text.</p>
+            </div>
+            <div class="markdown-toolbar" aria-label="Text formatting">
+              <button type="button" data-format="bold"><strong>B</strong></button>
+              <button type="button" data-format="italic"><em>I</em></button>
+              <button type="button" data-format="heading">Heading</button>
+              <button type="button" data-format="link">Link</button>
+              <button type="button" data-format="list">List</button>
+            </div>
+            <label class="field">
+              <span class="sr-only">Project text</span>
+              <textarea id="project-body" name="body" class="body-editor" rows="13" placeholder="Tell the story of your project…"></textarea>
+            </label>
+            <div class="youtube-control">
+              <label class="field">YouTube URL<input id="youtube-url" type="url" placeholder="https://www.youtube.com/watch?v=…"></label>
+              <button id="add-youtube" class="button button-secondary" type="button">Add video to text</button>
+            </div>
+          </section>
+
+          <section class="editor-section">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Step 4</p>
+                <h2>Images</h2>
+              </div>
+              <p>Upload one image for each position offered by the template.</p>
+            </div>
+            <div id="image-slots" class="image-slots"></div>
+          </section>
+        </form>
+      </main>
+
+      <aside class="preview-pane">
+        <div class="preview-header">
+          <div><p class="eyebrow">Live preview</p><h2 id="preview-name">Untitled project</h2></div>
+          <a id="open-project" href="#" target="_blank" rel="noopener">Open current page ↗</a>
+        </div>
+        <div id="project-preview-wrap" class="project-preview-wrap">
+          <iframe id="project-preview" class="project-preview" title="Rendered project preview"></iframe>
+        </div>
+      </aside>
+    </div>
+
+    <template id="image-slot-template">
+      <article class="image-slot">
+        <div class="image-drop">
+          <img alt="">
+          <div class="image-empty"><span>+</span><strong>Upload image</strong><small>JPG, PNG, GIF, or WebP</small></div>
+          <input class="image-input" type="file" accept="image/jpeg,image/png,image/gif,image/webp">
+        </div>
+        <div class="image-slot-fields">
+          <strong class="slot-name"></strong>
+          <label class="field">Caption<input class="image-caption"></label>
+          <label class="field">Alt text<input class="image-alt" placeholder="Describe this image"></label>
+          <label class="thumbnail-choice"><input type="radio" name="thumbnail-slot"> Use as project thumbnail</label>
+          <button class="remove-image" type="button">Remove image</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/admin/admin.js?v=3" defer></script>
+  </body>
+</html>

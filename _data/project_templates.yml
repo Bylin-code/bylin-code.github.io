@@ -1,0 +1,34 @@
+# Project editor contract.
+#
+# The admin UI reads this file through /admin/project-data.json. Keep the `id`
+# values matched to the layout filenames in _layouts/. Slot order matches the
+# order of items in a project's `gallery` front matter.
+- id: project-2p
+  label: Split / 2 images
+  image_count: 2
+  description: Text on the left with a two-image column on the right.
+
+- id: project-3p
+  label: Split / 3 images
+  image_count: 3
+  description: A three-image column on the left with text on the right.
+
+- id: project-4p
+  label: Rows / 4 images
+  image_count: 4
+  description: Two images above the project introduction and two below it.
+
+- id: project-5p
+  label: Editorial / 5 images
+  image_count: 5
+  description: A staggered editorial gallery arranged around the project copy.
+
+- id: project-6p
+  label: Masonry / 6 images
+  image_count: 6
+  description: Project introduction followed by a six-image masonry gallery.
+
+- id: project-7p
+  label: Hero / 7 images
+  image_count: 7
+  description: One large hero image followed by six supporting images.

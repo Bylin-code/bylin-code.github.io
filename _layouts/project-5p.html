@@ -12,7 +12,7 @@ body_classes: page-project
           <div class="gallery-sizer"></div>
           {% for item in page.gallery limit: 3 %}
           <div class="gallery-item">
-            <div class="gallery-image"><img src="{{ item.image | relative_url }}" /></div>
+            <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" /></div>
             <div class="gallery-caption">{{ item.caption }}</div>
           </div>
           {% endfor %}
@@ -48,7 +48,7 @@ body_classes: page-project
           <div class="gallery-sizer"></div>
           {% for item in page.gallery offset: 3 %}
           <div class="gallery-item">
-            <div class="gallery-image"><img src="{{ item.image | relative_url }}" /></div>
+            <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" /></div>
             <div class="gallery-caption">{{ item.caption }}</div>
           </div>
           {% endfor %}

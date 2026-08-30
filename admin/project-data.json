@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /admin/project-data.json
+---
+{
+  "templates": {{ site.data.project_templates | jsonify }},
+  "projects": [
+  {% assign ordered_projects = site.projects | sort: "title" %}
+  {% for project in ordered_projects %}
+    {
+      "slug": {{ project.slug | jsonify }},
+      "layout": {{ project.layout | jsonify }},
+      "title": {{ project.title | jsonify }},
+      "description": {{ project.description | default: "" | jsonify }},
+      "date": {{ project.date | date: "%Y-%m-%d" | jsonify }},
+      "client": {{ project.client | default: "" | jsonify }},
+      "role": {{ project.role | default: "" | jsonify }},
+      "skills": {{ project.skills | default: "" | jsonify }},
+      "thumbnail": {{ project.thumbnail | default: "" | jsonify }},
+      "featured": {{ project.featured | default: false | jsonify }},
+      "display": {{ project.display | default: true | jsonify }},
+      "gallery": {{ project.gallery | default: empty | jsonify }},
+      "body": {{ project.content | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+}

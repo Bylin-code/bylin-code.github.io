@@ -12,7 +12,7 @@ body_classes: page-project
         <div class="gallery-hero">
           <div class="gallery-item">
             <div class="gallery-image gallery-hero-image">
-              <img src="{{ page.gallery[0].image | relative_url }}" />
+              <img src="{{ page.gallery[0].image | relative_url }}" alt="{{ page.gallery[0].alt | default: page.gallery[0].caption | strip_html | escape }}" loading="lazy" />
             </div>
             <div class="gallery-caption">{{ page.gallery[0].caption }}</div>
           </div>
@@ -51,7 +51,7 @@ body_classes: page-project
         <div class="gallery gallery-two-column">
           {% for item in page.gallery offset: 1 %}
           <div class="gallery-item">
-            <div class="gallery-image"><img src="{{ item.image | relative_url }}" /></div>
+            <div class="gallery-image"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.caption | strip_html | escape }}" loading="lazy" /></div>
             <div class="gallery-caption">{{ item.caption }}</div>
           </div>
           {% endfor %}

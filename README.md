@@ -21,6 +21,21 @@ Start the local development server:
 bundle exec jekyll serve --livereload
 ```
 
+### Project editor
+
+With the local server running, open `http://localhost:4000/admin/`. The editor
+loads every file in `content/_projects`, lets you select one of the rigid
+project layouts, edit its fields and Markdown, preview YouTube includes, and
+fill the template's image slots.
+
+The six template definitions live in `_data/project_templates.yml`. Their slot
+order is the order of the `gallery` items in project front matter. YouTube
+embeds use `{% include youtube.html id="VIDEO_ID" %}`.
+
+The current editor phase can save a browser-local draft or download the
+resulting `.md` file. Uploaded images are preview-only until the authenticated
+GitHub publishing phase is implemented; no access token is stored in the site.
+
 Open <http://127.0.0.1:4000>. Jekyll rebuilds after saved changes, and LiveReload refreshes the browser when supported.
 
 To expose the preview to other devices on the same network:
