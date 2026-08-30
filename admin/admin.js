@@ -930,7 +930,7 @@
       const deleted = deletedProjectSlugs().filter((slug) => slug !== project.slug);
       localStorage.setItem('bradylin-deleted-projects', JSON.stringify(deleted));
       renderProjectList(el.search.value);
-      setDirty(false, 'Published successfully; Netlify is rebuilding the site');
+      setDirty(false, 'Published successfully; GitHub Pages is rebuilding the site');
     } catch (error) { publishingError(error); }
     finally { setPublishing(false); }
   }
