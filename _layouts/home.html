@@ -14,7 +14,7 @@ body_classes: page-home
       </div>
       <div class="col-12 col-md-7">
         <div class="profile-content">
-          {% include framework/title.html
+          {% include components/title.html
           title=page.title
           %}
           <div class="content" style="margin-top: 30px;">
@@ -125,13 +125,13 @@ body_classes: page-home
   <div class="container">
     <div class="row">
 
-      {% include framework/latest-works.html 
+      {% include components/section-heading.html
         heading=page.latest_works.heading 
         sub_heading=page.latest_works.sub_heading 
         align="left"
       %}
 
-      {% include framework/grid-header.html 
+      {% include components/grid-header.html
         heading=page.projects.heading 
         sub_heading=page.projects.sub_heading 
       %}
@@ -139,7 +139,7 @@ body_classes: page-home
       {% for card in cards limit: limit %}
       <div
         class="col-12 col-md-6 {{ columns }} mb-gutter mt-gutter {% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mt-md-0">
-        {% include theme/cards/card-project.html
+        {% include components/project-card.html
           title=card.title
           description=card.description
           thumbnail=card.thumbnail
@@ -150,7 +150,7 @@ body_classes: page-home
       </div>
       {% endfor %}
 
-      {% include framework/grid-footer.html 
+      {% include components/grid-footer.html
         view_more_button_text=page.projects.view_more_button_text
         view_more_button_link=page.projects.view_more_button_link
         align="right"
@@ -168,7 +168,7 @@ body_classes: page-home
   <div class="container">
     <div class="row">
       
-      {% include framework/latest-works.html 
+      {% include components/section-heading.html
         heading=page.actions.heading 
         sub_heading=page.actions.sub_heading 
         align="center"

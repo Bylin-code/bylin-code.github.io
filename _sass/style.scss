@@ -1,2 +1,52 @@
-@import 'framework';
-@import 'theme';
+// Bootstrap foundations and utility classes used by the layouts.
+@import "vendor/bootstrap/functions";
+@import "base/variables";
+@import "vendor/bootstrap/variables";
+@import "vendor/bootstrap/variables-dark";
+@import "vendor/bootstrap/maps";
+@import "vendor/bootstrap/mixins";
+@import "vendor/bootstrap/utilities";
+@import "vendor/bootstrap/root";
+@import "vendor/bootstrap/reboot";
+@import "vendor/bootstrap/type";
+@import "vendor/bootstrap/images";
+@import "vendor/bootstrap/containers";
+@import "vendor/bootstrap/grid";
+@import "vendor/bootstrap/helpers";
+@import "vendor/bootstrap/utilities/api";
+
+// Site foundations.
+@import "base/body";
+@import "base/typography";
+@import "base/content";
+@import "base/syntax";
+@import "base/syntax-dark";
+
+// Page structure and navigation.
+@import "layout/section";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/bottom";
+@import "layout/grid";
+@import "navigation/logo";
+@import "navigation/main-menu";
+@import "navigation/mobile-menu";
+
+// Reusable portfolio components.
+@import "components/title";
+@import "components/heading";
+@import "components/heading-overrides";
+@import "components/social-links";
+@import "components/dark-mode-switcher";
+@import "components/project-card";
+@import "components/grid-controls";
+
+// Page-specific styles.
+@import "pages/project";
+
+// Font Awesome icon library.
+$fa-font-path: "../fonts/font-awesome/webfonts";
+@import "vendor/font-awesome/fontawesome";
+@import "vendor/font-awesome/solid";
+@import "vendor/font-awesome/regular";
+@import "vendor/font-awesome/brands";

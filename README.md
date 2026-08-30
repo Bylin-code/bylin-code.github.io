@@ -44,6 +44,16 @@ The generated site is written to `_site/`.
 - `content/_projects/`: portfolio projects
 - `_data/menu.yml`: header and footer navigation
 - `_data/social.json`: footer social links
+- `_includes/layout/`: page-shell sections such as the header and footer
+- `_includes/navigation/`: menus, logo, and mobile navigation controls
+- `_includes/components/`: reusable portfolio interface components
+- `_includes/meta/`: metadata, fonts, analytics, and cookie integrations
+- `_sass/base/`: typography, content, colors, and other global styles
+- `_sass/layout/`: page-shell and grid styles
+- `_sass/navigation/`: logo and menu styles
+- `_sass/components/`: reusable portfolio component styles
+- `_sass/pages/`: page-specific styles
+- `_sass/vendor/`: third-party Bootstrap and Font Awesome source
 - `_config.yml`: global site settings
 - `assets/images/my-projects/<project-name>/`: project images
 

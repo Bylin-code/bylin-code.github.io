@@ -5,9 +5,9 @@
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    {% include framework/seo-meta-tags.html %}
-    {% include framework/og-meta-tags.html %}
-    {% include framework/favicon.html %}
+    {% include meta/seo.html %}
+    {% include meta/open-graph.html %}
+    {% include meta/favicon.html %}
 
     <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
 
@@ -18,27 +18,27 @@
     {% endif %}
 
     {% if site.cookie_banner.enabled %}
-      {% include framework/cookie-consent.html %}
+      {% include meta/cookie-consent.html %}
     {% endif %}
 
-    {% include framework/fonts.html %}
-    {% include framework/google-tag-manager.html %}
+    {% include meta/fonts.html %}
+    {% include meta/google-tag-manager.html %}
 
   </head>
 <body class="page {% if page.body_classes %}{{ page.body_classes }}{% elsif layout.body_classes %}{{ layout.body_classes }}{% endif %}{% if site.header.fixed %} has-fixed-header{% else %} has-static-header{% endif %}">
 
-{% include framework/menu-main-mobile.html %}
-{% include framework/header.html %}
+{% include navigation/menu-main-mobile.html %}
+{% include layout/header.html %}
 
 <div id="wrapper" class="wrapper pt-5">     
   {{ content }}
 </div>
 
 {% if site.footer.enable_footer %}
-  {% include framework/footer.html %}
+  {% include layout/footer.html %}
 {% endif %}
 {% if site.bottom.enable_bottom %}
-  {% include framework/bottom.html %}
+  {% include layout/bottom.html %}
 {% endif %}
 
 <script type="text/javascript" src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
@@ -48,9 +48,9 @@
 <script type="text/javascript" src="{{ '/assets/js/hamburger.js' | relative_url }}"></script>
 <script type="text/javascript" src="{{ '/assets/js/darkModeSwitch.js' | relative_url }}"></script>
 
-{% include framework/google-analytics.html %}
-{% include framework/plausible-analytics.html %}
-{% include framework/umami-analytics.html %}
+{% include meta/google-analytics.html %}
+{% include meta/plausible-analytics.html %}
+{% include meta/umami-analytics.html %}
 
 </body>
 </html>

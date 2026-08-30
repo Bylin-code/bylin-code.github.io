@@ -7,7 +7,7 @@ body_classes: page-projects
   <div class="container">
     <div class="row">
       <div class="col-12">
-        {% include framework/title.html
+        {% include components/title.html
           title=page.title
           description=page.description
         %}
@@ -32,7 +32,7 @@ body_classes: page-projects
   <div class="container">
     <div class="row">
 
-      {% include framework/grid-header.html 
+      {% include components/grid-header.html
         heading=page.projects.heading 
         sub_heading=page.projects.sub_heading 
       %}
@@ -41,7 +41,7 @@ body_classes: page-projects
       {% if card.display == true %}
       <div
         class="col-12 col-md-6 {{ columns }} mb-gutter mt-gutter {% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mt-md-0">
-        {% include theme/cards/card-project.html
+        {% include components/project-card.html
           title=card.title
           description=card.description
           thumbnail=card.thumbnail
@@ -53,7 +53,7 @@ body_classes: page-projects
       {% endif %}
       {% endfor %}
 
-      {% include framework/grid-footer.html 
+      {% include components/grid-footer.html
         view_more_button_text=page.projects.view_more_button_text
         view_more_button_link=page.projects.view_more_button_link
         align="right"
