@@ -74,13 +74,15 @@ layout: default
 .about-image-inline {
   flex: 0 0 calc(50% - 1rem);
   width: calc(50% - 1rem);
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .about-image-inline img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
