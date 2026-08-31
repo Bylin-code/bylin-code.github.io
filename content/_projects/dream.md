@@ -1,7 +1,7 @@
 ---
 layout: project
-gallery_style: masonry
-gallery_count: 6
+gallery_style: hero
+gallery_count: 7
 gallery_flip: false
 title: "DREAM"
 description: "A family of intelligent objects that listens to you and makes your life more like a dream"
@@ -12,18 +12,20 @@ role: "Hardware"
 skills: "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems"
 thumbnail: "/assets/images/my-projects/dream/thumbnail.jpeg"
 gallery:
-  - image: "/assets/images/my-projects/dream/dream1.jpg"
-    caption: "The objects"
-  - image: "/assets/images/my-projects/dream/dream2.jpg"
-    caption: "The backend console coordinating communication between the objects"
-  - image: "/assets/images/my-projects/dream/dream3.jpg"
-    caption: "Radio"
-  - image: "/assets/images/my-projects/dream/dream4.jpg"
+  - image: "/assets/images/my-projects/dream/img-0334.jpg"
+    caption: "The Dreaming Objects"
+  - image: "/assets/images/my-projects/dream/img-0326.jpg"
     caption: "Lamp"
+  - image: "/assets/images/my-projects/dream/img-0317.jpg"
+    caption: "Radio"
   - image: "/assets/images/my-projects/dream/dream5.jpg"
     caption: "Mirror"
-  - image: "/assets/images/my-projects/dream/dream6.jpg"
-    caption: "The winning team"
+  - image: "/assets/images/my-projects/dream/img-0298.jpg"
+    caption: "Platter"
+  - image: "/assets/images/my-projects/dream/img-2627.jpeg"
+    caption: "The crew working hard"
+  - image: "/assets/images/my-projects/dream/img-2788-jw.jpg"
+    caption: "Hackathon finale"
 ---
 **DREAM** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. What started as a strange late night idea turned into an experiment in giving everyday objects their own personalities and voices.
 
