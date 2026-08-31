@@ -12,12 +12,12 @@ role: "Mechatronics Engineer"
 skills: "Arduino, C++, Onshape CAD, System Integration, Teamwork + Leadership"
 thumbnail: "/assets/images/my-projects/formjet/thumbnail.jpg"
 gallery:
-  - image: "/assets/images/my-projects/formjet/formjet4.jpg"
-    caption: "Side view of the electronics, the UV light is curing"
-  - image: "/assets/images/my-projects/formjet/formjet1.jpg"
-    caption: "The team"
-  - image: "/assets/images/my-projects/formjet/formjet3.jpg"
-    caption: "Front View, after a wash"
+  - image: "/assets/images/my-projects/formjet/img-2358.jpg"
+    caption: "Side view of the device and its electronics"
+  - image: "/assets/images/my-projects/formjet/screenshot-2026-08-30-at-8-33-58-pm.png"
+    caption: "Wiring it up"
+  - image: "/assets/images/my-projects/formjet/img-2182.jpg"
+    caption: "Assembly in progress"
 ---
 **FORMJET** is a hackathon project my team and I built in 48 hours to tackle one painfully familiar problem: the messy, multi-step post-processing workflow of SLA 3D printing. In this project, I owned the design and implementation of all electronics and embedded firmware, and also supported my teammates with CAD, mechanical design, and overall systems integration.
 

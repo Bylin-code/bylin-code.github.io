@@ -1,7 +1,7 @@
 ---
 layout: project
 gallery_style: hero
-gallery_count: 7
+gallery_count: 9
 gallery_flip: false
 title: "STRADEX"
 description: "A violin-style MIDI controller using force-sensitive keys and a resistive strip to generate pitch bends, vibrato, and expressive dynamics."
@@ -16,16 +16,20 @@ gallery:
     caption: "Stradex1, held in playing position"
   - image: "/assets/images/my-projects/stradex/stradex7.jpg"
     caption: "Full CAD model, including the PCB inside OnShape"
-  - image: "/assets/images/my-projects/stradex/stradex8.jpg"
-    caption: "CAD model of the key, designed to be easily assembled with only 3D printed parts"
   - image: "/assets/images/my-projects/stradex/stradex11.jpg"
     caption: "Some of the previous iterations of the keys, improved upon over time"
-  - image: "/assets/images/my-projects/stradex/stradex10.jpg"
-    caption: "A breadboard prototype of the circuitry, used for pre-pcb testing"
   - image: "/assets/images/my-projects/stradex/stradex13.jpg"
     caption: "Schematic of Stradex"
   - image: "/assets/images/my-projects/stradex/stradex14.jpg"
     caption: "PCB design of Stradex"
+  - image: "/assets/images/my-projects/stradex/img-3844.jpeg"
+    caption: "Prototype 0.01, Teensy-based, built on a breadboard and a single sheet acrylic"
+  - image: "/assets/images/my-projects/stradex/img-3874.jpeg"
+    caption: "Prototype 1.02, Teensy-based, built on a breadboard and a 3D printed chassis"
+  - image: "/assets/images/my-projects/stradex/img-4069.jpeg"
+    caption: "Prototype 1.04, ESP32-based, built on a protoboard"
+  - image: "/assets/images/my-projects/stradex/img-7902.jpeg"
+    caption: "Prototype 1.11 (left) and Prototype 1.20 (right), both RP2350-based"
 ---
 I’ve always wanted to put my violin skills to use in a MIDI environment, but there really isn’t a controller on the market that can emulate the feel of a violin to the extent that Stradex does.
 
