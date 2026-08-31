@@ -4,6 +4,41 @@ permalink: /admin/project-data.json
 ---
 {
   "templates": {{ site.data.project_templates | jsonify }},
+  {% assign home_page = site.pages | where: "path", "content/pages/home.md" | first %}
+  {% assign about_page = site.pages | where: "path", "content/pages/about.md" | first %}
+  {% assign resume_page = site.pages | where: "path", "content/pages/resume.md" | first %}
+  "pages": [
+    {
+      "id": "home",
+      "title": {{ home_page.title | jsonify }},
+      "description": {{ home_page.description | jsonify }},
+      "cta_text": {{ home_page.cta_text | jsonify }},
+      "latest_works_heading": {{ home_page.latest_works.heading | jsonify }},
+      "latest_works_sub_heading": {{ home_page.latest_works.sub_heading | jsonify }},
+      "more_projects_text": {{ home_page.projects.view_more_button_text | jsonify }},
+      "actions_heading": {{ home_page.actions.heading | jsonify }},
+      "actions_sub_heading": {{ home_page.actions.sub_heading | jsonify }},
+      "resume_text": {{ home_page.actions.resume_text | jsonify }},
+      "contact_text": {{ home_page.actions.contact_text | jsonify }},
+      "about_text": {{ home_page.actions.about_text | jsonify }},
+      "body": "",
+      "images": [{"path":"/assets/images/home/brady.jpg","label":"Profile photo","caption":"","alt":"Brady Y. Lin"}]
+    },
+    {
+      "id": "about",
+      "body": {{ about_page.content | jsonify }},
+      "images": [{"path":{{ about_page.gallery[0].image | jsonify }},"label":"About photo","caption":{{ about_page.gallery[0].caption | jsonify }},"alt":{{ about_page.gallery[0].alt | default: "Brady Lin" | jsonify }}}]
+    },
+    {
+      "id": "resume",
+      "resume_file": {{ resume_page.resume_file | jsonify }},
+      "images": [
+      {% for item in resume_page.experience_gallery %}
+        {"path":{{ item.image | jsonify }},"label":"Experience photo {{ forloop.index }}","caption":{{ item.caption | jsonify }},"alt":{{ item.alt | default: "" | jsonify }}}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+      ]
+    }
+  ],
   "projects": [
   {% assign ordered_projects = site.projects | sort: "date" | reverse %}
   {% for project in ordered_projects %}

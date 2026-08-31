@@ -9,25 +9,33 @@ permalink: /admin/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Portfolio editor · Brady Y. Lin</title>
-    <link rel="stylesheet" href="{{ '/admin/admin.css?v=15' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/admin/admin.css?v=16' | relative_url }}">
   </head>
   <body>
     <header class="admin-header">
       <div>
         <a class="brand" href="{{ '/' | relative_url }}">Brady Y. Lin</a>
-        <span class="admin-label">Project editor</span>
+        <span class="admin-label">Content editor</span>
       </div>
       <div class="header-actions">
         <span id="save-status" class="save-status" role="status">No unsaved changes</span>
         <button id="save-draft" class="button button-secondary" type="button">Save browser draft</button>
         <button id="export-project" class="button button-secondary" type="button">Download Markdown</button>
+        <button id="save-page-draft" class="button button-secondary" type="button" hidden>Save browser draft</button>
         <button id="github-settings" class="button button-secondary" type="button">GitHub settings</button>
         <button id="publish-project" class="button" type="button">Publish to GitHub</button>
+        <button id="publish-pages" class="button" type="button" hidden>Publish pages</button>
       </div>
     </header>
 
     <div class="admin-shell">
       <aside class="project-sidebar">
+        <div class="site-page-navigation">
+          <p class="eyebrow">Site pages</p>
+          <button type="button" data-page-editor="home">Home</button>
+          <button type="button" data-page-editor="about">About</button>
+          <button type="button" data-page-editor="resume">Resume</button>
+        </div>
         <div class="sidebar-heading">
           <h1>Projects</h1>
           <button id="new-project" class="icon-button" type="button" aria-label="Create project">+</button>
@@ -146,6 +154,27 @@ permalink: /admin/
         </form>
       </main>
 
+      <main id="page-editor" class="page-editor" hidden>
+        <section class="page-editor-controls">
+          <div class="notice">The page format is locked. Edit its text, replace or crop images, then publish all changed pages in one GitHub commit.</div>
+          <div class="section-heading">
+            <div><p class="eyebrow">Site page</p><h1 id="page-editor-title">Home</h1></div>
+            <button id="back-to-projects" class="button button-secondary" type="button">Back to projects</button>
+          </div>
+          <form id="page-form" autocomplete="off">
+            <div id="page-fields"></div>
+            <section class="editor-section">
+              <div class="section-heading"><div><p class="eyebrow">Media</p><h2>Images</h2></div><p>Replacing or cropping an image does not change its position in the page.</p></div>
+              <div id="page-images" class="page-images"></div>
+            </section>
+          </form>
+        </section>
+        <aside class="page-preview-pane">
+          <div class="preview-header"><div><p class="eyebrow">Live preview</p><h2 id="page-preview-name">Home</h2></div><a id="open-page" href="/" target="_blank" rel="noopener">Open current page ↗</a></div>
+          <div id="page-preview-wrap" class="project-preview-wrap"><iframe id="page-preview" class="project-preview" title="Page preview"></iframe></div>
+        </aside>
+      </main>
+
       <aside class="preview-pane">
         <div class="preview-header">
           <div><p class="eyebrow">Live preview</p><h2 id="preview-name">Untitled project</h2></div>
@@ -229,6 +258,21 @@ permalink: /admin/
       </form>
     </dialog>
 
-    <script src="{{ '/admin/admin.js?v=15' | relative_url }}" defer></script>
+    <dialog id="page-crop-dialog" class="crop-dialog">
+      <form method="dialog" class="crop-shell">
+        <div class="crop-heading"><div><p class="eyebrow">Page image editor</p><h2 id="page-crop-title">Crop image</h2></div><button class="dialog-close" value="cancel" aria-label="Close">×</button></div>
+        <div class="crop-workspace"><div id="page-crop-stage" class="crop-stage"><img id="page-crop-source" alt="Image being cropped" draggable="false"><div id="page-crop-box" class="crop-box"><span class="crop-grid crop-grid-v1"></span><span class="crop-grid crop-grid-v2"></span><span class="crop-grid crop-grid-h1"></span><span class="crop-grid crop-grid-h2"></span><button class="crop-handle crop-handle-nw" data-handle="nw" type="button"></button><button class="crop-handle crop-handle-ne" data-handle="ne" type="button"></button><button class="crop-handle crop-handle-sw" data-handle="sw" type="button"></button><button class="crop-handle crop-handle-se" data-handle="se" type="button"></button></div></div></div>
+        <div class="crop-controls">
+          <label class="field field-wide">Crop shape<select id="page-crop-preset"><option value="free">Freeform</option><option value="1:1">Square · 1:1</option><option value="4:3">Landscape · 4:3</option><option value="3:2">Photo · 3:2</option><option value="16:9">Widescreen · 16:9</option><option value="custom">Original proportions</option></select></label>
+          <label class="field">Output width<input id="page-crop-width" type="number" min="1" max="12000"></label>
+          <label class="field">Output height<input id="page-crop-height" type="number" min="1" max="12000"></label>
+          <p id="page-crop-size" class="crop-source-size field-wide"></p>
+        </div>
+        <div class="crop-footer"><button id="page-reset-crop" class="button button-secondary" type="button">Reset</button><span></span><button class="button button-secondary" value="cancel">Cancel</button><button id="page-apply-crop" class="button" type="button">Apply crop</button></div>
+      </form>
+    </dialog>
+
+    <script src="{{ '/admin/admin.js?v=16' | relative_url }}" defer></script>
+    <script src="{{ '/admin/page-editor.js?v=1' | relative_url }}" defer></script>
   </body>
 </html>
