@@ -27,8 +27,8 @@ gallery:
   - image: "/assets/images/my-projects/dream/img-2788-jw.jpg"
     caption: "Hackathon finale"
 ---
-**DREAM** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. What started as a strange late night idea turned into an experiment in giving everyday objects their own personalities and voices.
+**DREAM** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. In the span of 48 hours, we built a lamp that dances, a mirror that previews your OOTD, a radio that talks like Bumblebee, and a mobile platter that passes you beer. 
 
-The system revolves around four AI powered objects: a lamp, a phone, a mirror, and a speaker. Each object has its own character and way of interpreting the world around it. Instead of acting alone, they communicate through a central console, which serves as the shared hub that allows them to talk to each other, react to what the humans in the room are doing, and build conversations together.
+Each object runs its own embedded LLM on an onboard Raspberry Pi, while a central LLM console coordinates communication between the four. Together, they interact with the user through a camera feed on the mirror and audio input from the radio, while also speaking to each other.
 
-The result is something that sits somewhere between robotics, storytelling, and performance art. It is funny, a little unsettling, and meant to make you think about the silent objects that surround us every day.
+Imagine you're about to head out on a date. The radio overhears that you're leaving in 15 minutes and alerts the central console, which cues the radio to play romantic music and the lamp to slow dance in a warm, candlelight glow. Drawn in, you step over to the mirror. It recognizes you, pulls your wardrobe contents and the day's weather from the central console, picks a stylish outfit to match, and shows you an image of yourself wearing it. Then, right as you head out the door, the rover rolls up with a spearmint to freshen your breath.
