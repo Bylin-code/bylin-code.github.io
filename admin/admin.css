@@ -250,8 +250,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .preview-hero .preview-image img { height: 100%; object-fit: cover; }
 .preview-masonry { align-items: start; }
 .preview-masonry .preview-image { aspect-ratio: auto; }
-.preview-layout.project-2p .preview-gallery,
-.preview-layout.project-3p .preview-gallery { grid-template-columns: 1fr; }
 .preview-video { position: relative; aspect-ratio: 16 / 9; margin: 14px 0; display: grid; place-items: center; color: white; background: #171421; border-radius: 4px; }
 .preview-video::before { content: "▶"; display: grid; place-items: center; width: 44px; height: 31px; background: #f00; border-radius: 8px; }
 .preview-video small { position: absolute; bottom: 9px; }

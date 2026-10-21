@@ -114,28 +114,7 @@
       }
     }
   }
-  .gallery-L-left {
-    margin-left: calc(#{$grid-gutter-width} / 2 * -1);
-    margin-right: calc(#{$grid-gutter-width} / 2 * -1);
-    display: flex;
-    flex-direction: column;
-
-    .gallery-sizer {
-      width: 100%;
-    }
-    .gallery-item {
-      padding: 15px;
-      width: 100%;
-      
-      .gallery-image {
-        img {
-          vertical-align: bottom;
-          max-width: 100%;
-          height: auto;
-        }
-      }
-    }
-  }
+  .gallery-L-left,
   .gallery-L-right {
     margin-left: calc(#{$grid-gutter-width} / 2 * -1);
     margin-right: calc(#{$grid-gutter-width} / 2 * -1);

@@ -272,7 +272,11 @@ permalink: /admin/
       </form>
     </dialog>
 
-    <script src="{{ '/admin/admin.js?v=16' | relative_url }}" defer></script>
-    <script src="{{ '/admin/page-editor.js?v=1' | relative_url }}" defer></script>
+    <script>window.ADMIN_BASEURL = {{ site.baseurl | jsonify }};</script>
+    <script src="{{ '/admin/vendor.js?v=1' | relative_url }}" defer></script>
+    <script src="{{ '/admin/shared.js?v=1' | relative_url }}" defer></script>
+    <script src="{{ '/admin/project-preview.js?v=1' | relative_url }}" defer></script>
+    <script src="{{ '/admin/admin.js?v=17' | relative_url }}" defer></script>
+    <script src="{{ '/admin/page-editor.js?v=2' | relative_url }}" defer></script>
   </body>
 </html>

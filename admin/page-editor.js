@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const { clone, escapeHtml, githubConfig, createBlob, commitChanges, markdownPreview, htmlToMarkdown, slugify, clamp, loadImage, cropImage, readPageSource, pageMarkdown } = window.AdminShared;
 
   const state = { pages: [], current: null, dirty: new Set(), crop: null };
   const $ = (selector) => document.querySelector(selector);
@@ -15,11 +16,6 @@
     cropWidth: $('#page-crop-width'), cropHeight: $('#page-crop-height'), cropSize: $('#page-crop-size'),
     resetCrop: $('#page-reset-crop'), applyCrop: $('#page-apply-crop'),
   };
-  const clone = (value) => JSON.parse(JSON.stringify(value));
-  const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
-  }[char]));
-  const yamlString = (value) => JSON.stringify(String(value || ''));
   const pageLabels = { home: 'Home', about: 'About', resume: 'Resume' };
   const pageUrls = { home: '/', about: '/about/', resume: '/resume/' };
 
@@ -203,42 +199,11 @@
     elements.preview.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440"><link rel="stylesheet" href="/assets/css/main.css"><style>html,body{margin:0;background:#fffefa}.section{padding-top:50px;padding-bottom:50px}h1{font-size:48px}</style></head><body>${content}</body></html>`;
   }
 
-  function markdownPreview(markdown = '') {
-    let output = escapeHtml(markdown);
-    output = output.replace(/^### (.+)$/gm, '<h3>$1</h3>').replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    output = output.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
-    output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-    return output.split(/\n{2,}/).map((block) => /^<h/.test(block) ? block : `<p>${block.replace(/\n/g, '<br>')}</p>`).join('');
-  }
-
-  function htmlToMarkdown(value) {
-    if (!/<(?:p|div|h[1-6]|ul|ol|strong|em|a)\b/i.test(value)) return String(value || '').trim();
-    const container = document.createElement('div'); container.innerHTML = value;
-    function convert(node) {
-      if (node.nodeType === Node.TEXT_NODE) return node.textContent;
-      if (node.nodeType !== Node.ELEMENT_NODE) return '';
-      const children = [...node.childNodes].map(convert).join(''); const tag = node.tagName.toLowerCase();
-      if (tag === 'strong' || tag === 'b') return `**${children}**`;
-      if (tag === 'em' || tag === 'i') return `*${children}*`;
-      if (tag === 'a') return `[${children}](${node.getAttribute('href') || ''})`;
-      if (/^h[1-6]$/.test(tag)) return `${'#'.repeat(Number(tag[1]))} ${children}\n\n`;
-      if (tag === 'li') return `- ${children.trim()}\n`;
-      if (tag === 'br') return '\n';
-      if (tag === 'p') return `${children.trim()}\n\n`;
-      return children;
-    }
-    return [...container.childNodes].map(convert).join('').replace(/\n{3,}/g, '\n\n').trim();
-  }
-
   function sizePreview() {
     const width = 1440; const scale = Math.min(1, elements.previewWrap.clientWidth / width);
     const height = elements.preview.contentDocument?.documentElement?.scrollHeight || 900;
     elements.preview.style.width = `${width}px`; elements.preview.style.height = `${height}px`; elements.preview.style.transform = `scale(${scale})`;
     elements.previewWrap.style.height = `${Math.ceil(height * scale)}px`;
-  }
-
-  function loadImage(source) {
-    return new Promise((resolve, reject) => { const image = new Image(); image.onload = () => resolve(image); image.onerror = reject; image.src = source; });
   }
 
   async function openCrop(index) {
@@ -315,9 +280,7 @@
     const crop = state.crop; if (!crop) return;
     const width = Math.max(1, Math.min(12000, Number(elements.cropWidth.value) || crop.image.naturalWidth));
     const height = Math.max(1, Math.min(12000, Number(elements.cropHeight.value) || crop.image.naturalHeight));
-    const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height; const rect = crop.rect;
-    canvas.getContext('2d').drawImage(crop.image, rect.x * crop.image.naturalWidth, rect.y * crop.image.naturalHeight, rect.width * crop.image.naturalWidth, rect.height * crop.image.naturalHeight, 0, 0, width, height);
-    const data = canvas.toDataURL('image/jpeg', .92); Object.assign(state.current.images[crop.index], { preview: data, original: data, uploadData: data });
+    const data = cropImage(crop.image, crop.rect, width, height); Object.assign(state.current.images[crop.index], { preview: data, original: data, uploadData: data });
     elements.cropDialog.close(); renderPageImages(); markDirty('Crop applied'); renderPreview();
   }
 
@@ -328,14 +291,6 @@
     elements.cropBox.addEventListener('pointercancel', () => { if (state.crop) state.crop.drag = null; });
   }
 
-  function pageMarkdown(page) {
-    if (page.id === 'home') return ['---', 'layout: home', 'body_classes: page-home', 'permalink: "/"', `title: ${yamlString(page.title)}`, `description: ${yamlString(page.description)}`, `cta_text: ${yamlString(page.cta_text)}`, 'meta_description: "Brady Lin - Full-Stack Mechatronics Engineer"', 'meta_title: Brady Lin - Full-Stack Mechatronics Engineer', '', 'latest_works:', `  heading: ${yamlString(page.latest_works_heading)}`, `  sub_heading: ${yamlString(page.latest_works_sub_heading)}`, '', 'projects:', '  heading: ""', '  sub_heading: ""', '  limit: 4', "  sort: 'date'", `  view_more_button_text: ${yamlString(page.more_projects_text)}`, '  view_more_button_link: "/projects"', '  columns: 2', '', 'actions:', `  heading: ${yamlString(page.actions_heading)}`, `  sub_heading: ${yamlString(page.actions_sub_heading)}`, `  resume_text: ${yamlString(page.resume_text)}`, '  resume_link: "/resume/"', `  contact_text: ${yamlString(page.contact_text)}`, '  contact_link: "/contact"', `  about_text: ${yamlString(page.about_text)}`, '  about_link: "/about"', '', '---', ''].join('\n');
-    if (page.id === 'about') return ['---', 'layout: about', 'title: ""', 'permalink: "/about/"', 'weight: 1', 'featured: true', 'thumbnail: "/assets/images/gen/projects/project-1-1-thumbnail.webp"', 'image: "/assets/images/gen/projects/project-1-2.webp"', 'gallery:', `  - image: ${yamlString(page.images[0].path)}`, `    alt: ${yamlString(page.images[0].alt)}`, `    caption: ${yamlString(page.images[0].caption)}`, 'gallery_limit: 2', '---', String(page.body || '').trim(), ''].join('\n');
-    const lines = ['---', 'layout: resume', 'title: Resume', 'permalink: "/resume/"', `resume_file: ${yamlString(page.resume_file)}`, 'experience_gallery:'];
-    page.images.forEach((item) => lines.push(`  - image: ${yamlString(item.path)}`, `    alt: ${yamlString(item.alt)}`, `    caption: ${yamlString(item.caption)}`));
-    lines.push('---', ''); return lines.join('\n');
-  }
-
   function saveDraft() {
     if (!state.current) return; const safe = clone(state.current);
     safe.images.forEach((image) => { image.preview = image.path; image.original = image.path; image.uploadData = ''; }); delete safe.pdfData;
@@ -344,28 +299,8 @@
   }
 
   function readDraft(id) { try { return JSON.parse(localStorage.getItem(`bradylin-page-draft:${id}`) || 'null'); } catch (_) { return null; } }
-  function githubConfig() { try { const config = JSON.parse(sessionStorage.getItem('bradylin-github-publishing') || 'null'); return config?.token && config?.owner && config?.repo && config?.branch ? config : null; } catch (_) { return null; } }
 
-  async function githubApi(path, options = {}) {
-    const config = githubConfig(); if (!config) throw new Error('GitHub is not connected. Open GitHub settings first.');
-    const response = await fetch(`https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}${path}`, { ...options, headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${config.token}`, 'X-GitHub-Api-Version': '2022-11-28', ...(options.headers || {}) } });
-    const data = response.status === 204 ? null : await response.json().catch(() => ({}));
-    if (!response.ok) { const error = new Error(data?.message || `GitHub returned ${response.status}`); error.status = response.status; throw error; } return data;
-  }
-
-  async function createBlob(content, encoding = 'utf-8') { const result = await githubApi('/git/blobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content, encoding }) }); return result.sha; }
   const dataBase64 = (data) => String(data).split(',')[1] || '';
-
-  async function commit(entries, message) {
-    const config = githubConfig();
-    for (let attempt = 1; attempt <= 3; attempt += 1) {
-      const ref = await githubApi(`/git/ref/heads/${encodeURIComponent(config.branch)}`); const parent = await githubApi(`/git/commits/${ref.object.sha}`);
-      const tree = await githubApi('/git/trees', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ base_tree: parent.tree.sha, tree: entries }) });
-      const next = await githubApi('/git/commits', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, tree: tree.sha, parents: [ref.object.sha] }) });
-      try { await githubApi(`/git/refs/heads/${encodeURIComponent(config.branch)}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sha: next.sha, force: false }) }); return; }
-      catch (error) { if (error.status !== 422 || attempt === 3) throw error; }
-    }
-  }
 
   async function publishPages() {
     const pages = state.pages.filter((page) => state.dirty.has(page.id)); if (!pages.length) return updateStatus('There are no unpublished page changes');
@@ -374,19 +309,17 @@
     try {
       const entries = [];
       for (const page of pages) {
-        entries.push({ path: `content/pages/${page.id}.md`, mode: '100644', type: 'blob', sha: await createBlob(pageMarkdown(page)) });
+        entries.push({ path: `content/pages/${page.id}.md`, mode: '100644', type: 'blob', sha: await createBlob(pageMarkdown(page, await readPageSource(page.id))) });
         for (const image of page.images.filter((item) => item.uploadData)) entries.push({ path: image.path.replace(/^\//, ''), mode: '100644', type: 'blob', sha: await createBlob(dataBase64(image.uploadData), 'base64') });
         if (page.pdfData) entries.push({ path: page.resume_file.replace(/^\//, ''), mode: '100644', type: 'blob', sha: await createBlob(dataBase64(page.pdfData), 'base64') });
       }
-      await commit(entries, pages.length === 1 ? `Update page: ${pageLabels[pages[0].id]}` : `Update pages: ${pages.map((page) => pageLabels[page.id]).join(', ')}`);
+      await commitChanges(entries, pages.length === 1 ? `Update page: ${pageLabels[pages[0].id]}` : `Update pages: ${pages.map((page) => pageLabels[page.id]).join(', ')}`);
       pages.forEach((page) => { state.dirty.delete(page.id); localStorage.removeItem(`bradylin-page-draft:${page.id}`); page.images.forEach((image) => { image.preview = image.path; image.original = image.path; image.uploadData = ''; }); delete page.pdfData; });
       updateStatus(`${pages.length} page${pages.length === 1 ? '' : 's'} published; GitHub Pages is rebuilding`); renderPageImages(); renderPreview();
     } catch (error) { console.error(error); window.alert(`Publishing failed: ${error.message}\n\nNothing was partially published.`); updateStatus('Publishing failed'); }
     finally { elements.publishPages.disabled = false; }
   }
 
-  function slugify(value) { return String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
-  function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
   window.addEventListener('beforeunload', (event) => { if (state.dirty.size) { event.preventDefault(); event.returnValue = ''; } });
   init();
 })();

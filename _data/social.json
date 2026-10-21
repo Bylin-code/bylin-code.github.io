@@ -2,21 +2,25 @@
   {
     "title": "Linkedin",
     "fa_icon": "fab fa-linkedin",
-    "url": "https://www.linkedin.com/in/brady-lin"
+    "url": "https://www.linkedin.com/in/brady-lin",
+    "id": "linkedin"
   },
   {
     "title": "Github",
     "fa_icon": "fab fa-github",
-    "url": "https://github.com/bylin-code"
+    "url": "https://github.com/bylin-code",
+    "id": "github"
   },
   {
     "title": "YouTube",
     "fa_icon": "fab fa-youtube",
-    "url": "https://www.youtube.com/@Brady-Y-Lin"
+    "url": "https://www.youtube.com/@Brady-Y-Lin",
+    "id": "youtube"
   },
   {
     "title": "Email",
     "fa_icon": "fas fa-envelope",
-    "url": "mailto:bradylin2008@gmail.com"
+    "url": "mailto:bradylin2008@gmail.com",
+    "id": "email"
   }
 ]

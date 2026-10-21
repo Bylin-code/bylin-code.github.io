@@ -4,3 +4,7 @@
 .sass-cache/
 vendor/
 
+
+# Jekyll build output (rebuilt by both deployment pipelines).
+_site/
+node_modules/

@@ -1,0 +1,18 @@
+{
+  "name": "brady-portfolio-maintenance",
+  "private": true,
+  "scripts": {
+    "build:admin": "node scripts/build-admin.mjs",
+    "test": "node --test tests/*.test.cjs",
+    "test:visual": "node scripts/compare-site.mjs",
+    "test:browser": "node scripts/check-editor.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "liquidjs": "10.30.0",
+    "pixelmatch": "8.0.0",
+    "playwright": "1.64.1",
+    "pngjs": "7.0.0",
+    "yaml": "2.9.1"
+  }
+}

@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const { clone, escapeHtml, githubConfig, githubApi, createBlob, commitChanges, markdownPreview, htmlToMarkdown, youtubeId, slugify, clamp, yamlString, loadImage, cropImage } = window.AdminShared;
 
   const state = {
     templates: [],
@@ -64,11 +65,6 @@
   const cropState = { kind: null, index: -1, image: null, source: '', fixed: false, rect: { x: 0, y: 0, width: 1, height: 1 }, drag: null };
   let workspaceSequence = 0;
 
-  const clone = (value) => JSON.parse(JSON.stringify(value));
-  const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
-  }[char]));
-
   function blankProject() {
     const today = new Date().toISOString().slice(0, 10);
     return {
@@ -85,7 +81,7 @@
       'project-4p': ['rows', 4], 'project-5p': ['editorial', 5],
       'project-6p': ['masonry', 6], 'project-7p': ['hero', 7],
     };
-    if (!normalized.gallery_style && legacy[normalized.layout]) {
+    if (!project.gallery_style && legacy[normalized.layout]) {
       [normalized.gallery_style, normalized.gallery_count, normalized.gallery_flip = false] = legacy[normalized.layout];
     }
     normalized.layout = 'project';
@@ -170,7 +166,9 @@
     let source = project._workspaceId ? project : normalizeProject(project);
     const draft = !source._pending && source.slug ? readDraft(source.slug) : null;
     if (draft) {
-      source = normalizeProject({ ...source, ...draft, _workspaceId: source._workspaceId, _publishedSlug: source._publishedSlug });
+      const draftSource = { ...source, ...draft, _workspaceId: source._workspaceId, _publishedSlug: source._publishedSlug };
+      if (draft.layout && draft.layout !== 'project' && !draft.gallery_style) draftSource.gallery_style = '';
+      source = normalizeProject(draftSource);
       source._pending = true;
       const index = state.projects.findIndex((item) => item._workspaceId === source._workspaceId);
       if (index >= 0) state.projects[index] = source;
@@ -365,115 +363,30 @@
     });
   }
 
-  function renderPreview() {
+  let previewRevision = 0;
+  async function renderPreview() {
     if (!state.current) return;
     readForm();
-    const project = state.current;
-    const count = activeImageCount();
-    const gallery = project.gallery.slice(0, count);
-    const stats = [
-      project.date && `<div class="project-date"><strong>Date</strong><span>${escapeHtml(longDate(project.date))}</span></div>`,
-      project.client && `<div class="project-client"><strong>Client</strong><span>${escapeHtml(project.client)}</span></div>`,
-      project.role && `<div class="project-role"><strong>Role</strong><span>${escapeHtml(project.role)}</span></div>`,
-      project.skills && `<div class="project-skills"><strong>Skills</strong><span>${escapeHtml(project.skills)}</span></div>`,
-    ].filter(Boolean).join('');
-    const body = markdownPreview(project.body);
-    const contents = exactLayoutMarkup(project, gallery, stats, body);
-    el.preview.srcdoc = `<!doctype html><html><head><meta charset="utf-8">
-      <meta name="viewport" content="width=1440">
-      <link rel="stylesheet" href="/assets/css/main.css">
-      <style>
-        html,body{margin:0;min-height:0;background:var(--color-base-bg,#fffefa)}
-        body{padding-top:0!important}.section{padding-top:70px;padding-bottom:70px}
-        .gallery-masonry{display:grid!important;grid-template-columns:1fr 1fr;align-items:start}
-        .gallery-masonry .gallery-item{position:static!important;width:100%!important}
-        .gallery-L-left,.gallery-L-right{display:flex!important}
-        .admin-empty-image{display:grid;place-items:center;min-height:260px;background:#ece9e1;color:#777}
-        .preview-video{position:relative;display:grid;place-items:center;aspect-ratio:16/9;margin:30px 0;background:#171421;color:white}
-        .preview-video:before{content:'▶';display:grid;place-items:center;width:70px;height:48px;border-radius:12px;background:red}
-        .preview-video small{position:absolute;bottom:14px}
-      </style></head><body class="page-project"><main>${contents}</main></body></html>`;
-    el.previewName.textContent = project.title || 'Untitled project';
-    el.openProject.href = project.slug ? `/projects/${encodeURIComponent(project.slug)}/` : '#';
-  }
-
-  function projectIntro(project, stats, statsClass = 'mt-4') {
-    return `${project.title ? `<div class="project-heading"><h1>${escapeHtml(project.title)}</h1></div>` : ''}
-      ${project.description ? `<div class="project-description">${escapeHtml(project.description)}</div>` : ''}
-      <div class="${statsClass}">${stats}</div>`;
-  }
-
-  function galleryItem(item, index, hero = false) {
-    const source = item.preview || item.image;
-    const image = source
-      ? `<img src="${escapeHtml(source)}" alt="${escapeHtml(item.alt || '')}" loading="lazy">`
-      : `<span class="admin-empty-image">Image ${index + 1}</span>`;
-    return `<div class="gallery-item"><div class="gallery-image${hero ? ' gallery-hero-image' : ''}">${image}</div>
-      ${item.caption ? `<div class="gallery-caption">${formatCaption(item.caption, index)}</div>` : ''}</div>`;
-  }
-
-  function galleryMarkup(items, className, offset = 0, hero = false) {
-    return `<div class="gallery ${className}">${items.map((item, index) => galleryItem(item, index + offset, hero)).join('')}</div>`;
-  }
-
-  function exactLayoutMarkup(project, gallery, stats, body) {
-    const style = project.gallery_style;
-    const flipped = Boolean(project.gallery_flip);
-    const sectionStart = '<div class="section"><div class="container">';
-    const sectionEnd = '</div></div>';
-    if (style === 'split') {
-      const intro = projectIntro(project, stats, 'project-stats mt-3');
-      const images = `<div class="col-12 col-md-6 mb-6 mb-md-0">${galleryMarkup(gallery, 'gallery-single-column')}</div>`;
-      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>`;
-      return `${sectionStart}<div class="row justify-content-center">${flipped ? `${images}${copy}` : `${copy}${images}`}</div>${sectionEnd}`;
+    const revision = ++previewRevision;
+    const project = clone(state.current);
+    try {
+      const contents = await window.renderProjectPreview(project, markdownPreview(project.body));
+      if (revision !== previewRevision) return;
+      el.preview.srcdoc = `<!doctype html><html><head><meta charset="utf-8">
+        <meta name="viewport" content="width=1440">
+        <link rel="stylesheet" href="${window.ADMIN_BASEURL || ''}/assets/css/main.css">
+        <style>html,body{margin:0;min-height:0;background:var(--color-base-bg,#fffefa)}
+          body{padding-top:0!important}
+          .preview-video{position:relative;display:grid;place-items:center;aspect-ratio:16/9;margin:30px 0;background:#171421;color:white}
+          .preview-video:before{content:'▶';display:grid;place-items:center;width:70px;height:48px;border-radius:12px;background:red}
+          .preview-video small{position:absolute;bottom:14px}
+        </style></head><body class="page-project"><main>${contents}</main></body></html>`;
+      el.previewName.textContent = project.title || 'Untitled project';
+      el.openProject.href = project.slug ? `${window.ADMIN_BASEURL || ''}/projects/${encodeURIComponent(project.slug)}/` : '#';
+    } catch (error) {
+      if (revision === previewRevision) el.previewName.textContent = `Preview unavailable: ${error.message}`;
+      console.error(error);
     }
-    if (style === 'rows') {
-      const firstCount = Math.min(2, gallery.length);
-      const intro = projectIntro(project, stats, 'mt-4');
-      const firstRow = `<div class="row mb-6"><div class="col">${galleryMarkup(gallery.slice(0, firstCount), 'gallery-two-column')}</div></div>`;
-      const copyRow = `<div class="row"><div class="col-12 col-md-6">${intro}</div><div class="col-12 col-md-6"><div class="content">${body}</div></div></div>`;
-      return `${sectionStart}${flipped ? `${copyRow}${firstRow}` : `${firstRow}${copyRow}`}
-        ${gallery.length > firstCount ? `<div class="row mt-6"><div class="col">${galleryMarkup(gallery.slice(firstCount), 'gallery-two-column', firstCount)}</div></div>` : ''}${sectionEnd}`;
-    }
-    if (style === 'editorial') {
-      const firstCount = Math.ceil(gallery.length / 2);
-      const intro = projectIntro(project, stats, 'mt-4');
-      const images = `<div class="col-12 col-md-6">${galleryMarkup(gallery.slice(0, firstCount), 'gallery-L-left')}</div>`;
-      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div>${gallery.length > firstCount ? galleryMarkup(gallery.slice(firstCount), 'gallery-L-right mt-4', firstCount) : ''}</div>`;
-      return `${sectionStart}<div class="row">${flipped ? `${copy}${images}` : `${images}${copy}`}</div>${sectionEnd}`;
-    }
-    if (style === 'hero') {
-      const intro = projectIntro(project, stats, 'mt-4');
-      const copy = `<div class="col-12 col-md-6">${intro}<div class="content mt-4">${body}</div></div>`;
-      const supporting = `<div class="col-12 col-md-6">${galleryMarkup(gallery.slice(1), 'gallery-two-column', 1)}</div>`;
-      return `${sectionStart}${galleryMarkup(gallery.slice(0, 1), 'gallery-hero', 0, true)}
-        <div class="row mt-6">${flipped ? `${supporting}${copy}` : `${copy}${supporting}`}</div>${sectionEnd}`;
-    }
-    if (style === 'filmstrip') {
-      const intro = projectIntro(project, stats, 'mt-4');
-      const copyRow = `<div class="row mb-6"><div class="col-12 col-md-5">${intro}</div><div class="col-12 col-md-7"><div class="content">${body}</div></div></div>`;
-      const lead = galleryMarkup(gallery.slice(0, 1), 'gallery-hero', 0, true);
-      return `${sectionStart}${flipped ? `${lead}${copyRow}` : `${copyRow}${lead}`}
-        ${gallery.length > 1 ? galleryMarkup(gallery.slice(1), 'gallery-three-column mt-4', 1) : ''}${sectionEnd}`;
-    }
-    if (style === 'masonry') {
-      const intro = projectIntro(project, stats, 'mt-4');
-      const copyRow = `<div class="row"><div class="col-12 col-md-6 mb-4">${intro}</div><div class="col-12 col-md-6 mb-4"><div class="content">${body}</div></div></div>`;
-      const images = `<div class="row"><div class="col">${galleryMarkup(gallery, 'gallery-masonry')}</div></div>`;
-      return `${sectionStart}${flipped ? `${images}${copyRow}` : `${copyRow}${images}`}${sectionEnd}`;
-    }
-    const intro = projectIntro(project, stats, 'mt-4');
-    return `${sectionStart}<div class="row"><div class="col-12">${intro}<div class="content mt-4">${body}</div></div></div>${galleryMarkup(gallery, 'gallery-two-column mt-6')}${sectionEnd}`;
-  }
-
-  function formatCaption(caption, index) {
-    return `<strong>Fig ${index + 1}:</strong> ${escapeHtml(stripCaptionPrefix(caption))}`;
-  }
-
-  function longDate(value) {
-    if (!value) return '';
-    const date = new Date(`${value}T12:00:00`);
-    return new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
   }
 
   function sizePreview() {
@@ -529,14 +442,9 @@
       ? state.current.thumbnailOriginal || state.current.thumbnailPreview || state.current.thumbnail
       : state.current.gallery[index]?.original || state.current.gallery[index]?.preview || state.current.gallery[index]?.image;
     if (!source) return;
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
+    let image;
     try {
-      await new Promise((resolve, reject) => {
-        image.onload = resolve;
-        image.onerror = reject;
-        image.src = source;
-      });
+      image = await loadImage(source);
     } catch (_) {
       window.alert('This image could not be opened in the crop editor.');
       return;
@@ -640,19 +548,7 @@
   function applyCrop() {
     if (!cropState.image) return;
     const output = cropDimensions();
-    const canvas = document.createElement('canvas');
-    canvas.width = output.width;
-    canvas.height = output.height;
-    const rect = cropState.rect;
-    canvas.getContext('2d').drawImage(
-      cropState.image,
-      Math.round(rect.x * cropState.image.naturalWidth),
-      Math.round(rect.y * cropState.image.naturalHeight),
-      Math.round(rect.width * cropState.image.naturalWidth),
-      Math.round(rect.height * cropState.image.naturalHeight),
-      0, 0, output.width, output.height,
-    );
-    const data = canvas.toDataURL('image/jpeg', 0.9);
+    const data = cropImage(cropState.image, cropState.rect, output.width, output.height, .9, true);
     if (cropState.kind === 'thumbnail') {
       state.current.thumbnailPreview = data;
       state.current.thumbnailCroppedData = data;
@@ -767,15 +663,6 @@
     };
   }
 
-  function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
-
-  function githubConfig() {
-    try {
-      const saved = JSON.parse(sessionStorage.getItem('bradylin-github-publishing') || 'null');
-      return saved?.token && saved?.owner && saved?.repo && saved?.branch ? saved : null;
-    } catch (_) { return null; }
-  }
-
   function openGithubSettings(message = '') {
     const config = githubConfig() || { owner: 'Bylin-code', repo: 'bylin-code.github.io', branch: 'main', token: '' };
     el.githubToken.value = config.token;
@@ -802,27 +689,6 @@
       sessionStorage.removeItem('bradylin-github-publishing');
       el.githubStatus.textContent = friendlyGithubError(error);
     }
-  }
-
-  async function githubApi(path, options = {}, configOverride = null) {
-    const config = configOverride || githubConfig();
-    if (!config) throw new Error('GitHub is not connected.');
-    const response = await fetch(`https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}${path}`, {
-      ...options,
-      headers: {
-        Accept: 'application/vnd.github+json',
-        Authorization: `Bearer ${config.token}`,
-        'X-GitHub-Api-Version': '2022-11-28',
-        ...(options.headers || {}),
-      },
-    });
-    const data = response.status === 204 ? null : await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(data?.message || `GitHub returned ${response.status}`);
-      error.status = response.status;
-      throw error;
-    }
-    return data;
   }
 
   function friendlyGithubError(error) {
@@ -859,44 +725,6 @@
       reader.onerror = () => reject(new Error('Could not prepare an image for GitHub.'));
       reader.readAsDataURL(blob);
     });
-  }
-
-  async function createBlob(content, encoding = 'utf-8') {
-    const blob = await githubApi('/git/blobs', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content, encoding }),
-    });
-    return blob.sha;
-  }
-
-  async function commitChanges(entries, message) {
-    const config = githubConfig();
-    const maxAttempts = 3;
-    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-      const ref = await githubApi(`/git/ref/heads/${encodeURIComponent(config.branch)}`);
-      const parentSha = ref.object.sha;
-      const parent = await githubApi(`/git/commits/${parentSha}`);
-      const tree = await githubApi('/git/trees', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ base_tree: parent.tree.sha, tree: entries }),
-      });
-      const commit = await githubApi('/git/commits', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] }),
-      });
-      try {
-        await githubApi(`/git/refs/heads/${encodeURIComponent(config.branch)}`, {
-          method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sha: commit.sha, force: false }),
-        });
-        return commit;
-      } catch (error) {
-        const branchMoved = error.status === 422 && /fast[ -]?forward/i.test(error.message || '');
-        if (!branchMoved || attempt === maxAttempts) throw error;
-        el.saveStatus.textContent = `The branch changed while publishing; retrying (${attempt}/${maxAttempts - 1})…`;
-      }
-    }
-    throw new Error('GitHub publishing could not update the branch.');
   }
 
   function isLocalImage(source = '') { return source.startsWith('blob:') || source.startsWith('data:'); }
@@ -1011,44 +839,6 @@
     try { return JSON.parse(localStorage.getItem('bradylin-deleted-projects') || '[]'); } catch (_) { return []; }
   }
 
-  function markdownPreview(markdown = '') {
-    let output = escapeHtml(markdown);
-    output = output.replace(/\{%\s*include youtube\.html id=&quot;([^&]+)&quot;[^%]*%\}/g,
-      '<div class="preview-video"><small>YouTube: $1</small></div>');
-    output = output.replace(/^### (.+)$/gm, '<h3>$1</h3>').replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    output = output.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
-    output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-    output = output.replace(/^(?:- (.+)\n?)+/gm, (list) => `<ul>${list.split('\n').filter(Boolean).map((line) => `<li>${line.slice(2)}</li>`).join('')}</ul>`);
-    return output.split(/\n{2,}/).map((block) => /^<(h|ul|div)/.test(block) ? block : `<p>${block.replace(/\n/g, '<br>')}</p>`).join('');
-  }
-
-  function htmlToMarkdown(value) {
-    if (!/<(?:p|div|h[1-6]|iframe|ul|ol|strong|em|a)\b/i.test(value)) return value.trim();
-    const container = document.createElement('div');
-    container.innerHTML = value;
-    function convert(node) {
-      if (node.nodeType === Node.TEXT_NODE) return node.textContent;
-      if (node.nodeType !== Node.ELEMENT_NODE) return '';
-      const children = [...node.childNodes].map(convert).join('');
-      const tag = node.tagName.toLowerCase();
-      if (tag === 'strong' || tag === 'b') return `**${children}**`;
-      if (tag === 'em' || tag === 'i') return `*${children}*`;
-      if (tag === 'a') return `[${children}](${node.getAttribute('href') || ''})`;
-      if (/^h[1-6]$/.test(tag)) return `${'#'.repeat(Number(tag[1]))} ${children}\n\n`;
-      if (tag === 'li') return `- ${children.trim()}\n`;
-      if (tag === 'ul' || tag === 'ol') return `${children}\n`;
-      if (tag === 'br') return '\n';
-      if (tag === 'iframe') {
-        const id = youtubeId(node.getAttribute('src') || '');
-        return id ? `{% include youtube.html id="${id}" %}\n\n` : '';
-      }
-      if (tag === 'p') return `${children.trim()}\n\n`;
-      if (tag === 'div' && node.classList.contains('video-container')) return children;
-      return children;
-    }
-    return [...container.childNodes].map(convert).join('').replace(/\n{3,}/g, '\n\n').trim();
-  }
-
   function addYoutube() {
     const id = youtubeId(el.youtubeUrl.value);
     if (!id) {
@@ -1058,16 +848,6 @@
     insertAtCursor(el.body, `\n\n{% include youtube.html id="${id}" %}\n\n`);
     el.youtubeUrl.value = '';
     changed('YouTube video added');
-  }
-
-  function youtubeId(url) {
-    try {
-      const parsed = new URL(url, window.location.origin);
-      if (parsed.hostname.includes('youtu.be')) return parsed.pathname.split('/').filter(Boolean)[0] || '';
-      if (parsed.pathname.includes('/embed/')) return parsed.pathname.split('/embed/')[1].split('/')[0];
-      if (parsed.pathname.includes('/shorts/')) return parsed.pathname.split('/shorts/')[1].split('/')[0];
-      return parsed.searchParams.get('v') || '';
-    } catch (_) { return ''; }
   }
 
   function formatText(type) {
@@ -1149,9 +929,7 @@
     return lines.join('\n');
   }
 
-  function yamlString(value) { return JSON.stringify(String(value || '')); }
   function templateFor(id) { return state.templates.find((template) => template.id === id); }
-  function slugify(value) { return String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
   function stripCaptionPrefix(value = '') {
     return String(value).replace(/^\s*(?:<strong>)?Fig\s+\d+:(?:<\/strong>)?\s*/i, '').trim();
   }

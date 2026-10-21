@@ -42,6 +42,11 @@ exclude:
   - README.md
   - LICENSE
   - netlify.toml
+  - package.json
+  - package-lock.json
+  - node_modules
+  - scripts
+  - tests
 
 
 # -------------------

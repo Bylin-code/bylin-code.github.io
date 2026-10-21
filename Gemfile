@@ -10,7 +10,9 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 # Use GitHub Pages compatible version
-gem "github-pages", group: :jekyll_plugins
+# Load the local template exporter explicitly: github-pages disables automatic
+# _plugins discovery, even in our custom Actions and Netlify builds.
+gem "github-pages", group: :jekyll_plugins, require: ["github-pages", "./_plugins/editor_templates"]
 
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.

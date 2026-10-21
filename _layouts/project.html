@@ -98,5 +98,5 @@ body_classes: page-project
 {% if gallery_style == "masonry" %}
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-<script>var grid=document.querySelector('.gallery-masonry');if(grid){imagesLoaded(grid,function(){new Masonry(grid,{itemSelector:'.gallery-item',percentPosition:true});});}</script>
+<script src="{{ "/assets/js/gallery.js" | relative_url }}"></script>
 {% endif %}
