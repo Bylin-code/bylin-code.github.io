@@ -9,9 +9,9 @@
 
 .contact-icons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem 0;
 }
@@ -71,6 +71,16 @@
 .contact-icon.youtube:hover {
   color: #ff0000;
   border-color: #ff0000;
+}
+
+.contact-icon.instagram:hover {
+  color: #c13584;
+  border-color: #c13584;
+}
+
+.contact-icon.x:hover {
+  color: #111111;
+  border-color: #111111;
 }
 
 .contact-icon:hover svg {

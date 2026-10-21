@@ -1,0 +1,19 @@
+# Short card copy. Full project details stay in content/_projects.
+dream:
+  summary: "Four everyday objects that listen, respond, and work together."
+stradex:
+  summary: "A violin-inspired MIDI controller built for expressive playing."
+pulse:
+  summary: "A six-armed robot that turns MIDI into live percussion."
+formjet:
+  summary: "An automated wash-and-cure station for resin-printed parts."
+kermit:
+  summary: "A camera-guided racing robot with custom embedded control."
+harpa:
+  summary: "A robotic harp that plays through an array of servo-driven fingers."
+torin:
+  summary: "An inflatable soft robot that squeezes through tight spaces."
+vsynth:
+  summary: "A violin-inspired synthesizer built around an Arduino."
+buck:
+  summary: "A solenoid-powered robot drummer with synchronized lighting."

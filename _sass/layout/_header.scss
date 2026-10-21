@@ -58,8 +58,8 @@
   }
 }
 .header-scrolled {
-  transition: all 200ms linear;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 180ms ease;
+  box-shadow: 0 1px 0 var(--color-border);
   color: var(--color-header-text);
   a {
     color: var(--color-header-text);

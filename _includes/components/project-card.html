@@ -1,5 +1,6 @@
+{% assign card_art = site.data.project_cards[include.project.slug] %}
 {% assign title = include.title %}
-{% assign description = include.description %}
+{% assign description = card_art.summary | default: include.description %}
 {% assign thumbnail = include.thumbnail %}
 {% assign icon = include.icon %}
 {% assign fa_icon = include.fa_icon %}
@@ -14,7 +15,7 @@
 
   {% if thumbnail %}
     <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
-      <a href="{{ url | relative_url }}"><img alt="{{ title }}" src="{{ thumbnail | relative_url }}"/></a>
+      <a href="{{ url | relative_url }}" aria-label="View {{ title | escape }}"><img alt="{{ title | escape }}" src="{{ thumbnail | relative_url }}" loading="lazy"/></a>
     </div>
   {% endif %}
 

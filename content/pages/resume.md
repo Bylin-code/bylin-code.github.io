@@ -2,7 +2,7 @@
 layout: resume
 title: Resume
 permalink: "/resume/"
-resume_file: "/assets/files/brady_resume.pdf"
+resume_file: "/assets/files/brady-lin-resume.pdf"
 experience_gallery:
   - image: "/assets/images/resume/XP1.jpg"
     alt: ""
@@ -16,7 +16,4 @@ experience_gallery:
   - image: "/assets/images/resume/XP4.jpg"
     alt: ""
     caption: "Me and fellow Canadian formlings working on a project outside of work half past midnight."
-  - image: "/assets/images/resume/XP5.png"
-    alt: ""
-    caption: "Anthri developer conference to meet ."
 ---

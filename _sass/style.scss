@@ -33,7 +33,6 @@
 // Reusable portfolio components.
 @import "components/title";
 @import "components/heading";
-@import "components/heading-overrides";
 @import "components/social-links";
 @import "components/project-card";
 @import "components/grid-controls";
@@ -53,3 +52,5 @@ $fa-font-path: "../fonts/font-awesome/webfonts";
 @import "pages/home";
 @import "pages/contact";
 @import "components/section-heading";
+
+@import "components/ant-parade";

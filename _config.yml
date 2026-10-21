@@ -61,10 +61,10 @@ colors:
   primary_bg_3: "#0d042b"
   primary_text: "#fdfcf9"
   base_bg: "#fdfcf9"
-  base_bg_2: "#f7f6ed"
-  base_bg_3: "#faebd7"
+  base_bg_2: "#f0eee8"
+  base_bg_3: "#f0eee8"
   base_text: "#0d042b"
-  base_text_2: "#3b364c"
+  base_text_2: "#625c6c"
   logo_text: "#0d042b"
   header_text: "#0d042b"
 

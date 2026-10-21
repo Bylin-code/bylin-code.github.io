@@ -203,3 +203,21 @@ third-party content cannot introduce unrelated screenshot differences. A small
 perceptual tolerance ignores browser JPEG resampling noise; comparisons still
 require zero changed pixels above that threshold. Set `VISUAL_FILTER` to a
 route regular expression when rechecking a specific page.
+
+
+## Homepage curation and card styling
+
+The homepage uses `projects.order` in `content/pages/home.md` to choose the order
+of featured work. A project must still have `featured: true` and `display: true`
+to appear. Change that list to curate the selection without changing project dates.
+
+`_data/project_cards.yml` holds short card summaries, separate from the longer
+project-page description. Thumbnails use the original edge-to-edge, centered
+4:3 crop without decorative frames. Original photographs are unchanged.
+
+Typography and spacing live in the existing Sass components and page styles.
+The homepage has the largest title; other pages share `--font-size-page-title`.
+The palette uses warm off-white, deep purple, and one secondary background tone.
+
+The Resume page lives at `/resume/`, with source in `content/pages/resume.md`.
+The former `/experiences/` address redirects to `/resume/`.

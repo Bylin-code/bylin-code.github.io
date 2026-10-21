@@ -19,6 +19,14 @@ contact_links:
     social_id: youtube
     icon: "youtube"
     aria_label: "YouTube"
+  - title: "Instagram"
+    url: "https://www.instagram.com/brady.y.lin/"
+    icon: "instagram"
+    aria_label: "Instagram"
+  - title: "X"
+    url: "https://x.com/BradyYiqiuLin"
+    icon: "x"
+    aria_label: "X"
 ---
 
 

@@ -18,15 +18,15 @@
   }
   .heading-heading {
     h1 {
-      font-size: 36px;
-      letter-spacing: -1px;
+      font-size: var(--font-size-page-title);
+      letter-spacing: -0.025em;
       line-height: 1.1;
-      font-weight: 700;
+      font-weight: 600;
       font-family: var(--font-family-heading);
       @include media-breakpoint-up(md) {
-        font-size: 46px;
+        font-size: var(--font-size-page-title);
         line-height: 1;
-        letter-spacing: -2px;
+        letter-spacing: -0.035em;
       }
       strong {
         font-style: normal;
@@ -37,14 +37,14 @@
   }
   .heading-description {
     p {
-      font-size: 22px;
-      letter-spacing: -1px;
-      line-height: 1.24;
+      font-size: 18px;
+      letter-spacing: -0.025em;
+      line-height: 1.6;
       font-family: var(--font-family-base);
       color: var(--color-base-text-2);
       @include media-breakpoint-up(md) {
-        font-size: 26px;
-        letter-spacing: 1px;
+        font-size: 18px;
+        letter-spacing: 0;
         line-height: 1.4;
       }
     }

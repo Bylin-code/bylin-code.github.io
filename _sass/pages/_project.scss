@@ -9,18 +9,21 @@
   }
   .project-heading {
     h1 {
-      font-size: 36px;
-      letter-spacing: -2px;
+      font-size: var(--font-size-page-title);
+      letter-spacing: -0.035em;
       line-height: 1.2;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 10px;
       @include media-breakpoint-up(md) {
-        font-size: 48px;
+        font-size: var(--font-size-page-title);
       }
     }
   }
   .project-description {
-    width: 80%;
+    max-width: 36rem;
+    width: 100%;
+    color: var(--color-base-text-2);
+    line-height: 1.6;
     p {
 
     }
@@ -169,7 +172,8 @@
   .project-client,
   .project-skills {
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 14px;
+    color: var(--color-base-text-2);
     display: flex;
     align-items: flex-start;
     strong {

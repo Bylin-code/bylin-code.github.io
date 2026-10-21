@@ -82,3 +82,17 @@ img {
   padding: 0;
   vertical-align: bottom;
 }
+
+:root { scroll-behavior: smooth; scroll-padding-top: 100px; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-primary-bg);
+  outline-offset: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

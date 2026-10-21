@@ -1,6 +1,5 @@
 .latest-works-header {
-  margin-top: 50px;
-  margin-bottom: 0px;
+  margin: 0 0 36px;
 }
 
 .latest-works-align-center {
@@ -16,28 +15,19 @@
 }
 
 .latest-works-title {
-  font-size: 2.5rem;
+  font-size: var(--font-size-section-title);
   font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -.025em;
   color: var(--color-base-text);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   font-family: var(--font-family-heading);
 }
 
 .latest-works-subtitle {
-  font-size: 1.1rem;
+  font-size: 16px;
   color: var(--color-base-text-2);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 0;
   font-family: var(--font-family-base);
-}
-
-@media (max-width: 768px) {
-  .latest-works-title {
-    font-size: 2rem;
-  }
-
-  .latest-works-subtitle {
-    font-size: 1rem;
-  }
 }

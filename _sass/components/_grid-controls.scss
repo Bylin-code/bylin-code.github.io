@@ -1,11 +1,3 @@
-@keyframes slideRight {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-}
 .grid-footer {
   display: flex;
   justify-content: flex-start;
@@ -16,15 +8,17 @@
     justify-content: center;
   }
   .grid-view-more-button {
-    padding: 6px 12px;
-    text-transform: uppercase;
-    font-size: 18px;
+    padding: 12px 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-transform: none;
+    font-size: 16px;
     font-weight: 500;
     color: var(--color-primary-bg);
     font-family: $font-family-base;
     
     i {
-      animation: slideRight 2s ease-in-out infinite;
       margin-left: 8px;
     }
   }
@@ -32,7 +26,7 @@
 .grid-heading {
   margin-bottom: 16px;
   h2 {
-    text-transform: uppercase;
+    text-transform: none;
     font-size: 16px;
     border-left: none;
     padding-left: 0;
@@ -41,6 +35,6 @@
     font-family: $font-family-base;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

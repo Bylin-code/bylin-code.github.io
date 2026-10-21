@@ -1,5 +1,5 @@
 .content {
-  font-size: 19px;
+  font-size: 18px;
   font-family: var(--font-family-base);
   color: var(--color-base-text-2);
   h1,
@@ -44,7 +44,7 @@
     }
   }
   p {
-    line-height: 1.56;
+    line-height: 1.7;
     margin-bottom: 20px;
     font-family: var(--font-family-base);
     color: var(--color-base-text-2);
@@ -148,3 +148,7 @@
     position: relative;
   }
 }
+
+// Embedded project videos follow the content column on every screen size.
+.video-container { aspect-ratio: 16 / 9; width: 100%; margin: 32px 0; }
+.video-container iframe { display: block; width: 100%; height: 100%; border: 0; }

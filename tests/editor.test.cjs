@@ -11,14 +11,15 @@ function shared(fetch) {
 }
 function frontmatter(source) { return YAML.parse(source.split(/^---\s*$/m)[1]); }
 test('editing home preserves unknown metadata, nested settings, comments and body', () => {
-  const source = fs.readFileSync('content/pages/home.md', 'utf8').replace('  limit: 4', '  limit: 8').replace('\nprojects:', '\ncustom_setting: keep-me\nprojects:') + '\nUntouched body.\n';
+  const source = fs.readFileSync('content/pages/home.md', 'utf8').replace('  limit: 4', '  limit: 8').replace('\nprojects:', '\n# Preserve this comment\ncustom_setting: keep-me\nprojects:') + '\nUntouched body.\n';
   const result = shared().pageMarkdown({ id: 'home', title: 'New title', description: 'Description', cta_text: 'Prompt', latest_works_heading: 'Work', latest_works_sub_heading: 'Sub', more_projects_text: 'More', actions_heading: 'Connect', actions_sub_heading: 'Sub', resume_text: 'Resume', contact_text: 'Contact', about_text: 'About', images: [{ path: '/photo.jpg', alt: 'Portrait' }] }, source);
   const data = frontmatter(result);
   assert.equal(data.projects.limit, 8);
   assert.equal(data.custom_setting, 'keep-me');
   assert.equal(data.meta_title, frontmatter(source).meta_title);
-  assert.equal(data.actions.resume_link, '/resume/');
-  assert.match(result, /# date \| weight/);
+  assert.equal(data.actions.resume_link, frontmatter(source).actions.resume_link);
+  assert.match(result, /# Preserve this comment/);
+  assert.deepEqual(data.projects.order, frontmatter(source).projects.order);
   assert.match(result, /Untouched body\.\n$/);
   assert.equal(data.profile_alt, 'Portrait');
 });

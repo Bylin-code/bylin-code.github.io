@@ -11,12 +11,12 @@ gallery:
     caption: "<strong>Above:</strong> My team and I after our robot drummer's debut live performance."
 gallery_limit: 2
 ---
-Hey, I'm Brady. On paper, I'm an electrical engineering student at Northwestern. In practice, I'm an artist who treats engineering disciplines — all of them — as a means, not an end.
+Hey! I’m Brady, an electrical engineering student at Northwestern, a musician, and someone who likes turning unusual ideas into working things.
 
-Our institutions love putting boxes around people: "he's a MechE, he can't code," "she's a ChemE, don't make her draw schematics." Intentional or not, this trains people to stop exploring beyond their labels — and that's where most of the interesting work actually happens.
+I think of myself as an artist who works with engineering tools. Sometimes that means designing a circuit or writing firmware. Other times, it means machining a part, experimenting with sound, or figuring out why a robot drummer missed its cue.
 
-Mind you, I'm not condemning specialization; deep expertise is how real things get built and shipped. I do believe, though, in a world where tools of automation are abundant and problems are messy across disciplines, knowing what to build, and why, is the real skill. That's the art I'm practicing.
+I’m drawn to projects that cross disciplines. Music leads me into robotics; an instrument idea becomes a lesson in signal processing. I value deep expertise, but I also like being a beginner when an idea takes me somewhere unfamiliar.
 
-Outside of engineering, I enjoy singing with my a cappella group, hostel hopping, producing EDM music, and keeping pet ant colonies (ask me about it).
+Outside the workshop, I sing with my a cappella group, produce EDM, go hostel hopping, and keep pet ant colonies. Definitely ask me about the [ants](/contact/#ants).
 
-I'm always building something new. Check out my projects [here](/projects/), watch my [YouTube](https://www.youtube.com/@brady-y-lin), or dive into my [resume](/resume/) for more!
+Take a look at my [projects](/projects/), watch the builds on [YouTube](https://www.youtube.com/@brady-y-lin), or explore my [resume](/resume/). I'm currently working on a really cool project to bring humanoid robots to Northwestern, so stay tuned for that ;)

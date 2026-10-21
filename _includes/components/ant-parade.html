@@ -1,0 +1,22 @@
+<div class="ant-parade" id="ant-parade" hidden>
+  <div class="ant-parade-note">
+    <span>The colony says hello.</span>
+    <button class="ant-parade-dismiss" type="button" aria-label="Dismiss the ants">×</button>
+  </div>
+  <div class="ant-parade-trail" aria-hidden="true"></div>
+</div>
+<span class="ant-parade-status" role="status" aria-live="polite"></span>
+<template id="ant-parade-ant">
+  <span class="parade-ant">
+    <svg viewBox="0 0 48 32" fill="currentColor" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path class="ant-legs-a" d="M24 14 20 8 15 5 M26 18 26 25 21 29 M30 14 34 8 39 6"/>
+        <path class="ant-legs-b" d="M24 18 20 24 15 27 M26 14 26 7 21 3 M30 18 34 24 39 26"/>
+        <path d="M37 13 41 8 46 7 M37 19 41 24 46 25"/>
+      </g>
+      <ellipse cx="12" cy="16" rx="9" ry="6"/>
+      <ellipse cx="26" cy="16" rx="5.5" ry="3.5"/>
+      <ellipse cx="35" cy="16" rx="5" ry="4.5"/>
+    </svg>
+  </span>
+</template>

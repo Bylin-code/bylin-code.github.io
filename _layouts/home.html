@@ -4,9 +4,9 @@ body_classes: page-home
 ---
 
 <!-- Profile Hero Section START -->
-<div class="section pt-6 pb-4">
+<div class="section home-hero">
   <div class="container">
-    <div class="row align-items-stretch">
+    <div class="row align-items-center">
       <div class="col-12 col-md-5 mb-4 mb-md-0">
         <div class="profile-image-container">
           <img src="{{ page.profile_image | default: 'assets/images/home/brady.jpg' | relative_url }}" alt="{{ page.profile_alt | default: 'Brady Y. Lin' | escape }}" class="profile-image">
@@ -14,14 +14,15 @@ body_classes: page-home
       </div>
       <div class="col-12 col-md-7">
         <div class="profile-content">
+          <p class="profile-eyebrow">Brady Y. Lin / Mechatronics engineer</p>
           {% include components/title.html
           title=page.title
           %}
-          <div class="content" style="margin-top: 30px;">
+          <div class="content profile-introduction">
             {{ page.description | markdownify }}
           </div>
-          <div class="content" style="margin-top: 30px;">
-            <p>{{ page.cta_text }} <i class="fa-solid fa-arrow-down animated-arrow"></i></p>
+          <div class="profile-prompt">
+            <a href="#selected-work">{{ page.cta_text }} <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -37,15 +38,20 @@ body_classes: page-home
 {% assign sort_by = page.projects.sort | default: 'date' %}
 {% assign columns =  page.projects.columns | default: 3 %}
 {% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
-{% if sort_by == 'weight' %}
+{% if sort_by == 'curated' %}
+  {% assign cards = '' | split: ',' %}
+  {% for slug in page.projects.order %}
+    {% assign selected = featured_cards | where: 'slug', slug %}
+    {% assign cards = cards | concat: selected %}
+  {% endfor %}
+{% elsif sort_by == 'weight' %}
   {% assign cards = featured_cards | sort: 'weight' %}
 {% else %}
   {% assign cards = featured_cards | sort: 'date' | reverse %}
 {% endif %}
 
-{% assign cards = cards %}
 {% if cards.size > 0 %}
-<div class="section pt-0">
+<div class="section home-projects" id="selected-work">
   <div class="container">
     <div class="row">
 
@@ -62,8 +68,9 @@ body_classes: page-home
      
       {% for card in cards limit: limit %}
       <div
-        class="col-12 col-md-6 {{ columns }} mb-gutter mt-gutter {% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mt-md-0">
+        class="col-12 col-md-6 {{ columns }} project-grid-item">
         {% include components/project-card.html
+          project=card
           title=card.title
           description=card.description
           thumbnail=card.thumbnail
@@ -88,7 +95,7 @@ body_classes: page-home
 
 <!-- Actions Section START -->
 {% if page.actions %}
-<div class="section section-base-bg-2">
+<div class="section home-actions section-base-bg-2">
   <div class="container">
     <div class="row">
       
