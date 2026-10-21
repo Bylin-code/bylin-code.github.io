@@ -17,3 +17,5 @@ vsynth:
   summary: "A violin-inspired synthesizer built around an Arduino."
 buck:
   summary: "A solenoid-powered robot drummer with synchronized lighting."
+yappl:
+  summary: "A little mushroom that reminds you to talk about your day."

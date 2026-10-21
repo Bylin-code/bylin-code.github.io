@@ -17,7 +17,7 @@ projects:
   sub_heading: "" # "A collection of our recent work"
   limit: 4 
   sort: 'curated'
-  order: [dream, stradex, pulse, formjet]
+  order: [dream, stradex, pulse, yappl]
   view_more_button_text: "All projects"
   view_more_button_link: "/projects"
   columns: 2 # 1 | 2 | 3 | 4
