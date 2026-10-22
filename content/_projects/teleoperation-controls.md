@@ -1,16 +1,17 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Internship Project"
 gallery_style: split
 gallery_count: 4
 gallery_flip: false
-title: "ROBOT TELEOPERATION & CONTROLS"
+title: "HUMANOID CONTROLS"
 description: "Arm integration, Ethernet teleoperation, and headset-driven neck controls."
 featured: true
 display: true
 date: 2026-09-08
 role: "Controls Engineer — Mundane Systems Inc."
-skills: "C++, Python, ROS 2, Pinocchio, URDF, CAN FD, Gravity compensation, PD control, Hardware integration"
+skills: "C++, Python, ROS 2, Pinocchio, URDF, CAN, Gravity compensation, PD control, Hardware integration"
 thumbnail: "/assets/images/my-projects/teleoperation-controls/orange-robot-front-thumbnail-v2.png"
 gallery:
   - image: "/assets/images/my-projects/teleoperation-controls/neck-tuning.png"
@@ -34,7 +35,7 @@ At Mundane Systems, I helped bring new robot arms into the existing leader–fol
 
 ### Arm bring-up
 
-- Integrated new URDFs and calibrated joint mappings, encoder directions, offsets, and torque limits for the new seven-DOF HighTorque arms.
+- Integrated URDFs and calibrated joint mappings, encoder directions, offsets, and torque limits for the new seven-DOF HighTorque arms.
 - Tuned Pinocchio gravity compensation through single-joint and full-arm float tests, supporting 1 kHz local control over CAN FD.
 - Characterized Coulomb friction and developed compensation profiles; some joints still needed validation.
 

@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Personal Project"
 gallery_style: editorial
 gallery_count: 5
@@ -9,7 +10,7 @@ description: "A low-level computer vision line following robot. Final project fo
 date: 2025-05-08
 featured: true
 display: true
-role: "Engineer & Designer"
+role: "Maker"
 skills: "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/kermit/thumbnail.jpg"
 gallery:

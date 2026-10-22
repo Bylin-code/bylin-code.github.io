@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Personal Project"
 gallery_style: editorial
 gallery_count: 5
@@ -9,7 +10,7 @@ description: "A bucket solenoid robot drummer with synchronized RGB lighting my 
 date: 2021-09-20
 featured: false
 display: true
-role: "Lead Engineer & Designer"
+role: "Lead Engineer"
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/solenoid-drummer/thumbnail.jpeg"
 gallery:

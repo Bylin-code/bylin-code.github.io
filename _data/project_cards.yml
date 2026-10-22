@@ -27,3 +27,9 @@ teleoperation-controls:
   summary: "Arm bring-up, Ethernet teleoperation, and headset-driven neck controls."
 formlabs:
   summary: "Imaging and mechanical testing for SLA 3D printing."
+diy-linux-laptop:
+  summary: "A homemade Raspberry Pi laptop and my introduction to Linux."
+breadboard-game-controller:
+  summary: "A homemade USB controller with custom Minecraft hotkeys."
+pvc-recorder:
+  summary: "A handmade recorder built from about C$3 of PVC pipe."

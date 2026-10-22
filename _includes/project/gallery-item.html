@@ -1,4 +1,4 @@
-<div class="gallery-item">
+<div class="gallery-item{% if include.item.rotate == 90 %} gallery-item-rotate-90{% endif %}">
   <div class="gallery-image{% if include.hero %} gallery-hero-image{% endif %}"{% if include.item.aspect_ratio %} style="aspect-ratio: {{ include.item.aspect_ratio | escape }}"{% endif %}>
     <img src="{{ include.item.image | relative_url }}" alt="{{ include.item.alt | default: include.item.caption | strip_html | escape }}" loading="lazy"{% if include.item.fit or include.item.position %} style="{% if include.item.fit %}object-fit: {{ include.item.fit | escape }};{% endif %}{% if include.item.position %}object-position: {{ include.item.position | escape }};{% endif %}"{% endif %} />
   </div>

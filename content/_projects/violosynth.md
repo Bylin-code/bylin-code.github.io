@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Personal Project"
 gallery_style: split
 gallery_count: 2
@@ -9,7 +10,7 @@ description: "An Arduino-based violin-inspired square-wave synthesizer. The prec
 date: 2020-09-04
 featured: false
 display: true
-role: "Lead Developer & Sound Engineer"
+role: "Maker"
 skills: "Arduino, Audio generation, Basic circuit design"
 thumbnail: "/assets/images/my-projects/violosynth/thumbnail.jpeg"
 gallery:

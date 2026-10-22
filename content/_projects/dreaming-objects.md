@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Personal Project"
 gallery_style: hero
 gallery_count: 7
@@ -9,7 +10,7 @@ description: "A family of intelligent objects that listens to you and makes your
 date: 2026-03-08
 featured: true
 display: true
-role: "Hardware"
+role: "Hardware Engineer"
 skills: "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems"
 thumbnail: "/assets/images/my-projects/dreaming-objects/thumbnail.jpeg"
 gallery:

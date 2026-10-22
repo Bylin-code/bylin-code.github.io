@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Personal Project"
 gallery_style: editorial
 gallery_count: 7

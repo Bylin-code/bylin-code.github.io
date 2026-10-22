@@ -124,6 +124,7 @@ Long-form project notes can go here in Markdown.
 Project flags:
 
 - `project_type: "Personal Project"` or `"Internship Project"` adds a visible tag to project cards and the project page. Set it with the Project tag dropdown in the editor.
+- `collaboration: "Team"` or `"Solo"` adds a second tag after the project type. Set it with the Collaboration dropdown; leave it unspecified to hide this tag.
 
 - `display: true` shows the project in the main project listing.
 - `featured: true` also makes it eligible for the homepage's featured section.

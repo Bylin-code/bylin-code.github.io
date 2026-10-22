@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Internship Project"
 gallery_style: split
 gallery_count: 3
@@ -10,7 +11,7 @@ date: 2026-05-26
 featured: true
 display: true
 role: "Mechatronics Engineering Intern — Mundane Systems Inc."
-skills: "Mechanical design, CNC machining, Controls, CAN FD, RS-485, Test automation, Web development"
+skills: "Mechanical design, Design for CNC, Controls, CAN FD, RS-485, Test automation, Web development"
 thumbnail: "/assets/images/my-projects/actuator-test-bench/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/actuator-test-bench/test-bench.jpg"

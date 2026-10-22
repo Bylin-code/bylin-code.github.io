@@ -3,7 +3,7 @@ layout: home
 body_classes: page-home
 permalink: "/"
 title: "I build machines from idea to reality."
-description: "I’m Brady, a mechatronics engineer working across hardware and software. I design circuits, build mechanisms, and write the firmware that brings them to life."
+description: "I’m Brady, a mechatronics engineer working across hardware and software. I design circuits, build mechanisms, and write the code that brings them to life."
 cta_text: "Explore selected work"
 meta_description: "Brady Lin - Full-Stack Mechatronics Engineer"
 meta_title: Brady Lin - Full-Stack Mechatronics Engineer

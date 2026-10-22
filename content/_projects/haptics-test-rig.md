@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Internship Project"
 gallery_style: split
 gallery_count: 3
@@ -9,7 +10,7 @@ description: "A mechanical rig for measuring force feedback in teleoperation."
 date: 2026-06-20
 featured: false
 display: true
-role: "Mechatronics Engineering Intern — Mundane Systems Inc."
+role: "Mechatronics Engineer — Mundane Systems Inc."
 skills: "Fusion 360, Mechanical design, DFM/DFA, GD&T, CNC machining, Hardware integration"
 thumbnail: "/assets/images/my-projects/haptics-test-rig/thumbnail.jpeg"
 gallery:

@@ -13,10 +13,10 @@ gallery_limit: 2
 ---
 Hey! I’m Brady, an electrical engineering student at Northwestern, a musician, and someone who likes turning unusual ideas into working things.
 
-I think of myself as an artist who works with engineering tools. Sometimes that means designing a circuit or writing firmware. Other times, it means machining a part, experimenting with sound, or figuring out why a robot drummer missed its cue.
+I think of myself as an artist who works with engineering tools. Sometimes that means designing a circuit or writing firmware. Other times, it means machining a part, experimenting with inductors, or figuring out why a robot drummer missed its cue.
 
 I’m drawn to projects that cross disciplines. Music leads me into robotics; an instrument idea becomes a lesson in signal processing. I value deep expertise, but I also like being a beginner when an idea takes me somewhere unfamiliar.
 
-Outside the workshop, I sing with my a cappella group, produce EDM, go hostel hopping, and keep pet ant colonies. Definitely ask me about the [ants](/contact/#ants).
+Outside the workshop, I sing with my a cappella group, film YouTube videos, go hostel hopping, and keep pet ant colonies. Definitely ask me about the [ants](/contact/#ants).
 
 Take a look at my [projects](/projects/), watch the builds on [YouTube](https://www.youtube.com/@brady-y-lin), or explore my [resume](/resume/). I'm currently working on a really cool project to bring humanoid robots to Northwestern, so stay tuned for that ;)

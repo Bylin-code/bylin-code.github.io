@@ -1,4 +1,18 @@
 .page-project {
+  .gallery .gallery-item.gallery-item-rotate-90 .gallery-image {
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 75%;
+      height: 133.333333%;
+      max-width: none;
+      object-fit: cover;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
   .project-scroll-hint { display: none; }
 
   @include media-breakpoint-down(sm) {

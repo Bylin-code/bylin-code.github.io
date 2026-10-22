@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Personal Project"
 gallery_style: hero
 gallery_count: 9
@@ -10,7 +11,7 @@ date: 2025-09-03
 featured: true
 display: true
 role: "Maker"
-skills: "CAD, PCB design, Embedded development, Rapid prototyping"
+skills: "CAD, PCB design, Embedded development, Rapid prototyping, DFM, DFA"
 thumbnail: "/assets/images/my-projects/stradex/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/stradex/stradex3.jpg"

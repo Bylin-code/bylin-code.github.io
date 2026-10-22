@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Personal Project"
 gallery_style: rows
 gallery_count: 4
@@ -9,7 +10,7 @@ description: "A biomimetic inflatable soft robot that can squeeze through holes 
 date: 2022-02-10
 featured: false
 display: true
-role: "Engineer & Designer"
+role: "Maker"
 skills: "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/toroidal-soft-robot/thumbnail.jpeg"
 gallery:

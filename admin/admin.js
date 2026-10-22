@@ -69,7 +69,7 @@
     const today = new Date().toISOString().slice(0, 10);
     return {
       slug: '', layout: 'project', gallery_style: state.templates[0]?.id || 'editorial', gallery_count: 5, gallery_flip: false, title: '', description: '',
-      project_type: 'Personal Project', date: today, client: '', role: '', skills: '', thumbnail: '', featured: false,
+      project_type: 'Personal Project', collaboration: '', date: today, client: '', role: '', skills: '', thumbnail: '', featured: false,
       display: true, gallery: [], body: '', isNew: true, thumbnailPreview: '', thumbnailOriginal: '',
     };
   }
@@ -181,7 +181,7 @@
   }
 
   function writeForm() {
-    const fields = ['title', 'slug', 'date', 'description', 'project_type', 'role', 'client', 'skills', 'body'];
+    const fields = ['title', 'slug', 'date', 'description', 'project_type', 'collaboration', 'role', 'client', 'skills', 'body'];
     fields.forEach((name) => { el.form.elements[name].value = state.current[name] || ''; });
     el.form.elements.display.checked = Boolean(state.current.display);
     el.form.elements.featured.checked = Boolean(state.current.featured);
@@ -195,7 +195,7 @@
 
   function readForm() {
     const data = new FormData(el.form);
-    ['title', 'slug', 'date', 'description', 'project_type', 'role', 'client', 'skills', 'body'].forEach((name) => {
+    ['title', 'slug', 'date', 'description', 'project_type', 'collaboration', 'role', 'client', 'skills', 'body'].forEach((name) => {
       state.current[name] = String(data.get(name) || '');
     });
     state.current.slug = slugify(state.current.slug || state.current.title);
@@ -917,6 +917,7 @@
     ];
     if (project.client) lines.push(`client: ${yamlString(project.client)}`);
     if (project.project_type) lines.push(`project_type: ${yamlString(project.project_type)}`);
+    if (project.collaboration) lines.push(`collaboration: ${yamlString(project.collaboration)}`);
     if (project.role) lines.push(`role: ${yamlString(project.role)}`);
     if (project.skills) lines.push(`skills: ${yamlString(project.skills)}`);
     if (project.thumbnail) lines.push(`thumbnail: ${yamlString(project.thumbnail)}`);

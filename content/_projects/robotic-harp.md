@@ -1,15 +1,16 @@
 ---
 layout: project
+collaboration: "Solo"
 project_type: "Personal Project"
 gallery_style: split
 gallery_count: 3
 gallery_flip: true
 title: "ROBOTIC HARP"
 description: "A robotic harp built on an Arduino Mega and a Leonardo. Strings are actuated by a servo array attached to silicone fingers."
-date: 2022-09-29
+date: 2023-01-01
 featured: false
 display: true
-role: "Engineer"
+role: "Maker"
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/robotic-harp/thumbnail.jpeg"
 gallery:

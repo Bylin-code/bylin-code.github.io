@@ -1,4 +1,4 @@
-{% if page.title %}<div class="project-heading project-name-with-tag"><h1>{{ page.title }}</h1>{% if page.project_type %}<span class="project-type-tag">{{ page.project_type | escape }}</span>{% endif %}</div>{% endif %}
+{% if page.title %}<div class="project-heading project-name-with-tag"><h1>{{ page.title }}</h1>{% if page.project_type %}<span class="project-type-tag">{{ page.project_type | escape }}</span>{% endif %}{% if page.collaboration %}<span class="project-type-tag">{{ page.collaboration | escape }}</span>{% endif %}</div>{% endif %}
 {% if page.description %}<div class="project-description">{{ page.description }}</div>{% endif %}
 <div class="{{ include.stats_class | default: 'mt-4' }}">
   {% if page.date %}<div class="project-date"><strong>Date </strong><span>{{ page.date | date_to_long_string }}</span></div>{% endif %}

@@ -1,5 +1,6 @@
 ---
 layout: project
+collaboration: "Team"
 project_type: "Internship Project"
 gallery_style: split
 gallery_count: 1
@@ -9,7 +10,7 @@ description: "Camera systems, programmable lighting, and mechanical testing for 
 date: 2026-01-05
 featured: false
 display: true
-role: "Mechanical Engineering Intern — Formlabs"
+role: "Mechanical Engineer — Formlabs"
 skills: "Onshape, KiCad, DFM, C/C++, Embedded systems, Test automation"
 thumbnail: "/assets/images/my-projects/formlabs/thumbnail.png"
 gallery:
