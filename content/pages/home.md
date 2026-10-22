@@ -20,7 +20,7 @@ projects:
   order: [teleoperation-controls, pulse, actuator-test-bench, yappl, stradex, dreaming-objects]
   view_more_button_text: "All projects"
   view_more_button_link: "/projects"
-  columns: 2 # 1 | 2 | 3 | 4
+  columns: 3 # 1 | 2 | 3 | 4
 
 actions:
   heading: "Let’s build something."

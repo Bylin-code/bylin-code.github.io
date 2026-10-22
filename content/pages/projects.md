@@ -10,5 +10,5 @@ projects:
   sort: date # date | weight
   view_more_button_text: "" # "More Projects"
   view_more_button_link: "" # "/projects"
-  columns: 2 # 1 | 2 | 3 | 4
+  columns: 3 # 1 | 2 | 3 | 4
 ---

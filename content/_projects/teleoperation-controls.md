@@ -14,9 +14,9 @@ role: "Controls Engineer — Mundane Systems Inc."
 skills: "C++, Python, ROS 2, Pinocchio, URDF, CAN, Gravity compensation, PD control, Hardware integration"
 thumbnail: "/assets/images/my-projects/teleoperation-controls/orange-robot-front-thumbnail-v2.png"
 gallery:
-  - image: "/assets/images/my-projects/teleoperation-controls/neck-tuning.png"
+  - image: "/assets/images/my-projects/teleoperation-controls/neck-tuning-cropped.png"
     caption: "Tuning the Damiao-actuated neck at my desk"
-    aspect_ratio: "1046 / 1152"
+    aspect_ratio: "1046 / 917"
     fit: contain
   - image: "/assets/images/my-projects/teleoperation-controls/single-joint-teleoperation.png"
     caption: "My first single-joint teleoperation test with CAN FD-controlled HighTorque actuators"
@@ -26,9 +26,9 @@ gallery:
     caption: "Testing gravity compensation on the new arm prototypes for the first time"
     aspect_ratio: "1124 / 808"
     fit: contain
-  - image: "/assets/images/my-projects/teleoperation-controls/leader-arm-teleoperation.png"
+  - image: "/assets/images/my-projects/teleoperation-controls/leader-arm-teleoperation-cropped.png"
     caption: "Teleoperating with the leader arms I helped bring up"
-    aspect_ratio: "894 / 1148"
+    aspect_ratio: "1056 / 748"
     fit: contain
 ---
 At Mundane Systems, I helped bring new robot arms into the existing leader–follower system and tuned the headset-driven neck.
