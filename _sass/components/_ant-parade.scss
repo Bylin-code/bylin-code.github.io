@@ -86,3 +86,11 @@
   }
   .ant-legs-a, .ant-legs-b { animation: none !important; }
 }
+.page-about .content .ant-invitation,
+.page-about .content a[href$="/contact/#ants"] {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(13, 4, 43, .4);
+  text-underline-offset: 4px;
+}

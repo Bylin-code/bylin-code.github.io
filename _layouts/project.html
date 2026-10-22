@@ -8,7 +8,7 @@ body_classes: page-project
 {% assign first_group_count = image_count | plus: 1 | divided_by: 2 %}
 
 <div class="section">
-  <div class="container">
+  <div class="container project-responsive-layout">
     {% if gallery_style == "split" %}
       <div class="row justify-content-center">
         <div class="col-12 col-md-6{% unless page.gallery_flip %} order-md-2{% endunless %} mb-6 mb-md-0">
@@ -94,6 +94,11 @@ body_classes: page-project
     {% endif %}
   </div>
 </div>
+
+{% if page.gallery.size > 0 %}
+<div class="project-scroll-hint" hidden aria-hidden="true">Scroll down to see photos <span aria-hidden="true">↓</span></div>
+<script src="{{ '/assets/js/project-scroll-hint.js' | relative_url }}" defer></script>
+{% endif %}
 
 {% if gallery_style == "masonry" %}
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

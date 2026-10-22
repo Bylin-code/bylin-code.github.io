@@ -58,6 +58,38 @@
 
 .home-projects {
   padding: 0 0 88px;
+
+  .grid-footer {
+    margin-top: 12px;
+  }
+
+  .grid-view-more-button {
+    justify-content: center;
+    gap: 16px;
+    min-width: 220px;
+    min-height: 54px;
+    padding: 14px 28px;
+    border: 1px solid var(--color-base-text);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-base-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .18s ease, color .18s ease;
+
+    i { margin-left: 0; }
+
+    &:hover {
+      background: var(--color-base-bg-2, #f0eee9);
+      color: var(--color-base-text);
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-base-text);
+      outline-offset: 4px;
+    }
+  }
 }
 
 .home-actions {

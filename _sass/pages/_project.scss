@@ -1,4 +1,54 @@
 .page-project {
+  .project-scroll-hint { display: none; }
+
+  @include media-breakpoint-down(sm) {
+    .project-scroll-hint:not([hidden]) {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%);
+      padding: 10px 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-base-bg);
+      color: var(--color-base-text);
+      box-shadow: 0 4px 20px rgba(13, 4, 43, .1);
+      font-size: 13px;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity .2s ease;
+
+      &.is-dismissed { opacity: 0; }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .project-responsive-layout {
+      display: flex;
+      flex-direction: column;
+
+      // Flatten desktop columns so every layout can place its text first,
+      // followed by gallery groups in their original figure order.
+      .project-stack,
+      .project-stack-first,
+      .project-stack-second,
+      .row,
+      .row > .col,
+      .row > [class*="col-"] {
+        display: contents;
+      }
+
+      .gallery {
+        order: 1;
+        margin-top: 32px !important;
+      }
+    }
+  }
+
   .project-stack {
     display: flex;
     flex-direction: column;
