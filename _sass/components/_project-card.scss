@@ -1,3 +1,30 @@
+.project-type-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--color-base-text-2);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.project-name-with-tag {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  min-width: 0;
+}
+
+.project-heading.project-name-with-tag {
+  margin-bottom: 16px;
+  h1 { margin-bottom: 0; }
+}
+
 .project-grid-item {
   margin-bottom: 48px;
 }

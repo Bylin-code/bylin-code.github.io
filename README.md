@@ -123,6 +123,8 @@ Long-form project notes can go here in Markdown.
 
 Project flags:
 
+- `project_type: "Personal Project"` or `"Internship Project"` adds a visible tag to project cards and the project page. Set it with the Project tag dropdown in the editor.
+
 - `display: true` shows the project in the main project listing.
 - `featured: true` also makes it eligible for the homepage's featured section.
 - `date` controls date-based ordering.

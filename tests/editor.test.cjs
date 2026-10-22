@@ -11,7 +11,7 @@ function shared(fetch) {
 }
 function frontmatter(source) { return YAML.parse(source.split(/^---\s*$/m)[1]); }
 test('editing home preserves unknown metadata, nested settings, comments and body', () => {
-  const source = fs.readFileSync('content/pages/home.md', 'utf8').replace('  limit: 4', '  limit: 8').replace('\nprojects:', '\n# Preserve this comment\ncustom_setting: keep-me\nprojects:') + '\nUntouched body.\n';
+  const source = fs.readFileSync('content/pages/home.md', 'utf8').replace(/^  limit: \d+/m, '  limit: 8').replace('\nprojects:', '\n# Preserve this comment\ncustom_setting: keep-me\nprojects:') + '\nUntouched body.\n';
   const result = shared().pageMarkdown({ id: 'home', title: 'New title', description: 'Description', cta_text: 'Prompt', latest_works_heading: 'Work', latest_works_sub_heading: 'Sub', more_projects_text: 'More', actions_heading: 'Connect', actions_sub_heading: 'Sub', resume_text: 'Resume', contact_text: 'Contact', about_text: 'About', images: [{ path: '/photo.jpg', alt: 'Portrait' }] }, source);
   const data = frontmatter(result);
   assert.equal(data.projects.limit, 8);

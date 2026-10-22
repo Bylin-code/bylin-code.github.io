@@ -1,11 +1,12 @@
 ---
 layout: project
+project_type: "Personal Project"
 gallery_style: hero
 gallery_count: 7
 gallery_flip: false
 title: "YAPPL"
 description: "A mushroom-shaped voice journal with OLED expressions, evening reminders, and a self-hosted journal dashboard."
-date: 2026-09-20
+date: 2026-10-02
 featured: true
 display: true
 role: "Maker"

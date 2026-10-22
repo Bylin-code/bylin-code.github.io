@@ -1,5 +1,6 @@
 ---
 layout: project
+project_type: "Personal Project"
 gallery_style: hero
 gallery_count: 9
 gallery_flip: false

@@ -1,5 +1,6 @@
 ---
 layout: project
+project_type: "Personal Project"
 gallery_style: split
 gallery_flip: false
 gallery_count: 2

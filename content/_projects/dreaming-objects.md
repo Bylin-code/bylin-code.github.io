@@ -1,33 +1,34 @@
 ---
 layout: project
+project_type: "Personal Project"
 gallery_style: hero
 gallery_count: 7
 gallery_flip: false
-title: "DREAM"
+title: "DREAMING OBJECTS"
 description: "A family of intelligent objects that listens to you and makes your life more like a dream"
 date: 2026-03-08
 featured: true
 display: true
 role: "Hardware"
 skills: "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems"
-thumbnail: "/assets/images/my-projects/dream/thumbnail.jpeg"
+thumbnail: "/assets/images/my-projects/dreaming-objects/thumbnail.jpeg"
 gallery:
-  - image: "/assets/images/my-projects/dream/img-0334.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-0334.jpg"
     caption: "The Dreaming Objects"
-  - image: "/assets/images/my-projects/dream/img-0326.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-0326.jpg"
     caption: "Lamp"
-  - image: "/assets/images/my-projects/dream/img-0317.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-0317.jpg"
     caption: "Radio"
-  - image: "/assets/images/my-projects/dream/dream5.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/dreaming-objects5.jpg"
     caption: "Mirror"
-  - image: "/assets/images/my-projects/dream/img-0298.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-0298.jpg"
     caption: "Platter"
-  - image: "/assets/images/my-projects/dream/img-2627.jpeg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-2627.jpeg"
     caption: "The crew working hard"
-  - image: "/assets/images/my-projects/dream/img-2788-jw.jpg"
+  - image: "/assets/images/my-projects/dreaming-objects/img-2788-jw.jpg"
     caption: "Hackathon finale"
 ---
-**DREAM** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. In the span of 48 hours, we built a lamp that dances, a mirror that previews your OOTD, a radio that talks like Bumblebee, and a mobile platter that passes you beer. 
+**DREAMING OBJECTS** is a project that grew out of the MIT Media Lab HARD MODE hackathon, where we snatched the 50K grand prize. In the span of 48 hours, we built a lamp that dances, a mirror that previews your OOTD, a radio that talks like Bumblebee, and a mobile platter that passes you beer. 
 
 Each object runs its own embedded LLM on an onboard Raspberry Pi, while a central LLM console coordinates communication between the four. Together, they interact with the user through a camera feed on the mirror and audio input from the radio, while also speaking to each other.
 

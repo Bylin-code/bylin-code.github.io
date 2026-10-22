@@ -15,9 +15,9 @@ latest_works:
 projects:
   heading: "" # "Projects"
   sub_heading: "" # "A collection of our recent work"
-  limit: 4 
+  limit: 6
   sort: 'curated'
-  order: [dream, stradex, pulse, yappl]
+  order: [dreaming-objects, teleoperation-controls, actuator-test-bench, stradex, pulse, yappl]
   view_more_button_text: "All projects"
   view_more_button_link: "/projects"
   columns: 2 # 1 | 2 | 3 | 4

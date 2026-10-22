@@ -1,0 +1,3 @@
+Edit the supplied Formlabs product lineup photograph (the image showing four printers, NOT the resume screenshot). Preserve all four actual products exactly: silhouettes, relative scale, left-to-right order, black/gray bodies, orange windows, lights, logos, fine hardware details. Change only the pure-white background to a seamless uniform warm off-white/light neutral gray approximately #e4e3de to match an engineering portfolio's existing thumbnails. Clean product photograph, no added text, no new products, no changes to products. Output landscape 4:3 by extending the background vertically, keeping the full lineup uncropped with comfortable side margins and centered vertically. Keep original subtle grounding shadows.
+
+Edited with the built-in image_gen tool.

@@ -1,5 +1,5 @@
 # Short card copy. Full project details stay in content/_projects.
-dream:
+dreaming-objects:
   summary: "Four everyday objects that listen, respond, and work together."
 stradex:
   summary: "A violin-inspired MIDI controller built for expressive playing."
@@ -9,13 +9,21 @@ formjet:
   summary: "An automated wash-and-cure station for resin-printed parts."
 kermit:
   summary: "A camera-guided racing robot with custom embedded control."
-harpa:
+robotic-harp:
   summary: "A robotic harp that plays through an array of servo-driven fingers."
-torin:
+toroidal-soft-robot:
   summary: "An inflatable soft robot that squeezes through tight spaces."
-vsynth:
+violosynth:
   summary: "A violin-inspired synthesizer built around an Arduino."
-buck:
+solenoid-drummer:
   summary: "A solenoid-powered robot drummer with synchronized lighting."
 yappl:
   summary: "A little mushroom that reminds you to talk about your day."
+haptics-test-rig:
+  summary: "A test rig for measuring force feedback in teleoperation systems."
+actuator-test-bench:
+  summary: "An automated test bench for comparing 50+ robotic joint actuators."
+teleoperation-controls:
+  summary: "Arm bring-up, Ethernet teleoperation, and headset-driven neck controls."
+formlabs:
+  summary: "Imaging and mechanical testing for SLA 3D printing."
