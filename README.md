@@ -224,3 +224,17 @@ The palette uses warm off-white, deep purple, and one secondary background tone.
 
 The Resume page lives at `/resume/`, with source in `content/pages/resume.md`.
 The former `/experiences/` address redirects to `/resume/`.
+
+## Project contribution filters
+
+Set `contributions` to an array using `Mechanical design`, `Electronics design`,
+`Software development`, `Creative`, and/or `Leadership`. These appear between
+Role and Skills on project pages, and power the project archive filters without
+adding tags to card captions. The editor exposes these as checkboxes. One project
+type and one contribution can be combined; Reset filters restores all work.
+
+Check filters, mobile layout, project ordering, and editor contribution export:
+
+```sh
+node scripts/check-project-filters.mjs /path/to/jekyll-build
+```

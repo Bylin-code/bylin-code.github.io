@@ -11,6 +11,7 @@ date: 2021-09-20
 featured: false
 display: true
 role: "Lead Engineer"
+contributions: ["Software development", "Creative", "Leadership"]
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/solenoid-drummer/thumbnail.jpeg"
 gallery:

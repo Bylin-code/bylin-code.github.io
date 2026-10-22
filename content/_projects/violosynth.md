@@ -11,6 +11,7 @@ date: 2020-09-04
 featured: false
 display: true
 role: "Maker"
+contributions: ["Electronics design", "Software development", "Creative"]
 skills: "Arduino, Audio generation, Basic circuit design"
 thumbnail: "/assets/images/my-projects/violosynth/thumbnail.jpeg"
 gallery:

@@ -55,6 +55,7 @@ permalink: /admin/project-data.json
       "role": {{ project.role | default: "" | jsonify }},
       "project_type": {{ project.project_type | default: "Personal Project" | jsonify }},
       "collaboration": {{ project.collaboration | default: "" | jsonify }},
+      "contributions": {{ project.contributions | jsonify }},
       "skills": {{ project.skills | default: "" | jsonify }},
       "thumbnail": {{ project.thumbnail | default: "" | jsonify }},
       "featured": {{ project.featured | default: false | jsonify }},

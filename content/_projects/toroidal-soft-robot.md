@@ -11,6 +11,7 @@ date: 2022-02-10
 featured: false
 display: true
 role: "Maker"
+contributions: ["Mechanical design", "Software development"]
 skills: "Arduino, C++, Biomimicry, Radio-controlled systems, Hardware debugging, Mechatronics, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/toroidal-soft-robot/thumbnail.jpeg"
 gallery:

@@ -11,6 +11,7 @@ date: 2023-08-03
 featured: false
 display: false
 role: "Project Manager"
+contributions: ["Creative", "Leadership"]
 skills: "Leadership, Parts sourcing"
 thumbnail: "/assets/images/my-projects/mdpj/mdpj1.jpg"
 gallery:

@@ -11,6 +11,7 @@ date: 2025-09-03
 featured: true
 display: true
 role: "Maker"
+contributions: ["Mechanical design", "Electronics design", "Software development", "Creative"]
 skills: "CAD, PCB design, Embedded development, Rapid prototyping, DFM, DFA"
 thumbnail: "/assets/images/my-projects/stradex/thumbnail.jpeg"
 gallery:

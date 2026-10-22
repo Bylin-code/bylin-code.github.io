@@ -11,6 +11,7 @@ featured: false
 display: false
 thumbnail: "/assets/images/gen/projects/project-1-1-thumbnail.webp"
 role: "Building Designer"
+contributions: ["Mechanical design", "Creative"]
 skills: "none"
 gallery:
   - image: "/assets/images/gen/projects/project-1-1.webp"

@@ -11,6 +11,7 @@ date: 2026-10-02
 featured: true
 display: true
 role: "Maker"
+contributions: ["Electronics design", "Software development", "Creative"]
 skills: "CAD, 3D printing, Electronics, Embedded development, Full-stack development"
 thumbnail: "/assets/images/my-projects/yappl/thumbnail.jpeg"
 gallery:

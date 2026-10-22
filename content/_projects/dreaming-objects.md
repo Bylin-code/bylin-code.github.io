@@ -11,6 +11,7 @@ date: 2026-03-08
 featured: true
 display: true
 role: "Hardware Engineer"
+contributions: ["Mechanical design", "Software development", "Creative", "Leadership"]
 skills: "Engineering management, 3D Printing, Hardware integration, Embedded design, Firmware development, Electromechanical systems"
 thumbnail: "/assets/images/my-projects/dreaming-objects/thumbnail.jpeg"
 gallery:

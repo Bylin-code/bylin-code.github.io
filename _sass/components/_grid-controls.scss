@@ -38,3 +38,50 @@
     font-size: 16px;
   }
 }
+
+.project-filters {
+  margin-bottom: 32px;
+  fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+  legend {
+    float: none;
+    width: auto;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-base-text-2);
+    margin-bottom: 2px;
+  }
+  .filter-options { display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 0; }
+  button {
+    font: inherit;
+    font-size: 14px;
+    min-height: 44px;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-base-text-2);
+    cursor: pointer;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+    &:hover { color: var(--color-base-text); text-decoration-line: underline; }
+    &[aria-pressed="true"] {
+      color: var(--color-base-text);
+      font-weight: 600;
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+    }
+    &:focus-visible { outline: 2px solid var(--color-base-text); outline-offset: 4px; }
+  }
+  .filter-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    min-height: 44px;
+    font-size: 12px;
+    color: var(--color-base-text-2);
+  }
+  .filter-status p { margin: 0; }
+  [data-filter-reset] { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+}
+[data-project-browser] [hidden] { display: none !important; }

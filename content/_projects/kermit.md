@@ -11,6 +11,7 @@ date: 2025-05-08
 featured: true
 display: true
 role: "Maker"
+contributions: ["Software development"]
 skills: "Pico C SDK, Embedded development, Computer vision, PID, Mechatronics, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/kermit/thumbnail.jpg"
 gallery:

@@ -11,7 +11,9 @@ gallery:
     caption: "<strong>Above:</strong> My team and I after our robot drummer's debut live performance."
 gallery_limit: 2
 ---
-Hey! I’m Brady, an electrical engineering student at Northwestern, a musician, and someone who likes turning unusual ideas into working things.
+Hey! I’m Brady, an electrical engineering student at Northwestern focused on robot integration, actuator characterization, and embedded controls. I like working through the details that turn a mechanism, a circuit, and a control loop into a machine that works together.
+
+I’m seeking academic quarter or summer robotics / mechatronics internships. My recent work includes an automated actuator test bench, humanoid arm bring-up, and teleoperation controls.
 
 I think of myself as an artist who works with engineering tools. Sometimes that means designing a circuit or writing firmware. Other times, it means machining a part, experimenting with inductors, or figuring out why a robot drummer missed its cue.
 

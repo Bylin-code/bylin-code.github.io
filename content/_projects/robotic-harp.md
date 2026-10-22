@@ -11,6 +11,7 @@ date: 2023-01-01
 featured: false
 display: true
 role: "Maker"
+contributions: ["Mechanical design", "Electronics design", "Software development", "Creative"]
 skills: "Arduino, C++, MIDI signal processing, I2C, CAD, 3D Printing"
 thumbnail: "/assets/images/my-projects/robotic-harp/thumbnail.jpeg"
 gallery:

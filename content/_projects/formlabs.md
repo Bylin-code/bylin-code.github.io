@@ -11,6 +11,7 @@ date: 2026-01-05
 featured: false
 display: true
 role: "Mechanical Engineer — Formlabs"
+contributions: ["Mechanical design", "Electronics design", "Software development"]
 skills: "Onshape, KiCad, DFM, C/C++, Embedded systems, Test automation"
 thumbnail: "/assets/images/my-projects/formlabs/thumbnail.png"
 gallery:

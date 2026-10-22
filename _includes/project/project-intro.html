@@ -4,5 +4,6 @@
   {% if page.date %}<div class="project-date"><strong>Date </strong><span>{{ page.date | date_to_long_string }}</span></div>{% endif %}
   {% if page.client %}<div class="project-client"><strong>Client </strong><span>{{ page.client }}</span></div>{% endif %}
   {% if page.role %}<div class="project-role"><strong>Role </strong><span>{{ page.role }}</span></div>{% endif %}
+  {% if page.contributions.size > 0 %}<div class="project-contributions"><strong>Contribution </strong><span>{{ page.contributions | join: ", " | escape }}</span></div>{% endif %}
   {% if page.skills %}<div class="project-skills"><strong>Skills </strong><span>{{ page.skills }}</span></div>{% endif %}
 </div>

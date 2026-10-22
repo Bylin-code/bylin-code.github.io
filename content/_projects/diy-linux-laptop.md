@@ -11,6 +11,7 @@ date: 2019-12-01
 featured: false
 display: true
 role: "Maker"
+contributions: ["Creative"]
 skills: "Raspberry Pi, Linux, Hardware assembly, SSD boot configuration"
 thumbnail: "/assets/images/my-projects/diy-linux-laptop/thumbnail.png"
 gallery:

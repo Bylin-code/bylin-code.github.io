@@ -1,10 +1,10 @@
 # Short card copy. Full project details stay in content/_projects.
 dreaming-objects:
-  summary: "Four everyday objects that listen, respond, and work together."
+  summary: "Four interactive objects. Won the $50K grand prize at MIT Media Lab’s HARD MODE hackathon."
 stradex:
-  summary: "A violin-inspired MIDI controller built for expressive playing."
+  summary: "A violin-inspired MIDI controller built for expressive playing, developed into a product with units sold."
 pulse:
-  summary: "A six-armed robot that turns MIDI into live percussion."
+  summary: "Founded a group to unite art and robotics, then led a team to build a six-armed robot drummer."
 formjet:
   summary: "An automated wash-and-cure station for resin-printed parts."
 kermit:
@@ -18,15 +18,15 @@ violosynth:
 solenoid-drummer:
   summary: "A solenoid-powered robot drummer with synchronized lighting."
 yappl:
-  summary: "A little mushroom that reminds you to talk about your day."
+  summary: "A little nightstand mushroom that reminds you to talk about your day."
 haptics-test-rig:
-  summary: "A test rig for measuring force feedback in teleoperation systems."
+  summary: "A custom test rig for measuring force feedback in teleoperation systems."
 actuator-test-bench:
-  summary: "An automated test bench for comparing 50+ robotic joint actuators."
+  summary: "An automated test bench for comparing and benchmarking 50+ robotic joint actuator models."
 teleoperation-controls:
-  summary: "Arm bring-up, Ethernet teleoperation, and headset-driven neck controls."
+  summary: "7-DOF robot arm bring-up, Ethernet teleoperation, and headset-driven neck controls."
 formlabs:
-  summary: "Imaging and mechanical testing for SLA 3D printing."
+  summary: "Embedded GMSL camera development and mechanical testing for SLA 3D printing."
 diy-linux-laptop:
   summary: "A homemade Raspberry Pi laptop and my introduction to Linux."
 breadboard-game-controller:

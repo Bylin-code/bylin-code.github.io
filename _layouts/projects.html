@@ -28,7 +28,27 @@ body_classes: page-projects
   {% assign cards = site.projects | sort: 'date' | reverse %}
 {% endif %}
 {% if cards.size > 0 %}
-<div class="section pt-0">
+<div class="section pt-0" data-project-browser>
+  <div class="container project-filters" hidden>
+    <fieldset>
+      <legend>Project type</legend>
+      <div class="filter-options" data-filter-group="type">
+        <button type="button" data-value="" aria-pressed="true">All work</button>
+        <button type="button" data-value="Internship Project" aria-pressed="false">Internship work</button>
+        <button type="button" data-value="Personal Project" aria-pressed="false">Personal projects</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Type</legend>
+      <div class="filter-options" data-filter-group="contribution">
+        <button type="button" data-value="" aria-pressed="true">All types</button>
+        {% assign contributions = 'Mechanical design,Electronics design,Software development,Creative,Leadership' | split: ',' %}
+        {% for contribution in contributions %}<button type="button" data-value="{{ contribution | escape }}" aria-pressed="false">{{ contribution }}</button>{% endfor %}
+      </div>
+    </fieldset>
+    <div class="filter-status"><p data-filter-status role="status" aria-live="polite"></p><button type="button" data-filter-reset>Reset filters</button></div>
+    <p data-filter-empty hidden>No projects match these filters. Try another type or reset the filters.</p>
+  </div>
   <div class="container">
     <div class="row">
 
@@ -40,7 +60,7 @@ body_classes: page-projects
       {% for card in cards limit: limit %}
       {% if card.display == true %}
       <div
-        class="col-12 col-md-6 {{ columns }} project-grid-item">
+        class="col-12 col-md-6 {{ columns }} project-grid-item" data-project-type="{{ card.project_type | escape }}" data-contributions="{{ card.contributions | jsonify | escape }}">
         {% include components/project-card.html
           project=card
           title=card.title
@@ -65,3 +85,5 @@ body_classes: page-projects
   </div>
 </div>
 {% endif %}
+
+<script src="{{ '/assets/js/project-filters.js' | relative_url }}" defer></script>

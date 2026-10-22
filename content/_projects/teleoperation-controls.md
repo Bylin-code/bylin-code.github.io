@@ -11,6 +11,7 @@ featured: true
 display: true
 date: 2026-09-08
 role: "Controls Engineer — Mundane Systems Inc."
+contributions: ["Software development"]
 skills: "C++, Python, ROS 2, Pinocchio, URDF, CAN, Gravity compensation, PD control, Hardware integration"
 thumbnail: "/assets/images/my-projects/teleoperation-controls/orange-robot-front-thumbnail-v2.png"
 gallery:
@@ -42,7 +43,10 @@ At Mundane Systems, I helped bring new robot arms into the existing leader–fol
 ### Ethernet teleoperation
 
 - Configured cross-machine ROS 2 communication, clock synchronization, and launch and diagnostic tools.
-- Fixed a tracking bug where the 1 kHz controller mistook normal gaps in the ~100 Hz reference stream for dropouts. Holding the latest target between updates restored tracking.
+
+We noticed perceptible—and sometimes visible—jerkiness during teleoperation. The ~100 Hz reference stream fed a 1 kHz local controller, but normal gaps between messages were being treated as dropouts. Each new message then restarted a transition from the measured pose, repeatedly pulling the command back toward the arm’s current position. The follower could barely track the leader except at large deflections.
+
+I fixed the gap handling so the controller held the latest target between expected updates (zero-order hold), rather than repeatedly restarting that transition. A separate command-age check rejected stale references, while genuine link loss triggered a controlled transition to a held pose. This restored tracking in the cross-machine test setup; it did not make the network reference stream run at 1 kHz.
 
 ### Headset-driven neck
 
@@ -50,4 +54,4 @@ At Mundane Systems, I helped bring new robot arms into the existing leader–fol
 - Tuned PD control, orientation smoothing, and velocity/acceleration limits for smoother motion.
 - Fitted sinusoidal gravity feedforward and built calibration and motion-logging tools.
 
-[Check out our customers testing the system at NECA 2026 →](https://www.linkedin.com/posts/amg-custom-controls_neca2026-activity-7513673525459742721-aaKm)
+[Watch the public customer demo at NECA 2026 on LinkedIn →](https://www.linkedin.com/posts/amg-custom-controls_neca2026-activity-7513673525459742721-aaKm)

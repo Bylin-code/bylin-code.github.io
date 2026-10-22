@@ -234,6 +234,7 @@
   .project-date,
   .project-role,
   .project-client,
+  .project-contributions,
   .project-skills {
     margin-bottom: 10px;
     font-size: 14px;
@@ -242,7 +243,7 @@
     align-items: flex-start;
     strong {
       font-weight: 600;
-      width: 70px;
+      width: 100px;
       flex-shrink: 0;
     }
     span {

@@ -11,6 +11,7 @@ date: 2025-09-05
 featured: false
 display: false
 role: "Lead Engineer & Designer"
+contributions: ["Mechanical design", "Software development"]
 skills: "CAD, 3D Printing, Laser Cutting, Machining, Embedded Systems, Control Systems, Mechanical Design"
 thumbnail: "/assets/images/my-projects/swapxy/swapxy1.jpg"
 gallery:

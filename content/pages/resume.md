@@ -12,7 +12,7 @@ experience_gallery:
     caption: "Pitched this club freshman year. That night was our robotic drummer's second show, thanks to everyone in this photo."
   - image: "/assets/images/resume/XP3.jpg"
     alt: ""
-    caption: "No one in this photo has slept in the past 70 hours. Adrenaline carried us to snatch the 50K grand prize."
+    caption: "Our Dreaming Objects team won the $50K grand prize at MIT Media Lab’s HARD MODE hackathon. I contributed as a hardware engineer to four interactive objects built in 48 hours."
   - image: "/assets/images/resume/XP4.jpg"
     alt: ""
     caption: "Me and fellow Canadian formlings working on a project outside of work half past midnight."

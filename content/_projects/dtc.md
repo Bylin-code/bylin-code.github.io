@@ -10,6 +10,7 @@ date: 2023-12-29
 featured: false
 display: false
 role: "Lead Engineer & Designer"
+contributions: ["Mechanical design", "Leadership"]
 skills: "none"
 thumbnail: "/assets/images/gen/projects/project-1-3-thumbnail.webp"
 gallery:

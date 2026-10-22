@@ -11,6 +11,7 @@ date: 2026-06-20
 featured: false
 display: true
 role: "Mechatronics Engineer — Mundane Systems Inc."
+contributions: ["Mechanical design"]
 skills: "Fusion 360, Mechanical design, DFM/DFA, GD&T, CNC machining, Hardware integration"
 thumbnail: "/assets/images/my-projects/haptics-test-rig/thumbnail.jpeg"
 gallery:

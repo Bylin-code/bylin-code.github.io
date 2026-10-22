@@ -11,7 +11,8 @@ date: 2025-06-12
 featured: true
 display: true
 role: "Lead Engineer"
-skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
+contributions: ["Electronics design", "Software development", "Creative", "Leadership"]
+skills: "Engineering management, CAD, Machining, Sheet-metal fabrication, Waterjetting, 3D Printing, Laser cutting, Embedded design, Linux, Teensy RTOS, Firmware development, Electromechanical systems, Mixed-rail power management, Hardware debugging"
 thumbnail: "/assets/images/my-projects/pulse/thumbnail.jpeg"
 gallery:
   - image: "/assets/images/my-projects/pulse/pulse18.jpg"
@@ -31,6 +32,18 @@ gallery:
 ---
 **PULSE** is the first project for the Creative Engineering and Robotic Arts Studio (CERAS) at Northwestern University, a group I founded near the end of Freshman year. Our goal is to challenge the utilitarian nature of engineering and robotics and to explore the intersection of art and technology.
 
-The robot has a welded stainless steel base, 7 servo-actuated arms, 2 solenoid actuated kicks, 3 stepper motors, 3 speakers, and an LCD screen face, all coordinated by a microcontroller and raspberry pi communicating through I2C.
+### My contribution
 
-What started as an ambitious eight-month build turned into a test of resilience: parts shortages, firmware conflicts, machining errors, even shifting team dynamics. Yet when PULSE finally took the stage at our debut performance, the sense of fulfillment was indescribable.
+I founded CERAS and led PULSE’s engineering direction. I owned the schematics and most of the firmware controlling the stepper motors and servos. I also wrote a Python script that used automated test routines to estimate differences in strike delay across MIDI note velocities, supporting timing calibration for expressive playing.
+
+My teammates did most of the mechanical CAD and wiring. I coordinated that work with the electronics and firmware as we brought the robot together.
+
+### Keeping the performance in sync
+
+PULSE has six servo-actuated arms, two solenoid-actuated kicks, and three stepper motors on a welded stainless steel base, plus speakers and an LCD face. A Raspberry Pi running Linux handles high-level commands and communicates with the Teensy over I2C. The Teensy runs an RTOS to coordinate the servos, solenoids, and steppers, keeping their timing synchronized during a performance.
+
+<h3 id="demo">Watch PULSE play</h3>
+
+{% include youtube.html id="hYe45-qbswQ" title="PULSE robot drummer playing a musical passage" %}
+
+[Watch the performance on YouTube →](https://youtube.com/shorts/hYe45-qbswQ)

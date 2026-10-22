@@ -11,6 +11,7 @@ date: 2021-02-01
 featured: false
 display: true
 role: "Maker"
+contributions: ["Creative", "Electronics design"]
 skills: "Arduino Pro Micro, USB input, Microcontroller programming, Electronics prototyping"
 thumbnail: "/assets/images/my-projects/breadboard-game-controller/thumbnail.png"
 gallery:

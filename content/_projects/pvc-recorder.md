@@ -11,6 +11,7 @@ date: 2017-10-01
 featured: false
 display: true
 role: "Maker"
+contributions: ["Creative"]
 skills: "Hand fabrication, Measurement, Instrument making"
 thumbnail: "/assets/images/my-projects/pvc-recorder/thumbnail-v5.png"
 gallery:
