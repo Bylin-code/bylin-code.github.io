@@ -22,19 +22,21 @@
   <div class="card-content">
     <div class="card-title">
       <div class="card-title-wrapper">
-        <div class="project-name-with-tag">
         <h2>
           <a href="{{ url | relative_url }}">{{ title }}</a>
         </h2>
-        {% if include.project.project_type %}<span class="project-type-tag">{{ include.project.project_type | escape }}</span>{% endif %}
-        {% if include.project.collaboration %}<span class="project-type-tag">{{ include.project.collaboration | escape }}</span>{% endif %}
-        </div>
         {% if date %}
           <div class="card-date">
             {{ date | date: "%b %Y" }}
           </div>
         {% endif %}
       </div>
+      {% if include.project.project_type or include.project.collaboration %}
+        <div class="card-project-tags">
+          {% if include.project.project_type %}<span class="project-type-tag">{{ include.project.project_type | escape }}</span>{% endif %}
+          {% if include.project.collaboration %}<span class="project-type-tag">{{ include.project.collaboration | escape }}</span>{% endif %}
+        </div>
+      {% endif %}
     </div>
     {% if description %}
       <div class="card-description">
