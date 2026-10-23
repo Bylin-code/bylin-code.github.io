@@ -43,10 +43,8 @@ At Mundane Systems, I helped bring new robot arms into the existing leader–fol
 ### Ethernet teleoperation
 
 - Configured cross-machine ROS 2 communication, clock synchronization, and launch and diagnostic tools.
-
-We noticed perceptible—and sometimes visible—jerkiness during teleoperation. The ~100 Hz reference stream fed a 1 kHz local controller, but normal gaps between messages were being treated as dropouts. Each new message then restarted a transition from the measured pose, repeatedly pulling the command back toward the arm’s current position. The follower could barely track the leader except at large deflections.
-
-I fixed the gap handling so the controller held the latest target between expected updates (zero-order hold), rather than repeatedly restarting that transition. A separate command-age check rejected stale references, while genuine link loss triggered a controlled transition to a held pose. This restored tracking in the cross-machine test setup; it did not make the network reference stream run at 1 kHz.
+- Restored leader–follower tracking by fixing false dropout detection and holding the latest ~100 Hz reference between updates to the 1 kHz local controller.
+- Added command-age checks to reject stale references and a controlled transition to a held pose on link loss.
 
 ### Headset-driven neck
 
